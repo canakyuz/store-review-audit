@@ -7,7 +7,7 @@ Established 2026-11-17. Re-open applicable pages every audit. Follow redirects; 
 | Topic | Official source |
 | --- | --- |
 | Review rules | https://developer.apple.com/app-store/review/guidelines/ |
-| Review preparation/common problems | https://developer.apple.com/app-store/review/ |
+| Review preparation/common problems | https://developer.apple.com/distribute/app-review/ |
 | Reviewer access and supporting documents | https://developer.apple.com/help/app-review/before-submitting-for-review/complete-review |
 | Agreements and licenses | https://developer.apple.com/support/terms/ |
 | Upcoming requirements | https://developer.apple.com/news/upcoming-requirements/ |

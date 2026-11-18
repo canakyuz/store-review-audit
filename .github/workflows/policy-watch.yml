@@ -1,0 +1,58 @@
+name: Policy watch
+
+# Weekly: fetch the Apple and Google publishing policies, compare each clause
+# hash with references/policy-catalog.json and open an issue when anything
+# changed. The catalogue is only updated by a reviewed commit, never here.
+on:
+  schedule:
+    - cron: "17 6 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+      - name: Compare policies with the catalogue
+        id: check
+        run: |
+          set +e
+          python3 scripts/fetch_policies.py --check > changes.txt
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          cat changes.txt
+          # 0: no change, 1: changes found, 2: a source could not be fetched
+          if [ "$code" -eq 2 ]; then exit 1; fi
+          exit 0
+      - name: Open or update the policy change issue
+        if: steps.check.outputs.code == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Policy changes detected"
+          {
+            echo "The weekly policy watch found changed, added or removed clauses."
+            echo
+            echo '```'
+            cat changes.txt
+            echo '```'
+            echo
+            echo "Review each item against references/checklist.md, rules.json and special-cases.md."
+            echo "When done, run \`python3 scripts/fetch_policies.py --write\` and commit the catalogue with the skill changes."
+          } > body.md
+          existing=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file body.md
+          else
+            gh issue create --title "$title" --body-file body.md
+          fi

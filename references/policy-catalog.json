@@ -1,0 +1,1677 @@
+{
+ "checked": "2026-11-18",
+ "items": [
+  {
+   "id": "apple:introduction",
+   "platform": "apple",
+   "title": "Introduction The guiding principle of the App Store is simple\u2014we want to provide a safe ex",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#introduction",
+   "sha256": "cf79285306f6748c3a0825d14a7d03a11d65dbff5cf5d3f3fd0e6f3b38930643",
+   "words": 686
+  },
+  {
+   "id": "apple:before-you-submit",
+   "platform": "apple",
+   "title": "Before You Submit To help your app approval go as smoothly as possible, review the common ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#before-you-submit",
+   "sha256": "dd798320330f4741d7f750a5829ac9f69880f4f7682d6356d74a59e9e3548c33",
+   "words": 312
+  },
+  {
+   "id": "apple:1",
+   "platform": "apple",
+   "title": "1. Safety When people install an app from the App Store, they want to feel confident that ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1",
+   "sha256": "1710ed586bb603f46cc70a5148adcf629dc29fd8f91f6cc329262d9301cb7981",
+   "words": 83
+  },
+  {
+   "id": "apple:1.1",
+   "platform": "apple",
+   "title": "1.1 Objectionable Content Apps should not include content that is offensive, insensitive, ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.1",
+   "sha256": "9cbe7821cac43068dafb1841d3041d12316c0357ebd02cb765cebb44408c944f",
+   "words": 29
+  },
+  {
+   "id": "apple:1.1.1",
+   "platform": "apple",
+   "title": "1.1.1 Defamatory, discriminatory, or mean-spirited content, including references or commen",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.1.1",
+   "sha256": "8cf0264a5c27c81a399209dcb54ff1bf35d0b1dba72522eeed90b77b0f0ede62",
+   "words": 49
+  },
+  {
+   "id": "apple:1.1.2",
+   "platform": "apple",
+   "title": "1.1.2 Realistic portrayals of people or animals being killed, maimed, tortured, or abused,",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.1.2",
+   "sha256": "52b8cbc6d8c5a7a12d28bd4e8b88b3ecefaeb18b0138817528fefaad60b4fc3f",
+   "words": 40
+  },
+  {
+   "id": "apple:1.1.3",
+   "platform": "apple",
+   "title": "1.1.3 Depictions that encourage illegal or reckless use of weapons and dangerous objects, ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.1.3",
+   "sha256": "866e4e9f5c44388313fa93ad4b8162afefabc78eab65e8ea28f4fda8714f7126",
+   "words": 21
+  },
+  {
+   "id": "apple:1.1.4",
+   "platform": "apple",
+   "title": "1.1.4 Overtly sexual or pornographic material, defined as \u201cexplicit descriptions or displa",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.1.4",
+   "sha256": "a200feeafba3c2ccb83f5109ad2f2486a049f3fa4647d1b09a867025c452aa78",
+   "words": 49
+  },
+  {
+   "id": "apple:1.1.5",
+   "platform": "apple",
+   "title": "1.1.5 Inflammatory religious commentary or inaccurate or misleading quotations of religiou",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.1.5",
+   "sha256": "9fd80f91e4120cff40a9a3c5e57876a0298495dbe60fff1de5860ddd005dd7fa",
+   "words": 12
+  },
+  {
+   "id": "apple:1.1.6",
+   "platform": "apple",
+   "title": "1.1.6 False information and features, including inaccurate device data or trick/joke funct",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.1.6",
+   "sha256": "9713edcbbf36fd876f2570fd291237768614c63da45d79eb56795ad7afc380c8",
+   "words": 43
+  },
+  {
+   "id": "apple:1.1.7",
+   "platform": "apple",
+   "title": "1.1.7 Harmful concepts which capitalize or seek to profit on recent or current events, suc",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.1.7",
+   "sha256": "0cb97b3508a00a37a43790bd091c3da890fc82e9e080e5e37001ece8bcd4ba24",
+   "words": 22
+  },
+  {
+   "id": "apple:1.2",
+   "platform": "apple",
+   "title": "1.2 User-Generated Content Apps that enable users to create, generate, upload, share, or o",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.2",
+   "sha256": "1d2c70527cc22e807c1a1436b0f17f7d800051ef032d5a5a81aeced690ae1b95",
+   "words": 287
+  },
+  {
+   "id": "apple:1.2.1",
+   "platform": "apple",
+   "title": "1.2.1 Creator Content Apps which feature content from a specific community of users called",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.2.1",
+   "sha256": "da72bda344c073041c104a0b4f22c840c7f0b39c4e5dec3412607baaad8aa506",
+   "words": 192
+  },
+  {
+   "id": "apple:1.3",
+   "platform": "apple",
+   "title": "1.3 Kids Category The Kids Category is a great way for people to easily find apps that are",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.3",
+   "sha256": "daa24d43ee05e0b165387396e03f12ea37a7809c9b2637b9726529a3eb8fea1a",
+   "words": 275
+  },
+  {
+   "id": "apple:1.4",
+   "platform": "apple",
+   "title": "1.4 Physical Harm If your app behaves in a way that risks physical harm, we may reject it.",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.4",
+   "sha256": "0ff78e35a9a02dfd2468e2fddc4d2519a6d5bac1375ef886754308ffe495566f",
+   "words": 20
+  },
+  {
+   "id": "apple:1.4.1",
+   "platform": "apple",
+   "title": "1.4.1 Medical apps that could provide inaccurate data or information, or that could be use",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.4.1",
+   "sha256": "c90dfafe579982ec85d8fc29a391a867c956f5b0feeba5048f78c4b42c790b38",
+   "words": 125
+  },
+  {
+   "id": "apple:1.4.2",
+   "platform": "apple",
+   "title": "1.4.2 Drug dosage calculators must come from the drug manufacturer, a hospital, university",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.4.2",
+   "sha256": "a7c060a091b1f9d68c68f4c41dd354e92b62a1a831c529dfb618fa9436b93706",
+   "words": 56
+  },
+  {
+   "id": "apple:1.4.3",
+   "platform": "apple",
+   "title": "1.4.3 Apps that encourage consumption of tobacco and vape products, illegal drugs, or exce",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.4.3",
+   "sha256": "ecd1533d291762aa8136baa92a74f0f9862e2deacc1aa3eb2ad11775b2b578ef",
+   "words": 55
+  },
+  {
+   "id": "apple:1.4.4",
+   "platform": "apple",
+   "title": "1.4.4 Apps may only display DUI checkpoints that are published by law enforcement agencies",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.4.4",
+   "sha256": "f7f38687faa319f2ac430bf0b55363a1a8676748cc6aa7804daa8eb5822cc53f",
+   "words": 28
+  },
+  {
+   "id": "apple:1.4.5",
+   "platform": "apple",
+   "title": "1.4.5 Apps should not urge customers to participate in activities (like bets, challenges, ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.4.5",
+   "sha256": "175161e9d29ba190a0515dc0260e3f3baa123b66a1c36e2f5cd1fbeda9947636",
+   "words": 29
+  },
+  {
+   "id": "apple:1.5",
+   "platform": "apple",
+   "title": "1.5 Developer Information People need to know how to reach you with questions and support ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.5",
+   "sha256": "25a5e6e37648e46352d2fc2fbe43325b64e4575646fabb3bbff1f29a2e30364d",
+   "words": 95
+  },
+  {
+   "id": "apple:1.6",
+   "platform": "apple",
+   "title": "1.6 Data Security Apps should implement appropriate security measures to ensure proper han",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.6",
+   "sha256": "188515daf72effbf3f18fc2ab1c2141dc937b91f7262eaa8517d4bfa9a1e0683",
+   "words": 45
+  },
+  {
+   "id": "apple:1.7",
+   "platform": "apple",
+   "title": "1.7 Reporting Criminal Activity Apps for reporting alleged criminal activity must involve ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#1.7",
+   "sha256": "860b8bcb9f7159e964e080920f4989a9cddb4e03cfc24f6bc66b7dc96fcbe233",
+   "words": 29
+  },
+  {
+   "id": "apple:2",
+   "platform": "apple",
+   "title": "2. Performance",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2",
+   "sha256": "ef1fae554c0895d72ac8467e23b7f8a3a03e09937cf8e09e1b85eefb273d6c0f",
+   "words": 2
+  },
+  {
+   "id": "apple:2.1",
+   "platform": "apple",
+   "title": "2.1 App Completeness (a) Submissions to App Review, including apps you make available for ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.1",
+   "sha256": "f9c03f8ff02434b97294df51de5a1436c12ab3269a6191dcf57f129938240640",
+   "words": 175
+  },
+  {
+   "id": "apple:2.2",
+   "platform": "apple",
+   "title": "2.2 Beta Testing Demos, betas, and trial versions of your app don\u2019t belong on the App Stor",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.2",
+   "sha256": "fb9893d96e6fef51e0d1a89020c36182fa446fdfc2859055bd74e922d14f7587",
+   "words": 96
+  },
+  {
+   "id": "apple:2.3",
+   "platform": "apple",
+   "title": "2.3 Accurate Metadata Customers should know what they\u2019re getting when they download or buy",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3",
+   "sha256": "e72669cd80219cea713700002bb3b3dc10abd2f100382769ea591ffd55f467a5",
+   "words": 47
+  },
+  {
+   "id": "apple:2.3.1",
+   "platform": "apple",
+   "title": "2.3.1 (a) All new features, functionality, and product changes must be described with spec",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.1",
+   "sha256": "fa4f915088b10a5c6ab87ff568b2663c2eabbf37e588841515240822aa93cc0a",
+   "words": 143
+  },
+  {
+   "id": "apple:2.3.2",
+   "platform": "apple",
+   "title": "2.3.2 If your app includes in-app purchases, make sure your app description, screenshots, ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.2",
+   "sha256": "4b96704c1d9b3829fd2dfac02dda8df7efabffb2951fa70ec5711ce20f4ede38",
+   "words": 87
+  },
+  {
+   "id": "apple:2.3.3",
+   "platform": "apple",
+   "title": "2.3.3 Screenshots should show the app in use, and not merely the title art, login page, or",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.3",
+   "sha256": "4092b7972c5096f75f73a5f120a1ab5f1ff4b547172114cccb51a6feebfccb9b",
+   "words": 63
+  },
+  {
+   "id": "apple:2.3.4",
+   "platform": "apple",
+   "title": "2.3.4 Previews are a great way for customers to see what your app looks like and what it d",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.4",
+   "sha256": "81f109f72f195afda6c9b14e322ece3ec653619101c2eaa1269b22ea130f955f",
+   "words": 74
+  },
+  {
+   "id": "apple:2.3.5",
+   "platform": "apple",
+   "title": "2.3.5 Select the most appropriate category for your app, and check out the App Store Categ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.5",
+   "sha256": "1222a78315bf164fb96b9cd1a50485f32766aec4d2e04afc0ac638b661e30146",
+   "words": 33
+  },
+  {
+   "id": "apple:2.3.6",
+   "platform": "apple",
+   "title": "2.3.6 Answer the age rating questions in App Store Connect honestly so that your app align",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.6",
+   "sha256": "76ab06ed5ff22d0ad0af74b7fe6ce3ee27cb6866a0a92b875b1ede0aeebdd7f5",
+   "words": 78
+  },
+  {
+   "id": "apple:2.3.7",
+   "platform": "apple",
+   "title": "2.3.7 Choose a unique app name, assign keywords that accurately describe your app, and don",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.7",
+   "sha256": "3463380f27a393f8c5d76ff995290430d7eb193e861866013208688fa1d756fc",
+   "words": 121
+  },
+  {
+   "id": "apple:2.3.8",
+   "platform": "apple",
+   "title": "2.3.8 Metadata should be appropriate for all audiences, so make sure your app and in-app p",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.8",
+   "sha256": "d8bffc2c6d3bd0c10c904309d10ccec1f3c383f9c4973c890e0a90a43006299e",
+   "words": 106
+  },
+  {
+   "id": "apple:2.3.9",
+   "platform": "apple",
+   "title": "2.3.9 You are responsible for securing the rights to use all materials in your app icons, ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.9",
+   "sha256": "a127fb19d4ec1aeb87893d0152f72b02401cc2bed36f47b4c0dda1126340bdd9",
+   "words": 33
+  },
+  {
+   "id": "apple:2.3.10",
+   "platform": "apple",
+   "title": "2.3.10 Make sure your app is focused on the experience of the Apple platforms it supports,",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.10",
+   "sha256": "4775cbe069958985ee5ea6e0c9d267924244ca89796c1d938c0cab1b4916152d",
+   "words": 61
+  },
+  {
+   "id": "apple:2.3.11",
+   "platform": "apple",
+   "title": "2.3.11 Apps you submit for pre-order on the App Store must be complete and deliverable as ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.11",
+   "sha256": "1f422ea97bf5b054b769dcd730460650f94a9166e8e51551c9a0954aab0b5cc8",
+   "words": 59
+  },
+  {
+   "id": "apple:2.3.12",
+   "platform": "apple",
+   "title": "2.3.12 Apps must clearly describe new features and product changes in their \u201cWhat\u2019s New\u201d t",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.12",
+   "sha256": "22ca194919f23b6e182f6443d69723af7065db79587fc1e94e89c0a3ce0a2a0c",
+   "words": 39
+  },
+  {
+   "id": "apple:2.3.13",
+   "platform": "apple",
+   "title": "2.3.13 In-app events are timely events that happen within your app. To feature your event ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.13",
+   "sha256": "84cf7a219f0fe69437992136f701618469f5487123bb6b5c74b58ee4bb433025",
+   "words": 115
+  },
+  {
+   "id": "apple:2.3.14",
+   "platform": "apple",
+   "title": "2.3.14 Creative assets allow you to highlight the value of your app in new ways compared t",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.3.14",
+   "sha256": "5b11c17b7bc3a2187f4d406418f5d18f76e2c281b8032a1401c1a7c8b2bec1f7",
+   "words": 98
+  },
+  {
+   "id": "apple:2.4",
+   "platform": "apple",
+   "title": "2.4 Hardware Compatibility",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.4",
+   "sha256": "6f9b0f271e8e380aa1ae349e531194f0c239e993cc345c2fa1bd061c0f1670f1",
+   "words": 3
+  },
+  {
+   "id": "apple:2.4.1",
+   "platform": "apple",
+   "title": "2.4.1 To ensure people get the most out of your app, iPhone apps should run on iPad whenev",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.4.1",
+   "sha256": "e47961bf7b57417671dba412c4ff23da650681ebad9ec444b394db772ba50167",
+   "words": 37
+  },
+  {
+   "id": "apple:2.4.2",
+   "platform": "apple",
+   "title": "2.4.2 Design your app to use power efficiently and be used in a way that does not risk dam",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.4.2",
+   "sha256": "1255a3afcd3041fcaadf355e19a31bdbf1d60a92c62d4fa9b376332ee9a258de",
+   "words": 82
+  },
+  {
+   "id": "apple:2.4.3",
+   "platform": "apple",
+   "title": "2.4.3 People should be able to use your Apple TV app without the need for hardware inputs ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.4.3",
+   "sha256": "ac5d47c0c0bef911a29d62b24bb5e3175d55d5be70ca13c6d618a9bdae0b787f",
+   "words": 61
+  },
+  {
+   "id": "apple:2.4.4",
+   "platform": "apple",
+   "title": "2.4.4 Apps should never suggest or require a restart of the device or modifications to sys",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.4.4",
+   "sha256": "46302452b3c3f2522c0def8fd188e2d84144e3e0c8fae27b25797a60bfc90eee",
+   "words": 38
+  },
+  {
+   "id": "apple:2.4.5",
+   "platform": "apple",
+   "title": "2.4.5 Apps distributed via the Mac App Store have some additional requirements to keep in ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.4.5",
+   "sha256": "32ef9f631c9be26e57ad8b3fd09db773d43df33fbe31ed8ad532115742f63007",
+   "words": 252
+  },
+  {
+   "id": "apple:2.5",
+   "platform": "apple",
+   "title": "2.5 Software Requirements",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5",
+   "sha256": "c338fd94b71f9ef16a2ec49f98103ab6c424ed21788db9821e7c51dbbb285311",
+   "words": 3
+  },
+  {
+   "id": "apple:2.5.1",
+   "platform": "apple",
+   "title": "2.5.1 Apps may only use public APIs and must run on the currently shipping OS. Learn more ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.1",
+   "sha256": "b4f2d709e3d29461014f03e0c29e7e6807ddfd80b1581ffc2763501a25dc9117",
+   "words": 93
+  },
+  {
+   "id": "apple:2.5.2",
+   "platform": "apple",
+   "title": "2.5.2 Apps should be self-contained in their bundles, and may not read or write data outsi",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.2",
+   "sha256": "89e6cd232bee07e9867e27c9f83f274ff015790d6f22b02d5d6bb22857bd48e5",
+   "words": 88
+  },
+  {
+   "id": "apple:2.5.3",
+   "platform": "apple",
+   "title": "2.5.3 Apps that transmit viruses, files, computer code, or programs that may harm or disru",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.3",
+   "sha256": "85fb11930521d6031638ac282e435fd417c7687d1d74e7a15f8fcdcb56fc00b3",
+   "words": 48
+  },
+  {
+   "id": "apple:2.5.4",
+   "platform": "apple",
+   "title": "2.5.4 Multitasking apps may only use background services for their intended purposes: VoIP",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.4",
+   "sha256": "64e6734d3e95f90ac5dbb132d1d4b7ef6224058176dc268f450bad9ec48ec22c",
+   "words": 21
+  },
+  {
+   "id": "apple:2.5.5",
+   "platform": "apple",
+   "title": "2.5.5 Apps must be fully functional on IPv6-only networks.",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.5",
+   "sha256": "0da30363e7301a2b97d3af5500a3914ac11a042a7d02c146fb5b34cacdad2426",
+   "words": 9
+  },
+  {
+   "id": "apple:2.5.6",
+   "platform": "apple",
+   "title": "2.5.6 Apps that browse the web must use the appropriate WebKit framework and WebKit JavaSc",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.6",
+   "sha256": "f6fe903bcea949a5d3e234fcee0f84a8e6bd66bdfc561daf7e39a00b735bf45f",
+   "words": 41
+  },
+  {
+   "id": "apple:2.5.7",
+   "platform": "apple",
+   "title": "2.5.7 Intentionally omitted.",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.7",
+   "sha256": "3b7e3ceb09c1957b8af453f15920f7a5c40207b5a1483816b5448d92c5769e51",
+   "words": 3
+  },
+  {
+   "id": "apple:2.5.8",
+   "platform": "apple",
+   "title": "2.5.8 Apps that create alternate desktop/home screen environments will be rejected.",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.8",
+   "sha256": "ddc70d424fd37de7886e0c57f3d1d36d346ca14a14467265ab4742e44130cdef",
+   "words": 11
+  },
+  {
+   "id": "apple:2.5.9",
+   "platform": "apple",
+   "title": "2.5.9 Apps that alter or disable the functions of standard switches, such as the Volume Up",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.9",
+   "sha256": "de0044129c9cc40b966aea4f879c75e4511b131eea5ba61cbaa7a3f0990f807d",
+   "words": 53
+  },
+  {
+   "id": "apple:2.5.10",
+   "platform": "apple",
+   "title": "2.5.10 Intentionally omitted.",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.10",
+   "sha256": "4cb34381318c66abc5595daf5e4c734034d1713dec2417a110159bc6b00db522",
+   "words": 3
+  },
+  {
+   "id": "apple:2.5.11",
+   "platform": "apple",
+   "title": "2.5.11 SiriKit and Shortcuts (i) Apps integrating SiriKit and Shortcuts should only sign u",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.11",
+   "sha256": "89fa231970c55d69e25ca2afa57038ce83c55f3698929788292c512a749d806e",
+   "words": 163
+  },
+  {
+   "id": "apple:2.5.12",
+   "platform": "apple",
+   "title": "2.5.12 Apps using CallKit or including an SMS Fraud Extension should only block phone numb",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.12",
+   "sha256": "b87872975aa2488fa81c16f689659b19f103ccf12d168612235a436b6d3ee567",
+   "words": 91
+  },
+  {
+   "id": "apple:2.5.13",
+   "platform": "apple",
+   "title": "2.5.13 Apps using facial recognition for account authentication must use LocalAuthenticati",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.13",
+   "sha256": "e0f9779bbb0f89c4e71ce122793b41d461d4c0017c1f4c7967a95428a993066b",
+   "words": 34
+  },
+  {
+   "id": "apple:2.5.14",
+   "platform": "apple",
+   "title": "2.5.14 Apps must request explicit user consent and provide a clear visual and/or audible i",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.14",
+   "sha256": "c33b31566468ce7ca98effd5ff738b3936a9752e7bbd62c1ff7807b0ba514089",
+   "words": 41
+  },
+  {
+   "id": "apple:2.5.15",
+   "platform": "apple",
+   "title": "2.5.15 Apps that enable users to view and select files should include items from the Files",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.15",
+   "sha256": "ce118f7481c61953e803511882d9cf272937a398809d4a6e1e1ac5a27fcb41ae",
+   "words": 22
+  },
+  {
+   "id": "apple:2.5.16",
+   "platform": "apple",
+   "title": "2.5.16 Widgets, extensions, and notifications should be related to the content and functio",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.16",
+   "sha256": "2d567f06b2a051aef07b3228f9d372139f86550adadf31d24531553ed6bd98e7",
+   "words": 37
+  },
+  {
+   "id": "apple:2.5.17",
+   "platform": "apple",
+   "title": "2.5.17 Apps that support Matter must use Apple\u2019s support framework for Matter to initiate ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.17",
+   "sha256": "b9f6e09ad7d12078693bec074979d4e0e9ff34900e1f5ac7f2e681d5fcf0a44c",
+   "words": 54
+  },
+  {
+   "id": "apple:2.5.18",
+   "platform": "apple",
+   "title": "2.5.18 Display advertising should be limited to your main app binary, and should not be in",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.18",
+   "sha256": "985688d37927f373b9fb95b17efffbf1cbaf6f50e7ec31d5cd3d23315a3644d8",
+   "words": 172
+  },
+  {
+   "id": "apple:2.5.19",
+   "platform": "apple",
+   "title": "2.5.19 Don\u2019t include any hidden, dormant, or undocumented features in your app; your app\u2019s",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#2.5.19",
+   "sha256": "0a2250c301f85f907b61a44998834941149df3385c6256a16cc324bbfc795ee2",
+   "words": 58
+  },
+  {
+   "id": "apple:3",
+   "platform": "apple",
+   "title": "3. Business There are many ways to monetize your app on the App Store. If your business mo",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#3",
+   "sha256": "fa5770da9c32187f73a1bab914933f8a0ed50f596f676b0a5540ecb89839a40f",
+   "words": 142
+  },
+  {
+   "id": "apple:3.1",
+   "platform": "apple",
+   "title": "3.1 Payments",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#3.1",
+   "sha256": "304efa7bf057a5214f8b64baa0d5056f8574e71dded359b4c4cad625cdef2681",
+   "words": 2
+  },
+  {
+   "id": "apple:3.1.1",
+   "platform": "apple",
+   "title": "3.1.1 In-App Purchase: If you want to unlock features or functionality within your app, (b",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#3.1.1",
+   "sha256": "135aa1f88522537c360918bc14a4b00f4e8d19cc22c828fe48c422b5a035c9c0",
+   "words": 676
+  },
+  {
+   "id": "apple:3.1.2",
+   "platform": "apple",
+   "title": "3.1.2 Subscriptions: Apps may offer auto-renewable in-app purchase subscriptions, regardle",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#3.1.2",
+   "sha256": "1f839c65575eae348a44db0106f5fa263c485e58649f3bd41b5ff28df9c96ce5",
+   "words": 590
+  },
+  {
+   "id": "apple:3.1.3",
+   "platform": "apple",
+   "title": "3.1.3 Other Purchase Methods: The following apps may use purchase methods other than in-ap",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#3.1.3",
+   "sha256": "5e9152c4033c1c5bfed76a8896ab66a05d9e6e35cc94bbad70c17566e0309f4a",
+   "words": 523
+  },
+  {
+   "id": "apple:3.1.4",
+   "platform": "apple",
+   "title": "3.1.4 Hardware-Specific Content: In limited circumstances, such as when features are depen",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#3.1.4",
+   "sha256": "fa51ec9bafbff7049510d371e9c0c758d6a05e14556b5ec91d2ede68b7ea1a30",
+   "words": 97
+  },
+  {
+   "id": "apple:3.1.5",
+   "platform": "apple",
+   "title": "3.1.5 Cryptocurrencies: (i) Wallets: Apps may facilitate virtual currency storage, provide",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#3.1.5",
+   "sha256": "8be9517146e378beefba07e5ffb7ddeeadf90fe51c8395513e183ebdbff1cd45",
+   "words": 142
+  },
+  {
+   "id": "apple:3.2",
+   "platform": "apple",
+   "title": "3.2 Other Business Model Issues The lists below are not exhaustive, and your submission ma",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#3.2",
+   "sha256": "8614c7495704221780a7227e0e6dd6ee8b4e6f45ccac5935429f0ace1d11fb1a",
+   "words": 35
+  },
+  {
+   "id": "apple:3.2.1",
+   "platform": "apple",
+   "title": "3.2.1 Acceptable (i) Displaying your own apps for purchase or promotion within your app, p",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#3.2.1",
+   "sha256": "06eb24a78b1beffee1a21eada73304bc0df2635c910cc9540401330126332509",
+   "words": 352
+  },
+  {
+   "id": "apple:3.2.2",
+   "platform": "apple",
+   "title": "3.2.2 Unacceptable (i) Creating an interface for displaying third-party apps, extensions, ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#3.2.2",
+   "sha256": "a06e7fc27dbb90f571ecf08159cbc6476817e8ce41dbb5b00c27b46b424a8980",
+   "words": 295
+  },
+  {
+   "id": "apple:4",
+   "platform": "apple",
+   "title": "4. Design Apple customers place a high value on products that are simple, refined, innovat",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4",
+   "sha256": "d94127b3bbf1dffb966ac6b06fffd735d9990c531625fa269bb24961a0bed69f",
+   "words": 98
+  },
+  {
+   "id": "apple:4.1",
+   "platform": "apple",
+   "title": "4.1 Copycats (a) Come up with your own ideas. We know you have them, so make yours come to",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.1",
+   "sha256": "c87eb2ff04c65ac9e8e951f0259da9334f6ebb63c3ae863fc2d473f2486f65df",
+   "words": 134
+  },
+  {
+   "id": "apple:4.2",
+   "platform": "apple",
+   "title": "4.2 Minimum Functionality Your app should include features, content, and UI that elevate i",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.2",
+   "sha256": "355c6047334cb48b96bd66e87c0f1f7d2a8f59ff35e0b03e35773ebb3f0f092f",
+   "words": 86
+  },
+  {
+   "id": "apple:4.2.1",
+   "platform": "apple",
+   "title": "4.2.1 Apps using ARKit should provide rich and integrated augmented reality experiences; m",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.2.1",
+   "sha256": "259a1d201b92953546a5637cc0cf2217e266e6b50af90969d3db9aecb9aedf56",
+   "words": 26
+  },
+  {
+   "id": "apple:4.2.2",
+   "platform": "apple",
+   "title": "4.2.2 Other than catalogs, apps shouldn\u2019t primarily be marketing materials, advertisements",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.2.2",
+   "sha256": "87e4330835e3f25f4b384c14c4fb7622746e46eef18fd48be1ea24f467b7d254",
+   "words": 20
+  },
+  {
+   "id": "apple:4.2.3",
+   "platform": "apple",
+   "title": "4.2.3 (i) Your app should work on its own without requiring installation of another app to",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.2.3",
+   "sha256": "0d22b0f4f4760e06028c8ccdcacb956a0974b19dddb071cbbd630be2165ab207",
+   "words": 45
+  },
+  {
+   "id": "apple:4.2.4",
+   "platform": "apple",
+   "title": "4.2.4 Intentionally omitted.",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.2.4",
+   "sha256": "9bed920d6840c919c21824ae8e15b5b2d94e61b4e55736781509d9339d9f0ff9",
+   "words": 3
+  },
+  {
+   "id": "apple:4.2.5",
+   "platform": "apple",
+   "title": "4.2.5 Intentionally omitted.",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.2.5",
+   "sha256": "ff041e2cd2761fd0cd9c9949d7116bf82eba756082168f73813d55ec7ea0e6e8",
+   "words": 3
+  },
+  {
+   "id": "apple:4.2.6",
+   "platform": "apple",
+   "title": "4.2.6 Apps created from a commercialized template or app generation service will be reject",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.2.6",
+   "sha256": "cf276e3ec3892a7ea1625a52dcb9b4391c259fe023e47789c890c7779377c39e",
+   "words": 106
+  },
+  {
+   "id": "apple:4.2.7",
+   "platform": "apple",
+   "title": "4.2.7 Remote Desktop Clients: If your remote desktop app acts as a mirror of specific soft",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.2.7",
+   "sha256": "9faeed7b72d8e07a03d7748bf10b1d74eed7dd54d86e17275bb8d45a4c63fe40",
+   "words": 207
+  },
+  {
+   "id": "apple:4.3",
+   "platform": "apple",
+   "title": "4.3 Spam (a) Don\u2019t create multiple Bundle IDs of the same app (for example, submitting a s",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.3",
+   "sha256": "ae94e3a3954472074ba4d99c59aa696c7a8ce570688e82c2cac85c297584a674",
+   "words": 220
+  },
+  {
+   "id": "apple:4.4",
+   "platform": "apple",
+   "title": "4.4 Extensions Apps hosting or containing extensions must comply with the App Extension Pr",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.4",
+   "sha256": "91b653427cb85fcb7a1578e3341bb8ab78f43a32989d4d8c49966180c9ed441c",
+   "words": 69
+  },
+  {
+   "id": "apple:4.4.1",
+   "platform": "apple",
+   "title": "4.4.1 Keyboard extensions have some additional rules. They must: Provide keyboard input fu",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.4.1",
+   "sha256": "adc02d47764f68b3be15fb4828fce70180afe5ba5cf2556d304d473b32fcd2d9",
+   "words": 90
+  },
+  {
+   "id": "apple:4.4.2",
+   "platform": "apple",
+   "title": "4.4.2 Safari extensions must run on the current version of Safari on the relevant Apple op",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.4.2",
+   "sha256": "930b01c108cf050c3c36cf94f2841efd36bc80d8121289b709755942f7ab85e2",
+   "words": 63
+  },
+  {
+   "id": "apple:4.4.3",
+   "platform": "apple",
+   "title": "4.4.3 Intentionally omitted.",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.4.3",
+   "sha256": "e4333b87aaa077f7dc12c47c84ebceccd04df4ad868bf3a7110878410292a968",
+   "words": 3
+  },
+  {
+   "id": "apple:4.5",
+   "platform": "apple",
+   "title": "4.5 Apple Sites and Services",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.5",
+   "sha256": "572fd8f1ce186f6b7384e5b8295c9044e8719b3fc8d65838251b50b7a3fe8a2e",
+   "words": 5
+  },
+  {
+   "id": "apple:4.5.1",
+   "platform": "apple",
+   "title": "4.5.1 Apps may use approved Apple RSS feeds such as the iTunes Store RSS feed, but may not",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.5.1",
+   "sha256": "b18736782559a68c05d09c76175ac47c9baf82a785d732d0ecc8b026d56d9c6b",
+   "words": 44
+  },
+  {
+   "id": "apple:4.5.2",
+   "platform": "apple",
+   "title": "4.5.2 Apple Music (i) MusicKit on iOS lets users play Apple Music and their local music li",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.5.2",
+   "sha256": "2544bbc0b655f60cc30d37d05e0bde433d62a5283bad905b8f6825fde7125993",
+   "words": 313
+  },
+  {
+   "id": "apple:4.5.3",
+   "platform": "apple",
+   "title": "4.5.3 Do not use Apple Services to spam, phish, or send unsolicited messages to customers,",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.5.3",
+   "sha256": "192013ae0e07a97fbc36ec013c20daa6ef613ed5bf5a551aff9fe8dc0c3586eb",
+   "words": 57
+  },
+  {
+   "id": "apple:4.5.4",
+   "platform": "apple",
+   "title": "4.5.4 Push Notifications must not be required for the app to function, and should not be u",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.5.4",
+   "sha256": "1dc04cf1777751f07ae2b8573f70874a02f3839b52ec9fff078f2a21a88863fc",
+   "words": 82
+  },
+  {
+   "id": "apple:4.5.5",
+   "platform": "apple",
+   "title": "4.5.5 Only use Game Center Player IDs in a manner approved by the Game Center terms and do",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.5.5",
+   "sha256": "fec9cb39f56698af1371ba1e407b0833c81febece1d30304256c3991484f65b7",
+   "words": 29
+  },
+  {
+   "id": "apple:4.5.6",
+   "platform": "apple",
+   "title": "4.5.6 Apps may use Unicode characters that render as Apple emoji in their app and app meta",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.5.6",
+   "sha256": "590ed6d2bf1e4ca93ca6b795bf28e7ccafe9efe199c72ba96dc77f4110769238",
+   "words": 33
+  },
+  {
+   "id": "apple:4.6",
+   "platform": "apple",
+   "title": "4.6 Intentionally omitted.",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.6",
+   "sha256": "75d2a7ea81ec15aa1887086da401ffde62b43e8ef8cba3f8eca1f23f37a5a062",
+   "words": 3
+  },
+  {
+   "id": "apple:4.7",
+   "platform": "apple",
+   "title": "4.7 Mini apps, mini games, streaming games, chatbots, plug-ins, and game emulators Apps ma",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.7",
+   "sha256": "81b547b2604ce892008f3840d3dbf261a4da15cedda9f33e35a525cd495eb165",
+   "words": 131
+  },
+  {
+   "id": "apple:4.7.1",
+   "platform": "apple",
+   "title": "4.7.1 Software offered in apps under this rule must: follow all privacy guidelines, includ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.7.1",
+   "sha256": "2c2ad11eab0dd0f3a5cd50bec80a52a97c6a208129f2210bc2d2813d1297a7e2",
+   "words": 82
+  },
+  {
+   "id": "apple:4.7.2",
+   "platform": "apple",
+   "title": "4.7.2 Your app may not extend or expose native platform APIs or technologies to the softwa",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.7.2",
+   "sha256": "7727e63802c00878c4c185b9c3f33ecce6feb2e5b5681bf89c848deb94c80dca",
+   "words": 21
+  },
+  {
+   "id": "apple:4.7.3",
+   "platform": "apple",
+   "title": "4.7.3 Your app may not share data or privacy permissions to any individual software offere",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.7.3",
+   "sha256": "e07446cc3364f2f70cc426ab44a2d4020f2941075245096e777a34009c06fe20",
+   "words": 25
+  },
+  {
+   "id": "apple:4.7.4",
+   "platform": "apple",
+   "title": "4.7.4 You must provide an index of software and metadata available in your app. It must in",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.7.4",
+   "sha256": "5ab695f1c231bba6aca50361727c7580299f1f07e372561fc7eb07e3811056c3",
+   "words": 30
+  },
+  {
+   "id": "apple:4.7.5",
+   "platform": "apple",
+   "title": "4.7.5 Your app must provide a way for users to identify software that exceeds the app\u2019s ag",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.7.5",
+   "sha256": "be8778fb6f5406286ee683647f634aacbe9b0eeb68529c8001630b3578589425",
+   "words": 36
+  },
+  {
+   "id": "apple:4.8",
+   "platform": "apple",
+   "title": "4.8 Login Services Apps that use a third-party or social login service (such as Facebook L",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.8",
+   "sha256": "1762b5fc54ea6e424d637714743891d7df34b2632064d5a214fdffcdf1ac0f21",
+   "words": 248
+  },
+  {
+   "id": "apple:4.9",
+   "platform": "apple",
+   "title": "4.9 Apple Pay Apps using Apple Pay must provide all material purchase information to the u",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.9",
+   "sha256": "dd898e9992abfa547d6ec952b492014a51a18f51988c59f97aa1516e450972ed",
+   "words": 98
+  },
+  {
+   "id": "apple:4.10",
+   "platform": "apple",
+   "title": "4.10 Monetizing Built-In Capabilities You may not monetize built-in capabilities provided ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#4.10",
+   "sha256": "6452a84fe65d22b0ac9df534c80720b5ddc4d7fe5f2e6ce437607e4c0bf8a84c",
+   "words": 42
+  },
+  {
+   "id": "apple:5",
+   "platform": "apple",
+   "title": "5. Legal Apps must comply with all legal requirements in any location where you make them ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5",
+   "sha256": "54d3ecdeb473bddb1c377f920c62ffc4edcb8e1dfaa12f730a68411f2e202494",
+   "words": 108
+  },
+  {
+   "id": "apple:5.1",
+   "platform": "apple",
+   "title": "5.1 Privacy Protecting user privacy is paramount in the Apple ecosystem, and you should us",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.1",
+   "sha256": "630242d95577f8160a281a4f1b6960129ee3f124a4f32402432452f9c0f6a918",
+   "words": 49
+  },
+  {
+   "id": "apple:5.1.1",
+   "platform": "apple",
+   "title": "5.1.1 Data Collection and Storage (i) Privacy Policies: All apps must include a link to th",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.1.1",
+   "sha256": "8757b2cb85b593e93ecb791dd0f6f9f1d167eeeb5b676895dac9bddfb83afcfd",
+   "words": 794
+  },
+  {
+   "id": "apple:5.1.2",
+   "platform": "apple",
+   "title": "5.1.2 Data Use and Sharing (i) Unless otherwise permitted by law, you may not use, transmi",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.1.2",
+   "sha256": "3f66b4de6a6d9559dd053e984f695c961705650973f2cb40162ada51cb33ecdf",
+   "words": 474
+  },
+  {
+   "id": "apple:5.1.3",
+   "platform": "apple",
+   "title": "5.1.3 Health and Health Research Health, fitness, and medical data are especially sensitiv",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.1.3",
+   "sha256": "fc4b8c61bdfff33d25de121ef2e1f3cfd5acae085d82f27c2e76fbaa19dd215b",
+   "words": 276
+  },
+  {
+   "id": "apple:5.1.4",
+   "platform": "apple",
+   "title": "5.1.4 Kids (a) For many reasons, it is critical to use care when dealing with personal dat",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.1.4",
+   "sha256": "bdf1c2ed439243e3ad94c8cdda7590ae772c8e8e1acce79726ce77985050e43f",
+   "words": 281
+  },
+  {
+   "id": "apple:5.1.5",
+   "platform": "apple",
+   "title": "5.1.5 Location Services Use Location Services in your app only when it is directly relevan",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.1.5",
+   "sha256": "dec8c1c2e324c71f89c1566a926abc7b05845bd4315d0c1f39ef9a8d1d3b3429",
+   "words": 100
+  },
+  {
+   "id": "apple:5.2",
+   "platform": "apple",
+   "title": "5.2 Intellectual Property Make sure your app only includes content that you created or tha",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.2",
+   "sha256": "936dfc306bd9c0de8acf0b1fd4ee914a2db3c169289e7a052d150f1fa1804a0d",
+   "words": 98
+  },
+  {
+   "id": "apple:5.2.1",
+   "platform": "apple",
+   "title": "5.2.1 Generally: Don\u2019t use protected third-party material such as trademarks, copyrighted ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.2.1",
+   "sha256": "45427f6c483367f1815717cac762249b0ac3c5ff355445e13d1353c75c7bd214",
+   "words": 60
+  },
+  {
+   "id": "apple:5.2.2",
+   "platform": "apple",
+   "title": "5.2.2 Third-Party Sites/Services: If your app uses, accesses, monetizes access to, or disp",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.2.2",
+   "sha256": "cb305c255348e907a68be944e87a9e085bc5a878245a00dc3aa19f17f54ced6e",
+   "words": 39
+  },
+  {
+   "id": "apple:5.2.3",
+   "platform": "apple",
+   "title": "5.2.3 Audio/Video Downloading: Apps should not facilitate illegal file sharing or include ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.2.3",
+   "sha256": "2b6ccbce3a7db109cfa1f195a9fd0674f7c58b9e0cef3c84a48961ada6e926cb",
+   "words": 64
+  },
+  {
+   "id": "apple:5.2.4",
+   "platform": "apple",
+   "title": "5.2.4 Apple Endorsements: (a) Don\u2019t suggest or imply that Apple is a source or supplier of",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.2.4",
+   "sha256": "632e530494a79df5f144c759c474270547ab7bc9e6b81582bbd325795ec1884d",
+   "words": 45
+  },
+  {
+   "id": "apple:5.2.5",
+   "platform": "apple",
+   "title": "5.2.5 Apple Products: Don\u2019t create an app that appears confusingly similar to an existing ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.2.5",
+   "sha256": "d824b5204e89faaab2be772674df0c11df9ffbb67c1847ba895808a0004943f1",
+   "words": 163
+  },
+  {
+   "id": "apple:5.3",
+   "platform": "apple",
+   "title": "5.3 Gaming, Gambling, and Lotteries Gaming, gambling, and lotteries can be tricky to manag",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.3",
+   "sha256": "a4d3f92308c0d21085fdbff6c095c0753b42d578756dc0968265d4c78d5988ef",
+   "words": 61
+  },
+  {
+   "id": "apple:5.3.1",
+   "platform": "apple",
+   "title": "5.3.1 Sweepstakes and contests must be sponsored by the developer of the app.",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.3.1",
+   "sha256": "04e0e91c3868289b9aabe908d18a78ae2e01b7aa1e2f5b403143ac4e33919616",
+   "words": 13
+  },
+  {
+   "id": "apple:5.3.2",
+   "platform": "apple",
+   "title": "5.3.2 Official rules for sweepstakes, contests, and raffles must be presented in the app a",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.3.2",
+   "sha256": "b9e5e82111c0ab5e370b281579bc2dfb5e654fa9d56f70445f092f502ad62499",
+   "words": 31
+  },
+  {
+   "id": "apple:5.3.3",
+   "platform": "apple",
+   "title": "5.3.3 Apps may not use in-app purchase to purchase credit or currency for use in conjuncti",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.3.3",
+   "sha256": "069c7308bfae7a442f47d368dc3d583a50f4f0c1b76db3dcce7c6c777050d3ca",
+   "words": 23
+  },
+  {
+   "id": "apple:5.3.4",
+   "platform": "apple",
+   "title": "5.3.4 Apps that offer real money gaming (such as sports betting, poker, casino games, hors",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.3.4",
+   "sha256": "6e8a0d66cad9285b1150e5d87948df4b7fd73967f3b470cea2e464f2ba1bf924",
+   "words": 68
+  },
+  {
+   "id": "apple:5.4",
+   "platform": "apple",
+   "title": "5.4 VPN Apps Apps offering VPN services must utilize the NEVPNManager API and may only be ",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.4",
+   "sha256": "89d93745714c86f2aff94b36efe34d8d923aad8965774e8936dacbf22afdd3ec",
+   "words": 172
+  },
+  {
+   "id": "apple:5.5",
+   "platform": "apple",
+   "title": "5.5 Mobile Device Management Mobile Device Management Apps that offer Mobile Device Manage",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.5",
+   "sha256": "1468cd9dffe5d7accada690b67a10196c037caf90a76b8c86146f2f4cdc93c32",
+   "words": 203
+  },
+  {
+   "id": "apple:5.6",
+   "platform": "apple",
+   "title": "5.6 Developer Code of Conduct Please treat everyone with respect, whether in your response",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.6",
+   "sha256": "25b6a98b2f3af0608bfbd1cd4c59916c83c731ac6d9444da1c28bee50b1a5b34",
+   "words": 198
+  },
+  {
+   "id": "apple:5.6.1",
+   "platform": "apple",
+   "title": "5.6.1 App Store Reviews App Store customer reviews can be an integral part of the app expe",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.6.1",
+   "sha256": "cfe97cd229393aaf611bc6642206b47ee16e88e8def31f1ca55906171e0dcbe0",
+   "words": 86
+  },
+  {
+   "id": "apple:5.6.2",
+   "platform": "apple",
+   "title": "5.6.2 Developer Identity Providing verifiable information to Apple and customers is critic",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.6.2",
+   "sha256": "eaca1592029da7ac4f3221713589c32215f104f951e7d46e684b0ca717421e89",
+   "words": 62
+  },
+  {
+   "id": "apple:5.6.3",
+   "platform": "apple",
+   "title": "5.6.3 Discovery Fraud Participating in the App Store requires integrity and a commitment t",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.6.3",
+   "sha256": "7732f34d46c089a52a3201c27f0b7ae7a2e7ce170585a556bc58618e41ff7642",
+   "words": 45
+  },
+  {
+   "id": "apple:5.6.4",
+   "platform": "apple",
+   "title": "5.6.4 App Quality Customers expect the highest quality from the App Store, and maintaining",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#5.6.4",
+   "sha256": "3e72356900be0dcbfbef31d7a16cbf7a0362bb7f0e2e0eb57bdc4f5b3d06a2c4",
+   "words": 71
+  },
+  {
+   "id": "apple:after-you-submit",
+   "platform": "apple",
+   "title": "After You Submit Once you\u2019ve submitted your app and metadata in App Store Connect and you\u2019",
+   "url": "https://developer.apple.com/app-store/review/guidelines/#after-you-submit",
+   "sha256": "8bb3b2b0d26e33fd969a24cb08367bef7442b952b2c795a3287009ed4b079766",
+   "words": 482
+  },
+  {
+   "id": "google:policy:9857753",
+   "platform": "google",
+   "title": "Ads - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9857753?hl=en",
+   "sha256": "97463ec9ba361f91ddc3b6769b7f33488005bd08b9adc65c4fef6c9192c80f4f",
+   "words": 1789
+  },
+  {
+   "id": "google:policy:9858738",
+   "platform": "google",
+   "title": "Payments - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9858738?hl=en",
+   "sha256": "f243b88fa14059b2d95a39f4c2919195930dc6fd8170736d8304791abb3c2608",
+   "words": 609
+  },
+  {
+   "id": "google:policy:9876821",
+   "platform": "google",
+   "title": "Financial Services - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9876821?hl=en",
+   "sha256": "029e07309887a1a5a3b121157e9412961388feaffcb294cca5a790148d2cf756",
+   "words": 1829
+  },
+  {
+   "id": "google:policy:9876937",
+   "platform": "google",
+   "title": "User Generated Content - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9876937?hl=en",
+   "sha256": "de2a2cb099fb47d904210af24377f8e045edd055d6041112a3e7b37f5dfc216b",
+   "words": 787
+  },
+  {
+   "id": "google:policy:9877032",
+   "platform": "google",
+   "title": "Real-Money Gambling, Games, and Contests - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9877032?hl=en",
+   "sha256": "aa6b5452aea69b4be95a14fdc9b222b16c4fb76649fa0ac90b5c8ee3648a536c",
+   "words": 1837
+  },
+  {
+   "id": "google:policy:9878809",
+   "platform": "google",
+   "title": "Child Endangerment - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9878809?hl=en",
+   "sha256": "4d97fadc03b13c882a7c931a4a817f08ded3c1c1fa7526c2831901934087c367",
+   "words": 775
+  },
+  {
+   "id": "google:policy:9878810",
+   "platform": "google",
+   "title": "Inappropriate Content - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9878810?hl=en",
+   "sha256": "16ee6754331d0543c01ea9c269f96e9b0465c3a94e84a84fd90f52a5f50a300b",
+   "words": 2174
+  },
+  {
+   "id": "google:policy:9878877",
+   "platform": "google",
+   "title": "Illegal Activities - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9878877?hl=en",
+   "sha256": "146fd66ee3b602f3af9961b8515a8cbde36c67bbd7355ef2a568f0ba278ccfc5",
+   "words": 45
+  },
+  {
+   "id": "google:policy:9878878",
+   "platform": "google",
+   "title": "Health Content and Services - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9878878?hl=en",
+   "sha256": "22e3e27ed60354b91190b5e7f829d1320b8fe9e1adfd0c3ea0f10200a3e4d5b8",
+   "words": 1342
+  },
+  {
+   "id": "google:policy:9888072",
+   "platform": "google",
+   "title": "Intellectual Property - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9888072?hl=en",
+   "sha256": "26ca04f017ba870de02ffe808e471af98d6cacec398e91617a3c4439287469d2",
+   "words": 794
+  },
+  {
+   "id": "google:policy:9888076",
+   "platform": "google",
+   "title": "User Data - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9888076?hl=en",
+   "sha256": "f30070136888ffaa16d1cb14cb13892e7dc309d0d790b3789791e41c718029ce",
+   "words": 4321
+  },
+  {
+   "id": "google:policy:9888077",
+   "platform": "google",
+   "title": "Deceptive Behavior - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9888077?hl=en",
+   "sha256": "e32b8ef3d70259dfe3fa34b191b23630bac518471bc9e1f31c47fff29f85af04",
+   "words": 2195
+  },
+  {
+   "id": "google:policy:9888374",
+   "platform": "google",
+   "title": "Impersonation - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9888374?hl=en",
+   "sha256": "9f69d970f3fa8a21ad5da72a831f8490fb2a65cadecef5c755a9563cf02ef1c7",
+   "words": 411
+  },
+  {
+   "id": "google:policy:9888379",
+   "platform": "google",
+   "title": "Device and Network Abuse - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9888379?hl=en",
+   "sha256": "35c2550b656ff3a55a9797fff6687da80e40ccbd405ab6d1614c82a22831e0b0",
+   "words": 1978
+  },
+  {
+   "id": "google:policy:9888380",
+   "platform": "google",
+   "title": "Malware - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9888380?hl=en",
+   "sha256": "82b6ff3ca70ff6933a385a07dc5d9ece82c14f472a1e795bc55a8e1ed00c2914",
+   "words": 3923
+  },
+  {
+   "id": "google:policy:9888689",
+   "platform": "google",
+   "title": "Misrepresentation - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9888689?hl=en",
+   "sha256": "0b65ad5f21f5cf332d15c85f666dca72b364367d73338e6a96287bd8e5004e77",
+   "words": 329
+  },
+  {
+   "id": "google:policy:9893335",
+   "platform": "google",
+   "title": "Google Play Families Policies - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9893335?hl=en",
+   "sha256": "7be6beacd170c9165c098751e092c385add3fd7acb54c0d8526d48886cc823c3",
+   "words": 2742
+  },
+  {
+   "id": "google:policy:9898684",
+   "platform": "google",
+   "title": "User Ratings, Reviews, and Installs - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9898684?hl=en",
+   "sha256": "b6677322af7e5a2acbe1c9b9b593bf2e3ffe04f83985e5e672fe895723881994",
+   "words": 349
+  },
+  {
+   "id": "google:policy:9898783",
+   "platform": "google",
+   "title": "Functionality, Content, and User Experience - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9898783?hl=en",
+   "sha256": "9531a5358f351be8035cc66fbc46f9b0f4779fc235f49663388d22afbcec817f",
+   "words": 289
+  },
+  {
+   "id": "google:policy:9898842",
+   "platform": "google",
+   "title": "Metadata - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9898842?hl=en",
+   "sha256": "9fc4bf4cb58d14f1987f36b64dc8307a81d2ab3974b385b2050c8192f96d6798",
+   "words": 707
+  },
+  {
+   "id": "google:policy:9898843",
+   "platform": "google",
+   "title": "Content Ratings - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9898843?hl=en",
+   "sha256": "0bfefc88497ffd2c98058831bde116800452b007059ceafde5d7bcaf1a9dfd7b",
+   "words": 520
+  },
+  {
+   "id": "google:policy:9899004",
+   "platform": "google",
+   "title": "App Promotion - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9899004?hl=en",
+   "sha256": "b359883f9ce6d60142ce0bc254f16c8ae9a4cd784be862d8904020dd0a4d67b6",
+   "words": 313
+  },
+  {
+   "id": "google:policy:9899034",
+   "platform": "google",
+   "title": "Spam - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9899034?hl=en",
+   "sha256": "92989d99fa00eeb6418b88b21ecc891a16d79c610280b0e8087e4508ac01a4bf",
+   "words": 266
+  },
+  {
+   "id": "google:policy:9899142",
+   "platform": "google",
+   "title": "Managing Policy Violations and Appeals - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9899142?hl=en",
+   "sha256": "8f613cf9d898d9b5b9f8a49b175de014205594a2374203773bb357b7217d513f",
+   "words": 194
+  },
+  {
+   "id": "google:policy:9899234",
+   "platform": "google",
+   "title": "Enforcement Process - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9899234?hl=en",
+   "sha256": "6833586ee39ce2b86c2aaea3974c9d800008dfb5c450ba69363e9a0f2e18e5f7",
+   "words": 1364
+  },
+  {
+   "id": "google:policy:9899816",
+   "platform": "google",
+   "title": "Policy Coverage - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9899816?hl=en",
+   "sha256": "a4cfeba40272a096492c3cbd6a374cc7a12615f005df28ffd3164339810b06cf",
+   "words": 485
+  },
+  {
+   "id": "google:policy:9900182",
+   "platform": "google",
+   "title": "Android Instant Apps - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9900182?hl=en",
+   "sha256": "e07596746d6eb1641d59dd7ff4877948f3e6a705c0941d4d46de15a4fb2e6708",
+   "words": 411
+  },
+  {
+   "id": "google:policy:9900533",
+   "platform": "google",
+   "title": "Subscriptions - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9900533?hl=en",
+   "sha256": "c0ff288149d2f0252a1d23a233a94f2c6c5370be5f6a23ffb920394341d223f7",
+   "words": 1185
+  },
+  {
+   "id": "google:policy:9900633",
+   "platform": "google",
+   "title": "Families Self-Certified Ads SDK Program - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9900633?hl=en",
+   "sha256": "a84b2c7472b74e77e0f5c159dfd9ea2738d668fcf2a4836c0af9d568d478d2fd",
+   "words": 706
+  },
+  {
+   "id": "google:policy:9935326",
+   "platform": "google",
+   "title": "News & Magazines - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9935326?hl=en",
+   "sha256": "10f5feadadfd6b73a257f8d638a22b6d3e09199e2cc1495071a547dfdfd4b354",
+   "words": 376
+  },
+  {
+   "id": "google:policy:9958766",
+   "platform": "google",
+   "title": "App Discovery and Ranking - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9958766?hl=en",
+   "sha256": "65c39a7717bf0e83067e184dcab49e1233fd875c93d4b8faa51b808e32c76af3",
+   "words": 1958
+  },
+  {
+   "id": "google:policy:9959470",
+   "platform": "google",
+   "title": "Data Access - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9959470?hl=en",
+   "sha256": "e0239982c51392eb34a6f36a5c8bbaa297c722981bd2a3b7e2c663c06aefdd76",
+   "words": 447
+  },
+  {
+   "id": "google:policy:9959788",
+   "platform": "google",
+   "title": "Availability of Features and Services - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9959788?hl=en",
+   "sha256": "8ab34a5b475a51f72e8d9363d8d01debe1a38b55c1482f56874739cc3ef9e3cd",
+   "words": 659
+  },
+  {
+   "id": "google:policy:9969861",
+   "platform": "google",
+   "title": "Unauthorized Use or Imitation of System Functionality - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9969861?hl=en",
+   "sha256": "da666c5d3608fc3ec27064cd62eaa94bb4d78163063bda562254f2cfe15d3f25",
+   "words": 245
+  },
+  {
+   "id": "google:policy:9969955",
+   "platform": "google",
+   "title": "Ad Fraud - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9969955?hl=en",
+   "sha256": "5f32cd8962e5bdbe14d76e5301b2959820b6cffc5abb9d346ae816c426238bc1",
+   "words": 459
+  },
+  {
+   "id": "google:policy:9969970",
+   "platform": "google",
+   "title": "Helping Developers Succeed - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9969970?hl=en",
+   "sha256": "3daa0580619f834e55a39df498bd76a3c2bf2b9e1e3886bda00e80322a3738e0",
+   "words": 636
+  },
+  {
+   "id": "google:policy:9970222",
+   "platform": "google",
+   "title": "Mobile Unwanted Software - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9970222?hl=en",
+   "sha256": "21cdd78ce1ce552fa9c7c83be2afd3e24d44adcab82890c2143ea567bcd91344",
+   "words": 975
+  },
+  {
+   "id": "google:policy:10148323",
+   "platform": "google",
+   "title": "Social Engineering - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/10148323?hl=en",
+   "sha256": "d3186cccd0edfa81f7fbdfaf5a9a2d261c6447c6e873196bd0535e835326aad9",
+   "words": 31
+  },
+  {
+   "id": "google:policy:10357403",
+   "platform": "google",
+   "title": "Get Developer Support - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/10357403?hl=en",
+   "sha256": "3ec3008afc8737480dc4a6cfa05eabedb39da74abea1d6ffe56f9eab75adc9d0",
+   "words": 167
+  },
+  {
+   "id": "google:policy:10788890",
+   "platform": "google",
+   "title": "Play Console Requirements - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/10788890?hl=en",
+   "sha256": "31575e554ecaba769c55eaa8fa7a2bfe0122bdd39e5af9b143f95f1852edeb12",
+   "words": 914
+  },
+  {
+   "id": "google:policy:11189134",
+   "platform": "google",
+   "title": "Hostile Downloaders - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/11189134?hl=en",
+   "sha256": "1c4f8a63b2271281fe31c6faf2e3306a0194d7d596ce4aa01fdb873a286f21fd",
+   "words": 301
+  },
+  {
+   "id": "google:policy:11190644",
+   "platform": "google",
+   "title": "Android Emoji Policy - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/11190644?hl=en",
+   "sha256": "eafc3cc17f2875773da59361a7ac27c606e2d06f9762a116e1908a48b2949264",
+   "words": 99
+  },
+  {
+   "id": "google:policy:11917020",
+   "platform": "google",
+   "title": "Google Play's Target API Level Policy - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/11917020?hl=en",
+   "sha256": "a9fac926a384be9a51674262f64dc4a3473c1592fefbcc6daae6b0ceb740da06",
+   "words": 440
+  },
+  {
+   "id": "google:policy:12579724",
+   "platform": "google",
+   "title": "Permissions and APIs that Access Sensitive Information - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/12579724?hl=en",
+   "sha256": "e67b106edfd4f810147bbef0ca72a27d3a5670a0c9dc0a340c72160388d7651a",
+   "words": 6885
+  },
+  {
+   "id": "google:policy:12918983",
+   "platform": "google",
+   "title": "Families Self-Certified Ads SDK Policy - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/12918983?hl=en",
+   "sha256": "56d04e6078140e1855790228b344e3acd10d9d03915574746c925e7de3e18503",
+   "words": 1362
+  },
+  {
+   "id": "google:policy:13323374",
+   "platform": "google",
+   "title": "SDK Requirements - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/13323374?hl=en",
+   "sha256": "a0f2051cab7e6a5c1c13b02b33b6f8253f80cdf522480639341f64c2d617c464",
+   "words": 2336
+  },
+  {
+   "id": "google:policy:13607354",
+   "platform": "google",
+   "title": "Blockchain-based Content - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/13607354?hl=en",
+   "sha256": "dd73412c4119a130dcefa851f7e6328144664ef1daa596d4f0d2e6b880399ea3",
+   "words": 395
+  },
+  {
+   "id": "google:policy:13985936",
+   "platform": "google",
+   "title": "AI-Generated Content - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/13985936?hl=en",
+   "sha256": "1b8f20605dff2985aa937a590c6322f1ad20958418dc589423b2d842153679f8",
+   "words": 224
+  },
+  {
+   "id": "google:policy:16302250",
+   "platform": "google",
+   "title": "Age-Restricted Content and Functionality - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/16302250?hl=en",
+   "sha256": "0c41c1583f66d9eb468f5d6232f729d884cb2fd34d38a7b40e5c48ddc6394322",
+   "words": 127
+  },
+  {
+   "id": "google:policy:17190352",
+   "platform": "google",
+   "title": "Developer Program Policy - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/17190352?hl=en",
+   "sha256": "41dba22c482378d115b9f97ebe92e72ec47527fd275b02669833d5e5a555e993",
+   "words": 36245
+  },
+  {
+   "id": "google:policy:18100766",
+   "platform": "google",
+   "title": "Policy announcement: October 29, 2026 - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/18100766?hl=en",
+   "sha256": "d9a9fdd79e4de3ff6b38385a054fcf2bc482b34ddb7ea6412542b1344290d8ed",
+   "words": 807
+  },
+  {
+   "id": "topic:developer.android.com/distribute/play-policies",
+   "platform": "google",
+   "title": "Google Play Policies | Android Developers",
+   "url": "https://developer.android.com/distribute/play-policies",
+   "sha256": "dfd26b8052d3f319ca2eb7060d88b9d51af17fc8843d7039bdcd2415adf6dee1",
+   "words": 712
+  },
+  {
+   "id": "topic:developer.apple.com/app-store/app-privacy-details",
+   "platform": "apple",
+   "title": "App Privacy Details - App Store - Apple Developer",
+   "url": "https://developer.apple.com/app-store/app-privacy-details/",
+   "sha256": "7290d310552bba36a2ddfb6fcd121719e5812b9d5cfd823c0b42790d22768430",
+   "words": 3241
+  },
+  {
+   "id": "topic:developer.apple.com/app-store/subscriptions",
+   "platform": "apple",
+   "title": "Auto-renewable Subscriptions - App Store - Apple Developer",
+   "url": "https://developer.apple.com/app-store/subscriptions/",
+   "sha256": "1ef703b0c1aa1b6f5e66aae348f88af4b2442786a8a28fed8d75e2c1f31513ef",
+   "words": 6298
+  },
+  {
+   "id": "topic:developer.apple.com/distribute/app-review",
+   "platform": "apple",
+   "title": "App Review - Distribute - Apple Developer",
+   "url": "https://developer.apple.com/distribute/app-review/",
+   "sha256": "55df12a32e84a81ad2a3a56176fcdc3bc41cc108797545b537cee49f343fbe40",
+   "words": 2056
+  },
+  {
+   "id": "topic:developer.apple.com/documentation/BundleResources/describing-use-of-required-reason-api",
+   "platform": "apple",
+   "title": "Ensure your use of covered API is consistent with policy. Overview Some APIs that your app",
+   "url": "https://developer.apple.com/documentation/BundleResources/describing-use-of-required-reason-api",
+   "sha256": "0d303f5df51133fc6c44c0bd36b6fdcbcd4f352c145491da79df733bfe332455",
+   "words": 568
+  },
+  {
+   "id": "topic:developer.apple.com/documentation/BundleResources/privacy-manifest-files",
+   "platform": "apple",
+   "title": "Describe the data your app or third-party SDK collects and the required reasons APIs it us",
+   "url": "https://developer.apple.com/documentation/BundleResources/privacy-manifest-files",
+   "sha256": "2b72f328aef44d316b9c92766bd0cd3f95ffc243230aaaa4e5d82bc926eda5ba",
+   "words": 591
+  },
+  {
+   "id": "topic:developer.apple.com/help/app-review/before-submitting-for-review/complete-review",
+   "platform": "apple",
+   "title": "Provide information for a complete review - Before submitting for review - App Review - Help - Apple Developer",
+   "url": "https://developer.apple.com/help/app-review/before-submitting-for-review/complete-review",
+   "sha256": "c514e1c17feffcfb0a32b32c2afb11a8c62c4bed6a173d851b340d9f4f06ac34",
+   "words": 932
+  },
+  {
+   "id": "topic:developer.apple.com/help/app-store-connect/manage-app-information/provide-a-custom-license-agreement",
+   "platform": "apple",
+   "title": "Provide a custom license agreement - Manage app information - App Store Connect - Help - Apple Developer",
+   "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/provide-a-custom-license-agreement",
+   "sha256": "f878b686646b327572bce64d315f74e89240afcbd2aa06d94771e0728982cfd2",
+   "words": 217
+  },
+  {
+   "id": "topic:developer.apple.com/help/app-store-connect/manage-app-information/set-an-app-age-rating",
+   "platform": "apple",
+   "title": "Set an app age rating - Manage app information - App Store Connect - Help - Apple Developer",
+   "url": "https://developer.apple.com/help/app-store-connect/manage-app-information/set-an-app-age-rating",
+   "sha256": "09dad253fb7e0c72395c6c021ae6178a7c4278f7dfad62665769e1d1aa064bca",
+   "words": 1172
+  },
+  {
+   "id": "topic:developer.apple.com/help/app-store-connect/reference/app-information/age-ratings-values-and-definitions",
+   "platform": "apple",
+   "title": "Age ratings values and definitions - App information - Reference - App Store Connect - Help - Apple Developer",
+   "url": "https://developer.apple.com/help/app-store-connect/reference/app-information/age-ratings-values-and-definitions",
+   "sha256": "7030092bb0d196bf89f32c023a13e17830b933ca42b8189c58cd536ab84ebfc4",
+   "words": 3348
+  },
+  {
+   "id": "topic:developer.apple.com/help/app-store-connect/transfer-an-app/overview-of-app-transfer",
+   "platform": "apple",
+   "title": "Overview of app transfer - Transfer an app - App Store Connect - Help - Apple Developer",
+   "url": "https://developer.apple.com/help/app-store-connect/transfer-an-app/overview-of-app-transfer/",
+   "sha256": "91073745d31997c957790fb046668f9f5e6fd10bb25c710e344ada9e4393014f",
+   "words": 2422
+  },
+  {
+   "id": "topic:developer.apple.com/news/upcoming-requirements",
+   "platform": "apple",
+   "title": "Upcoming Requirements - Apple Developer",
+   "url": "https://developer.apple.com/news/upcoming-requirements/",
+   "sha256": "581ff9fc42381295bea71b6cafacf4b86b7d592c0f8b058ab3b3319c3781faac",
+   "words": 1109
+  },
+  {
+   "id": "topic:developer.apple.com/support/enrollment",
+   "platform": "apple",
+   "title": "Enrollment - Membership - Account - Help - Apple Developer",
+   "url": "https://developer.apple.com/support/enrollment/",
+   "sha256": "71e3141631e01c2e92b39fda7bb8ab681385980877d399cf948af0ceec76d56e",
+   "words": 1528
+  },
+  {
+   "id": "topic:developer.apple.com/support/offering-account-deletion-in-your-app",
+   "platform": "apple",
+   "title": "5.1.1(v) - Offering account deletion in your app - Guideline reference - App Review - Help - Apple Developer",
+   "url": "https://developer.apple.com/support/offering-account-deletion-in-your-app/",
+   "sha256": "02257a3bce5e6cd1dfcc2b9610b9e2a1812b5ab4588bb14114fd646c2b7eadd5",
+   "words": 1067
+  },
+  {
+   "id": "topic:developer.apple.com/support/terms",
+   "platform": "apple",
+   "title": "Agreements and Guidelines - Support - Apple Developer",
+   "url": "https://developer.apple.com/support/terms/",
+   "sha256": "d89683c090cf46b984f8b106139a3be6da1dccb1d7f3b436ef20f3cd7de86bdb",
+   "words": 574
+  },
+  {
+   "id": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+   "platform": "google",
+   "title": "Google Play",
+   "url": "https://play.google/intl/en_uk/developer-distribution-agreement.html",
+   "sha256": "ea7dc6336f87f73bae379faa2887c6bf43ce6d45bec6e508a194054dc6d20ead",
+   "words": 6428
+  },
+  {
+   "id": "topic:support.google.com/googleplay/android-developer/answer/13327111",
+   "platform": "google",
+   "title": "Understanding Google Play\u2019s app account deletion requirements - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/13327111",
+   "sha256": "096b79aedb7f6dd6026d831d97ef05855cd8de749373748c954de7fb70bf03a7",
+   "words": 1831
+  },
+  {
+   "id": "topic:support.google.com/googleplay/android-developer/answer/13392821",
+   "platform": "google",
+   "title": "Understanding foreground service and full-screen intent requirements - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/13392821",
+   "sha256": "55f6079fc1a53c2eda49d905f30a799233dd776d655211e017dc8e99768e3aa9",
+   "words": 2127
+  },
+  {
+   "id": "topic:support.google.com/googleplay/android-developer/answer/14151465",
+   "platform": "google",
+   "title": "App testing requirements for new personal developer accounts - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/14151465",
+   "sha256": "9a43837371ab4b11e5be974741340241d5577f247843b6ec4cfdd568befa77fb",
+   "words": 2167
+  },
+  {
+   "id": "topic:support.google.com/googleplay/android-developer/answer/14316361",
+   "platform": "google",
+   "title": "Device verification requirements for new developer accounts - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/14316361",
+   "sha256": "715ef38103bde944923b88d40906bfd63a4bb6817f6aaef71816bf6edb788fd1",
+   "words": 513
+  },
+  {
+   "id": "topic:support.google.com/googleplay/android-developer/answer/9859348",
+   "platform": "google",
+   "title": "Prepare and roll out a release - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9859348",
+   "sha256": "8e9cbd61906d2e317e1f44f62d48d2240fa3f391a60a25f53e5fc8ca1adee916",
+   "words": 1820
+  },
+  {
+   "id": "topic:support.google.com/googleplay/android-developer/answer/9859455",
+   "platform": "google",
+   "title": "Prepare your app for review - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9859455",
+   "sha256": "10dd363cbd1627724473cdaf397f1ccc192805de79f1c7b45b52b476392fcb3c",
+   "words": 1556
+  },
+  {
+   "id": "topic:www.apple.com/legal/internet-services/itunes/dev/stdeula",
+   "platform": "apple",
+   "title": "Legal - Licensed Application End User License Agreement - Apple",
+   "url": "https://www.apple.com/legal/internet-services/itunes/dev/stdeula/",
+   "sha256": "70d76aa95fb99bf218753804b8f00a3dcde7ab11e5b37ec662fd0946e776e0ef",
+   "words": 1524
+  }
+ ]
+}
