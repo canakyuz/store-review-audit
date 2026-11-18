@@ -1,0 +1,49 @@
+{
+  "fixture": "bench/coin-quiz",
+  "note": "Answer key. Each seeded issue is caught when any listed control is FAIL. A trap is a control that must not be FAIL. Statuses not listed here are not scored.",
+  "apple": {
+    "features": {"accounts": true, "purchases": true, "subscriptions": true, "ads": true, "game_economy": true, "kids": false, "ugc": false, "ai": false, "health": false, "regulated": false, "third_party_login": true},
+    "seeded": [
+      {"id": "A-EULA", "controls": ["A01"], "why": "Subscription with no custom EULA; the de-DE description lacks the standard EULA link (3.1.2), and the review message says so."},
+      {"id": "A-LOGIN", "controls": ["A03"], "why": "Google sign-in is the only login; no Sign in with Apple or equivalent privacy-focused option (4.8)."},
+      {"id": "A-DELETE", "controls": ["C10"], "why": "Accounts exist; Settings offers only deactivation that keeps the account (5.1.1(v))."},
+      {"id": "A-POLICY", "controls": ["C05"], "why": "The privacy policy names another company and says there are no ads or sharing (5.1.1(i))."},
+      {"id": "A-PRIVACY", "controls": ["C06", "A02"], "why": "Personalized AdMob ads and an empty privacy manifest while App Privacy says Data Not Collected; no tracking prompt (5.1.1, 5.1.2)."},
+      {"id": "A-GAMBLING", "controls": ["C07", "C14"], "why": "Purchasable coins staked on a random prize wheel while the age rating says Simulated Gambling: None."},
+      {"id": "A-PAYWALL", "controls": ["C12"], "why": "The paywall shows no price, period or renewal terms before purchase (3.1.2)."}
+    ],
+    "traps": [
+      {"control": "C15", "why": "Not a kids app: 9+ rating answers aside, no child audience is claimed."},
+      {"control": "C16", "why": "No user content: questions are written by editors."},
+      {"control": "C17", "why": "No AI features."},
+      {"control": "C18", "why": "No health features."},
+      {"control": "C20", "why": "Coins cannot be cashed out: simulated, not real-money, gambling."},
+      {"control": "C11", "why": "Restore purchases exists; purchase flow cannot be judged without runtime."},
+      {"control": "C02", "why": "Organization account is shown in the console export."}
+    ],
+    "rejections": [{"control": "A01", "state": "unresolved"}]
+  },
+  "google": {
+    "features": {"accounts": true, "purchases": true, "subscriptions": true, "ads": true, "game_economy": true, "kids": false, "ugc": false, "ai": false, "health": false, "regulated": false, "sensitive_permissions": true},
+    "seeded": [
+      {"id": "G-LISTING", "controls": ["C04"], "why": "Title over the length limit with ranking and prize claims (\"#1 Best\", \"Win Prizes!\")."},
+      {"id": "G-POLICY", "controls": ["C05"], "why": "The privacy policy names another company and denies ads and sharing."},
+      {"id": "G-DATASAFETY", "controls": ["G02", "C06"], "why": "Data safety lists no sharing although AdMob receives the advertising ID."},
+      {"id": "G-DELETE-WEB", "controls": ["G03"], "why": "Accounts exist and no account deletion URL is set."},
+      {"id": "G-DELETE-APP", "controls": ["C10"], "why": "Only deactivation in the app."},
+      {"id": "G-PERMISSIONS", "controls": ["C19"], "why": "READ_SMS without an SMS core feature and background location without a declaration."},
+      {"id": "G-GAMBLING", "controls": ["C07", "C14"], "why": "Prize wheel staked with purchasable coins while the content rating says simulated gambling: No."},
+      {"id": "G-PAYWALL", "controls": ["C12"], "why": "No price, billing period or auto-renewal disclosure on the paywall."}
+    ],
+    "traps": [
+      {"control": "C15", "why": "Target audience starts at 13; not a Families app."},
+      {"control": "C16", "why": "No user content."},
+      {"control": "C17", "why": "No AI features."},
+      {"control": "C18", "why": "No health features."},
+      {"control": "C20", "why": "No real-money gambling."},
+      {"control": "C11", "why": "Restore exists; no runtime."},
+      {"control": "C02", "why": "Organization account."}
+    ],
+    "rejections": []
+  }
+}

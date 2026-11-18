@@ -1,0 +1,26 @@
+{
+  "exported": "Play Console, Coin Quiz, release 1.4.0 (versionCode 12), production track draft",
+  "store_listing": {
+    "en-GB": { "title": "Coin Quiz - #1 Best Trivia Game, Win Prizes!", "short_description": "Trivia with coins.", "full_description": "Answer questions, earn coins, spin the wheel." },
+    "en-US": { "title": "Coin Quiz - #1 Best Trivia Game, Win Prizes!", "short_description": "Trivia with coins.", "full_description": "Answer questions, earn coins, spin the wheel." },
+    "de-DE": { "title": "Coin Quiz - #1 Best Trivia Game, Win Prizes!", "short_description": "Quiz mit Muenzen.", "full_description": "Beantworte Fragen, sammle Muenzen, dreh das Rad." }
+  },
+  "app_content": {
+    "privacy_policy_url": "https://coinquiz.example/privacy",
+    "ads": "Contains ads",
+    "target_audience": "13-15, 16-17, 18+",
+    "content_rating": { "simulated_gambling": "No", "result": "PEGI 3" },
+    "data_safety": {
+      "data_collected": ["Email address", "App interactions"],
+      "data_shared": [],
+      "account_deletion_url": null
+    },
+    "sensitive_permissions": { "sms_call_log_declaration": null, "background_location_declaration": null }
+  },
+  "account": { "type": "organization", "legal_name": "Example Games Ltd" },
+  "products": [
+    { "id": "com.example.coinquiz.plus.monthly", "type": "subscription", "base_plan": "monthly-auto" },
+    { "id": "com.example.coinquiz.coins.small", "type": "in-app product" },
+    { "id": "com.example.coinquiz.coins.large", "type": "in-app product" }
+  ]
+}

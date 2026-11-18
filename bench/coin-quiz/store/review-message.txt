@@ -1,0 +1,5 @@
+From App Review, regarding Coin Quiz 1.4.0 (11)
+
+Guideline 3.1.2 - Business - Payments - Subscriptions
+
+The submission did not include all the required information for apps offering auto-renewable subscriptions. The app metadata must include a functional link to the Terms of Use (EULA). If you use the standard Apple Terms of Use (EULA), include a link to the Terms of Use in the App Description. If you use a custom EULA, add it in App Store Connect.

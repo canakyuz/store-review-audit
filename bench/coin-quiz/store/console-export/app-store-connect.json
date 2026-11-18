@@ -1,0 +1,27 @@
+{
+  "exported": "App Store Connect, Coin Quiz, version 1.4.0 build 12",
+  "app_information": {
+    "custom_eula": null,
+    "privacy_policy_url": "https://coinquiz.example/privacy",
+    "age_rating": {
+      "simulated_gambling": "None",
+      "contests": "None",
+      "unrestricted_web_access": "No",
+      "result": "9+"
+    }
+  },
+  "localizations": {
+    "en-GB": { "name": "Coin Quiz", "description": "Test your knowledge and earn coins. Coin Quiz Plus is a monthly auto-renewing subscription. Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" },
+    "en-US": { "name": "Coin Quiz", "description": "Test your knowledge and earn coins. Coin Quiz Plus is a monthly auto-renewing subscription. Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/" },
+    "de-DE": { "name": "Coin Quiz", "description": "Teste dein Wissen und sammle Muenzen. Coin Quiz Plus ist ein monatliches Abo, das sich automatisch verlaengert." }
+  },
+  "app_privacy": {
+    "data_collection": "Data Not Collected"
+  },
+  "in_app_purchases": [
+    { "id": "com.example.coinquiz.plus.monthly", "type": "auto-renewable subscription", "price": "GBP 2.99 / USD 2.99 per month", "status": "Ready to Submit" },
+    { "id": "com.example.coinquiz.coins.small", "type": "consumable", "price": "GBP 0.99" },
+    { "id": "com.example.coinquiz.coins.large", "type": "consumable", "price": "GBP 4.99" }
+  ],
+  "account": { "type": "organization", "legal_name": "Example Games Ltd" }
+}

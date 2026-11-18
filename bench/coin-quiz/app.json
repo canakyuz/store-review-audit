@@ -1,0 +1,24 @@
+{
+  "expo": {
+    "name": "Coin Quiz",
+    "slug": "coin-quiz",
+    "version": "1.4.0",
+    "ios": {
+      "bundleIdentifier": "com.example.coinquiz",
+      "buildNumber": "12",
+      "infoPlist": {
+        "NSLocationAlwaysAndWhenInUseUsageDescription": "Coin Quiz uses your location to show nearby players.",
+        "NSCameraUsageDescription": "Take a profile photo."
+      }
+    },
+    "android": {
+      "package": "com.example.coinquiz",
+      "versionCode": 12
+    },
+    "plugins": [
+      ["react-native-google-mobile-ads", { "iosAppId": "ca-app-pub-0000000000000000~0000000000", "androidAppId": "ca-app-pub-0000000000000000~1111111111" }],
+      "@react-native-google-signin/google-signin",
+      "react-native-purchases"
+    ]
+  }
+}
