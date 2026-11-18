@@ -16,8 +16,8 @@ This project gives an agent a repeatable investigation workflow and checks the r
 
 | Component | Responsibility |
 | --- | --- |
-| [Agent skill](SKILL.md) | Inspect the app, build, console and documents; consult current official policies; assess applicability and write findings. |
-| [Python validator](scripts/validate_audit.py) | Check report structure, required controls, evidence types, app/platform/build identifiers, locale coverage and unresolved rejection records. |
+| [Agent skill](skills/store-review-audit/SKILL.md) | Inspect the app, build, console and documents; consult current official policies; assess applicability and write findings. |
+| [Python validator](skills/store-review-audit/scripts/validate_audit.py) | Check report structure, required controls, evidence types, app/platform/build identifiers, locale coverage and unresolved rejection records. |
 
 The validator does **not** run an app, fetch policies, authenticate screenshots or prove legal compliance. It can reject an incomplete report; it cannot guarantee store acceptance. A fabricated but structurally valid evidence record can still pass its mechanical checks, so agent/human verification remains essential.
 
@@ -28,13 +28,13 @@ Requires Python 3.10 or newer. No pip dependencies, API keys or credentials are 
 From the repository root:
 
 ```sh
-python3 -m unittest discover -s scripts -p 'test_*.py' -v
+python3 -m unittest discover -s skills/store-review-audit/scripts -p 'test_*.py' -v
 ```
 
 Create an honest starting ledger:
 
 ```sh
-python3 scripts/init_audit.py \
+python3 skills/store-review-audit/scripts/init_audit.py \
   --platform apple \
   --app-id com.example.app \
   --build 42 \
@@ -47,14 +47,20 @@ python3 scripts/init_audit.py \
 Every control starts as UNKNOWN. No policy checks, app tests or publisher facts are invented.
 
 ```sh
-python3 scripts/validate_audit.py audits/apple-42.json
+python3 skills/store-review-audit/scripts/validate_audit.py audits/apple-42.json
 ```
 
 Expect INCOMPLETE and exit code 1 until the audit has real supporting evidence. Create a separate ledger with `--platform google` for Android.
 
 ## Use with an agent
 
-Load [SKILL.md](SKILL.md) and keep its sibling `references/` and `scripts/` directories available. If your agent supports installed skills, register this complete folder using that client's installation process. Installation and invocation syntax vary by client.
+With the [skills CLI](https://skills.sh/):
+
+```sh
+npx skills add canakyuz/store-review-audit
+```
+
+Or copy the `skills/store-review-audit/` folder (SKILL.md with its `references/` and `scripts/`) into your agent's skills directory. Installation and invocation syntax vary by client.
 
 Example prompt:
 
@@ -77,7 +83,7 @@ The catalogue has 20 common, 3 Apple and 4 Google controls. A single-platform re
 | Games | Virtual currency, wagers, prizes, age ratings and entity requirements |
 | Conditional content | Ads, children, UGC/chat, AI, health, sensitive APIs and regulated services |
 
-See [rules.json](references/rules.json) for exact evidence gates and [strict-mode.md](references/strict-mode.md) for the ledger format.
+See [rules.json](skills/store-review-audit/references/rules.json) for exact evidence gates and [strict-mode.md](skills/store-review-audit/references/strict-mode.md) for the ledger format.
 
 The gates are this project's internal proof requirements. They are **not** an official Apple or Google checklist and are not exhaustive across every possible app category.
 
@@ -113,7 +119,7 @@ The test fixtures are also synthetic. They exercise the validator, not real stor
 ## Development
 
 ```sh
-python3 -m unittest discover -s scripts -p 'test_*.py' -v
+python3 -m unittest discover -s skills/store-review-audit/scripts -p 'test_*.py' -v
 ```
 
 The included GitHub Actions workflow runs this command on Python 3.10, 3.12 and 3.14. Its first hosted run happens after you publish the repository; a local run is not evidence that hosted CI passed.
@@ -122,7 +128,7 @@ For policy updates, follow [CONTRIBUTING.md](CONTRIBUTING.md): verify an officia
 
 ## Policy catalogue and weekly watch
 
-`scripts/fetch_policies.py --write` lists every Apple guideline clause, Google Play policy page and topic page in `references/policy-catalog.json` with a hash of its text (no policy text is stored). `--check` compares the live pages with the catalogue: exit 0 means no change, 1 lists changed, added or removed items, 2 means a source could not be fetched. The `Policy watch` workflow runs the check every Monday and opens an issue when something changed. `docs/policy-coverage.json` maps each item to the controls.
+`skills/store-review-audit/scripts/fetch_policies.py --write` lists every Apple guideline clause, Google Play policy page and topic page in `skills/store-review-audit/references/policy-catalog.json` with a hash of its text (no policy text is stored). `--check` compares the live pages with the catalogue: exit 0 means no change, 1 lists changed, added or removed items, 2 means a source could not be fetched. The `Policy watch` workflow runs the check every Monday and opens an issue when something changed. `docs/policy-coverage.json` maps each item to the controls.
 
 ## Official sources
 
@@ -131,7 +137,7 @@ For policy updates, follow [CONTRIBUTING.md](CONTRIBUTING.md): verify an officia
 - [Google Play Developer Policy Center](https://play.google/developer-content-policy/)
 - [Google Play review preparation](https://support.google.com/googleplay/android-developer/answer/9859455)
 
-The [source map](references/sources.md) links topic-specific documentation. Revisit applicable policies for each release; deadlines, regional exceptions and console requirements change.
+The [source map](skills/store-review-audit/references/sources.md) links topic-specific documentation. Revisit applicable policies for each release; deadlines, regional exceptions and console requirements change.
 
 ## Licence and attribution
 

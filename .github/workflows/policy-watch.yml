@@ -1,7 +1,7 @@
 name: Policy watch
 
 # Weekly: fetch the Apple and Google publishing policies, compare each clause
-# hash with references/policy-catalog.json and open an issue when anything
+# hash with skills/store-review-audit/references/policy-catalog.json and open an issue when anything
 # changed. The catalogue is only updated by a reviewed commit, never here.
 on:
   schedule:
@@ -27,7 +27,7 @@ jobs:
         id: check
         run: |
           set +e
-          python3 scripts/fetch_policies.py --check > changes.txt
+          python3 skills/store-review-audit/scripts/fetch_policies.py --check > changes.txt
           code=$?
           echo "code=$code" >> "$GITHUB_OUTPUT"
           cat changes.txt
@@ -47,8 +47,8 @@ jobs:
             cat changes.txt
             echo '```'
             echo
-            echo "Review each item against references/checklist.md, rules.json and special-cases.md."
-            echo "When done, run \`python3 scripts/fetch_policies.py --write\` and commit the catalogue with the skill changes."
+            echo "Review each item against skills/store-review-audit/references/checklist.md, rules.json and special-cases.md."
+            echo "When done, run \`python3 skills/store-review-audit/scripts/fetch_policies.py --write\` and commit the catalogue with the skill changes."
           } > body.md
           existing=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number')
           if [ -n "$existing" ]; then
