@@ -1,5 +1,18 @@
 # Validation
 
+## 0.3.0 (2026-11-18)
+
+- 62 automated tests pass locally on Python 3.12.
+- Benchmark (`bench/score.py`), each run by a fresh agent from a clean install of the skill, with no access to the answer key, on a machine where support.google.com returned HTTP 429 to every request:
+
+| Skill version | Seeded problems caught | Traps failed | All checks | Agent tokens |
+| --- | --- | --- | --- | --- |
+| 0.2.0 | 7 of 15 (Apple 7 of 7, Google 0 of 8) | 0 of 14 | 43 of 54 | 139k |
+| 0.3.0 candidate, run 1 | 15 of 15 | 0 of 14 | 54 of 54 | 149k |
+| 0.3.0 candidate, run 2 | 15 of 15 | 0 of 14 | 53 of 54 (Apple kids feature undecided: the fixture lacked the category, now added) | 154k |
+
+  With 0.2.0 the agent could read no Google policy and correctly kept every Google finding UNKNOWN; the digest fixed that. The benchmark is one small fictional app: it shows the skill finds what it is meant to find there, not that it finds everything in a real app.
+
 ## 0.2.0 (2026-11-18)
 
 - 49 automated tests pass locally on Python 3.12: validator, initializer and policy catalogue (parsing, hashing, change detection, fetch failure).

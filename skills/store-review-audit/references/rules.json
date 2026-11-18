@@ -432,12 +432,12 @@
     "subscriptions": "Auto-renewing subscriptions.",
     "ads": "Any advertising SDK or ad placement, including rewarded ads.",
     "game_economy": "A virtual currency or item economy: buying, earning, staking, losing or transferring in-app value, including service credits that can be wagered or won.",
-    "kids": "Children are a target audience, or the app is in a kids or Families program. Decide false from the console target audience or age rating plus the absence of a kids category or Families enrolment (an Apple export may not show the category; a rating above the kids bands with no child-directed content is enough); decide true from any of those or child-directed content.",
+    "kids": "Children are a target audience, or the app is in the Apple Kids category or the Google Families program. Decide from the console: Kids category or Families enrolment, target audience or age groups under 13, and child-directed content. An age rating alone does not decide it (Apple 9+ overlaps the Kids 9-11 band).",
     "ugc": "Users can publish content other users see: text, names, images, chat, profiles. Decide false when the code has no path that publishes one user's content to another (no posting, chat, public profile or shared name); a permission string alone does not make it true.",
     "ai": "Generative AI output or user data sent to a model provider.",
     "health": "Health, fitness, medical or wellness data or claims, HealthKit or Health Connect.",
     "sensitive_permissions": "Permissions or APIs a store restricts or asks to declare: Google restricted permissions, background location, foreground services, full-screen intent, accessibility, VPN; on iOS, Always location, background modes and tracking. A purpose string or manifest entry counts even when no code uses it, because the store sees the declaration. Ordinary runtime permissions (camera with a purpose string) do not.",
-    "regulated": "Activity that needs a licence or regulated entity in some territory: finance, crypto, gambling with real value, medical, insurance, legal services.",
+    "regulated": "Activity that needs a licence or regulated entity in some territory: finance, crypto, insurance, medical, legal services, and gambling where stakes or prizes have real-world value (cash-out, transferable items, physical prizes). Staking purchasable in-app currency that cannot leave the app is simulated gambling (C07, C14), not regulated.",
     "third_party_login": "Sign-in through a third-party or social login service (Apple counts this for 4.8)."
   }
 }

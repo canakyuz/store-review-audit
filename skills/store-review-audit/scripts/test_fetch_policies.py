@@ -106,6 +106,18 @@ class CheckModeTest(unittest.TestCase):
             self.assertIn("Ads must not imitate system UI.", out.getvalue())
             self.assertIn('catalog_id "google:policy:1"', out.getvalue())
 
+    def test_get_star_takes_a_clause_and_its_subclauses(self):
+        items = fp.apple_guidelines(APPLE_PAGE)
+        with tempfile.TemporaryDirectory() as tmp:
+            catalog = Path(tmp) / "c.json"
+            catalog.write_text(json.dumps({"checked": "2026-11-18", "items": fp.public(items)}))
+            out = io.StringIO()
+            with mock.patch.object(fp, "CATALOG", catalog), mock.patch.object(fp, "fetch", return_value=APPLE_PAGE), redirect_stdout(out):
+                fp.main(["--get", "apple:1.1*"])
+            self.assertIn("=== apple:1.1.1", out.getvalue())
+            self.assertIn("=== apple:1.1.2", out.getvalue())
+            self.assertNotIn("=== apple:1\n", out.getvalue())
+
     def test_get_unknown_id_exits_two(self):
         with mock.patch("sys.stderr", io.StringIO()), redirect_stdout(io.StringIO()):
             self.assertEqual(fp.main(["--get", "apple:no-such-clause"]), 2)

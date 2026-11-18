@@ -206,8 +206,16 @@ def get_items(ids: list[str]) -> int:
         except FetchError as exc:
             print(f"error\t{exc}", file=sys.stderr)
             return 2
-    code = 0
+    # "apple:5.3*" stands for 5.3 and every sub-clause under it.
+    expanded = []
     for item_id in ids:
+        if item_id.endswith("*"):
+            stem = item_id[:-1]
+            expanded += [k for k in catalog if k == stem or k.startswith(stem + ".")]
+        else:
+            expanded.append(item_id)
+    code = 0
+    for item_id in expanded:
         print(f"=== {item_id}")
         try:
             one = get_one(item_id, catalog, guidelines)
@@ -223,7 +231,7 @@ def get_items(ids: list[str]) -> int:
                 print(f"error: {exc}; no current digest entry\n")
                 code = 2
                 continue
-            print(f"source: digest (page unreachable: {exc})\nurl: {entry['url']}\ncatalogue checked: {data.get('checked')}\n"
+            print(f"source: digest (page unreachable; audits do not retry: {exc})\nurl: {entry['url']}\ncatalogue checked: {data.get('checked')}\n"
                   f'record with via "digest", catalog_id "{item_id}" and exactly this url\n')
             for r in entry["requirements"]:
                 print("- " + r)

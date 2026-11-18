@@ -1,6 +1,8 @@
 {
   "exported": "App Store Connect, Coin Quiz, version 1.4.0 build 12",
   "app_information": {
+    "primary_category": "Games / Trivia",
+    "kids_category": false,
     "custom_eula": null,
     "privacy_policy_url": "https://coinquiz.example/privacy",
     "age_rating": {

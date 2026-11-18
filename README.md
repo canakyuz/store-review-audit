@@ -130,6 +130,16 @@ For policy updates, follow [CONTRIBUTING.md](CONTRIBUTING.md): verify an officia
 
 `skills/store-review-audit/scripts/fetch_policies.py --write` lists every Apple guideline clause, Google Play policy page and topic page in `skills/store-review-audit/references/policy-catalog.json` with a hash of its text (no policy text is stored). `--check` compares the live pages with the catalogue: exit 0 means no change, 1 lists changed, added or removed items, 2 means a source could not be fetched. The `Policy watch` workflow runs the check every Monday and opens an issue when something changed. `docs/policy-coverage.json` maps each item to the controls.
 
+## Benchmark
+
+`bench/coin-quiz` is a fictional Expo app with 15 seeded store problems and 14 traps. Run an audit of it with the skill, then score the two ledgers:
+
+```sh
+python3 bench/score.py apple.json google.json
+```
+
+Results per version are in [docs/TESTING.md](docs/TESTING.md).
+
 ## Official sources
 
 - [Apple App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)

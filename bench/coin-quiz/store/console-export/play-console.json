@@ -9,6 +9,8 @@
     "privacy_policy_url": "https://coinquiz.example/privacy",
     "ads": "Contains ads",
     "target_audience": "13-15, 16-17, 18+",
+    "category": "Game / Trivia",
+    "families_program": false,
     "content_rating": { "simulated_gambling": "No", "result": "PEGI 3" },
     "data_safety": {
       "data_collected": ["Email address", "App interactions"],

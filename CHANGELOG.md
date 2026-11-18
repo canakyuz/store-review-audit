@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.3.0 (2026-11-18)
+
+- Benchmark: `bench/coin-quiz` is a fictional app with 15 seeded store problems and 14 traps, `bench/expected.json` is its answer key and `bench/score.py` scores an audit against it.
+- Google policy digest: `references/policy-digest.json` paraphrases every requirement of every Google Play policy page (528 requirements, 22 announced changes), verified against the page text and bound to the catalogue hash. Audits use it when support.google.com cannot be fetched; tests fail when a page changes and its entry is not rewritten.
+- `fetch_policies.py --get ID [ID ...]` fetches the items an audit needs in one call, takes `apple:5.3*` for a clause and its sub-clauses, falls back to the digest and stops at once on captcha pages.
+- Ledgers can cite a policy via the digest and a store review message as the authority for its submission.
+- The weekly policy watch records the check date when nothing changed, which keeps the digest usable.
+- Clearer rules: one observation can fail several controls, how to decide kids, UGC, regulated and sensitive permissions, loot-box odds, evidence kinds for repository configuration, where the report goes.
+
 ## 0.2.0 (2026-11-18)
 
 - Policy catalogue: `scripts/fetch_policies.py` lists every Apple App Review Guidelines clause, every Google Play Developer Program Policy page and every topic page in `sources.md`, with a hash of its normalised text and no policy text.
