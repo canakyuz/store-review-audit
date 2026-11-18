@@ -19,6 +19,8 @@ Never fill placeholders as inspected facts. List FAIL and material UNKNOWN findi
 
 ## Action order
 
+Group fixes by where they are made (code, store console, legal pages, account), using the issue area from the ledger.
+
 1. Submission/account blockers.
 2. Metadata/legal-page changes and locale coverage.
 3. Build/runtime fixes and necessary device/purchase tests.

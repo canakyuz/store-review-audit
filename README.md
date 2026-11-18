@@ -60,6 +60,8 @@ With the [skills CLI](https://skills.sh/):
 npx skills add canakyuz/store-review-audit
 ```
 
+Updates are not automatic: `npx skills check` shows whether a newer version exists and `npx skills update` installs it. The policy catalogue in the skill is refreshed weekly in this repository, so update before an audit.
+
 Or copy the `skills/store-review-audit/` folder (SKILL.md with its `references/` and `scripts/`) into your agent's skills directory. Installation and invocation syntax vary by client.
 
 Example prompt:

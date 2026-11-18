@@ -206,12 +206,18 @@ def validate(data):
         policy_for(c.get("policies"), cid)
         if status == "FAIL":
             failures.append(cid)
-            if not isinstance(c.get("finding"), str) or not c["finding"].strip():
-                error(f"{cid}: failing observation (finding) required")
-            if c.get("severity") not in {"BLOCKER", "HIGH", "MEDIUM"}:
-                error(f"{cid}: failure severity required")
-            if not c.get("fix") or not c.get("retest"):
-                error(f"{cid}: fix and retest required")
+            # Several distinct problems under one control go in issues[], each complete.
+            for n, issue in enumerate(c.get("issues") or [c]):
+                where = f"{cid}" if "issues" not in c else f"{cid}/issues[{n}]"
+                if not isinstance(issue, dict) or not isinstance(issue.get("finding"), str) or not issue["finding"].strip():
+                    error(f"{where}: failing observation (finding) required")
+                    continue
+                if issue.get("severity") not in {"BLOCKER", "HIGH", "MEDIUM"}:
+                    error(f"{where}: failure severity required")
+                if not issue.get("fix") or not issue.get("retest"):
+                    error(f"{where}: fix and retest required")
+                if "area" in issue and issue["area"] not in {"code", "console", "document", "account"}:
+                    error(f"{where}: area must be code, console, document or account")
         if status == "PASS":
             if not isinstance(c.get("result"), str) or not c["result"].strip():
                 error(f"{cid}: observed result required")

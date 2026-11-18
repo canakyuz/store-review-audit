@@ -33,11 +33,11 @@ Follow App Store Connect Help for asset specifications, export compliance, agree
 | Policy changes/deadlines | https://developer.android.com/distribute/play-policies |
 | Distribution Agreement | https://play.google/intl/en_uk/developer-distribution-agreement.html |
 | App content/review declarations | https://support.google.com/googleplay/android-developer/answer/9859455 |
-| User data/privacy policy | https://support.google.com/googleplay/android-developer/answer/10144311 |
+| User data/privacy policy | https://support.google.com/googleplay/android-developer/answer/9888076 |
 | Account/data deletion | https://support.google.com/googleplay/android-developer/answer/13327111 |
 | Subscriptions | https://support.google.com/googleplay/android-developer/answer/9900533 |
 | Gambling/games/contests/ads | https://support.google.com/googleplay/android-developer/answer/9877032 |
-| Sensitive permissions | https://support.google.com/googleplay/android-developer/answer/16558241 |
+| Sensitive permissions | https://support.google.com/googleplay/android-developer/answer/12579724 |
 | Foreground services/full-screen intents | https://support.google.com/googleplay/android-developer/answer/13392821 |
 | Spam/repetitive content | https://support.google.com/googleplay/android-developer/answer/9899034 |
 | Generative AI | https://support.google.com/googleplay/android-developer/answer/13985936 |
@@ -47,7 +47,7 @@ Follow App Store Connect Help for asset specifications, export compliance, agree
 | Content ratings | https://support.google.com/googleplay/android-developer/answer/9898843 |
 | Families | https://support.google.com/googleplay/android-developer/answer/9893335 |
 | Target API level | https://support.google.com/googleplay/android-developer/answer/11917020 |
-| Health | https://support.google.com/googleplay/android-developer/answer/16679511 |
+| Health | https://support.google.com/googleplay/android-developer/answer/9878878 |
 | Personal-account testing | https://support.google.com/googleplay/android-developer/answer/14151465 |
 | Device verification | https://support.google.com/googleplay/android-developer/answer/14316361 |
 | Release tracks/rollout | https://support.google.com/googleplay/android-developer/answer/9859348 |

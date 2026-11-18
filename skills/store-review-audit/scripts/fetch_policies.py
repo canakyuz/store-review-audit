@@ -8,6 +8,7 @@ normalised text. It stores no policy text: Apple and Google own that text.
 
   fetch_policies.py --write   fetch everything and rewrite the catalogue
   fetch_policies.py --check   fetch everything and report changes; exit 1 if any
+  fetch_policies.py --list [WORD]     list catalogue ids and titles, optionally filtered
   fetch_policies.py --get ID [ID ...]  print the live text of catalogue items for an audit;
                               an item that cannot be fetched prints its digest entry instead
   exit 2: a source could not be fetched (nothing compared, catalogue untouched)
@@ -304,11 +305,18 @@ def main(argv: list[str] | None = None) -> int:
     mode.add_argument("--write", action="store_true", help="rewrite the catalogue")
     mode.add_argument("--check", action="store_true", help="report changes against the catalogue")
     mode.add_argument("--get", metavar="ID", nargs="+", help="print the live text of catalogue items")
+    mode.add_argument("--list", metavar="WORD", nargs="?", const="", help="list catalogue ids and titles containing WORD")
     parser.add_argument("--date", help="catalogue date, YYYY-MM-DD (default: keep or today)")
     args = parser.parse_args(argv)
 
     if args.get:
         return get_items(args.get)
+    if args.list is not None:
+        word = args.list.lower()
+        for i in json.loads(CATALOG.read_text(encoding="utf-8"))["items"]:
+            if word in (i["id"] + " " + i["title"]).lower():
+                print(f"{i['id']}\t{i['title'][:80]}")
+        return 0
     try:
         items = build()
     except FetchError as exc:

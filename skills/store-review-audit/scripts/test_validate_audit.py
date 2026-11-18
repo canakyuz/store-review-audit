@@ -137,6 +137,14 @@ class GateTests(unittest.TestCase):
     def test_failure_without_observation(self):
         control(self.d,"C04").update(status="FAIL",severity="MEDIUM",fix="Correct listing",retest="Reopen listing")
         self.assertEqual(validate(self.d)["verdict"],"INVALID")
+    def test_several_issues_under_one_control(self):
+        control(self.d,"C12").update(status="FAIL", issues=[
+            {"finding":"Terms describe old prices","severity":"HIGH","fix":"Rewrite section 4","retest":"Fetch terms","area":"document"},
+            {"finding":"Spend limit not on paywall","severity":"HIGH","fix":"Add limit text","retest":"Read paywall","area":"code"}])
+        self.assertEqual(validate(self.d)["verdict"],"BLOCKED")
+    def test_incomplete_issue_is_invalid(self):
+        control(self.d,"C12").update(status="FAIL", issues=[{"finding":"Terms describe old prices","severity":"HIGH"}])
+        self.assertEqual(validate(self.d)["verdict"],"INVALID")
     def test_code_read_at_another_commit(self):
         self.d["evidence"][2]["commit"]="def456"
         self.rejected()

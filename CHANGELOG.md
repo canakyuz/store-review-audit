@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.1 (2026-11-18)
+
+- `fetch_policies.py --list WORD` finds catalogue ids by title.
+- A FAIL can hold several distinct problems in `issues`, each with its own severity, fix, retest and area (code, console, document, account); reports group fixes by area.
+- `sources.md` points at the policy pages the catalogue keeps (three help-centre answers were duplicates).
+- Features for review-only gates (hidden for review, switched on later), kids decided from the app's own terms without console access, generated native files as code evidence.
+- README: how to check for and install updates.
+
 ## 0.3.0 (2026-11-18)
 
 - Benchmark: `bench/coin-quiz` is a fictional app with 15 seeded store problems and 14 traps, `bench/expected.json` is its answer key and `bench/score.py` scores an audit against it.
