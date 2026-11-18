@@ -9,7 +9,9 @@
       "feature": null,
       "evidence_groups": [
         [
-          "console",
+          "console"
+        ],
+        [
           "artifact"
         ]
       ],

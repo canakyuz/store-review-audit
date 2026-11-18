@@ -120,6 +120,10 @@ The included GitHub Actions workflow runs this command on Python 3.10, 3.12 and 
 
 For policy updates, follow [CONTRIBUTING.md](CONTRIBUTING.md): verify an official source, distinguish policy requirements from internal checks, and add a regression test for validator changes.
 
+## Policy catalogue and weekly watch
+
+`scripts/fetch_policies.py --write` lists every Apple guideline clause, Google Play policy page and topic page in `references/policy-catalog.json` with a hash of its text (no policy text is stored). `--check` compares the live pages with the catalogue: exit 0 means no change, 1 lists changed, added or removed items, 2 means a source could not be fetched. The `Policy watch` workflow runs the check every Monday and opens an issue when something changed. `docs/policy-coverage.json` maps each item to the controls.
+
 ## Official sources
 
 - [Apple App Review Guidelines](https://developer.apple.com/app-store/review/guidelines/)

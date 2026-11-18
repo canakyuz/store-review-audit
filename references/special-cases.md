@@ -32,7 +32,7 @@ For ads, inspect SDK versions, formats/placement/reward flow, age settings, data
 
 ## AI, health, kids and UGC
 
-- AI: inspect generated content types, abuse controls/reporting and model-provider data flows. Verify Google's current AI rules (including AppFunctions, announced for 2027-04-14) and Apple's privacy/consent rules for third-party AI sharing.
+- AI: inspect generated content types, abuse controls/reporting and model-provider data flows. Verify Google's current AI rules (including AppFunctions once effective; check the policy deadlines page) and Apple's privacy/consent rules for third-party AI sharing.
 - Health/fitness: distinguish wellness from diagnosis/treatment; inspect HealthKit/Health Connect, declarations, sensitive-data use and evidence for claims. Google expects a not-a-medical-device disclaimer where relevant and Health Connect limited use. Do not invent regulatory clearance.
 - Kids: inspect intended audience and actual age flows, SDK/ad eligibility, parental gates, external links and data practices against each platform, including Google Families identifier, location and ad-format limits.
 - UGC/chat: inspect reporting, blocking, moderation and contact paths against current policies; terms accepted before posting, sexual content filtered by default, child-safety standards for chat and dating.
