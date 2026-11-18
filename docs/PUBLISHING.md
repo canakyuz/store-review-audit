@@ -1,38 +1,18 @@
-# Publishing the repository
+# Publishing
 
-Suggested name: `store-review-audit`
-
-Suggested description:
-> Evidence-based App Store and Google Play audits: agent skill, 27 control definitions and a dependency-free Python report validator.
-
-Suggested topics:
-`agent-skills`, `app-store`, `google-play`, `mobile-development`, `release-engineering`, `python`
-
-## Before publishing
-
-- Review the MIT licence and copyright attribution.
-- Run the tests from the repository root.
-- Publish this source folder, not a real audit ledger.
-- The included examples and fixtures are synthetic.
-- No GitHub URL is embedded because the destination repository has not been created yet.
-
-## Push from a terminal
-
-Create an empty repository on GitHub without adding an initial README or licence. Then run these commands inside the extracted store-review-audit folder. Replace the final placeholder URL with the URL GitHub gives you.
+The repository is installed with the [skills CLI](https://skills.sh/):
 
 ```sh
-git init
-git branch -M main
-git add .
-git commit -m "Initial release of Store Review Audit"
-git remote add origin <YOUR_REPOSITORY_URL>
-git push -u origin main
+npx skills add canakyuz/store-review-audit
 ```
 
-The repository URL above is a placeholder, not a working command as written. GitHub will require your own authentication.
+The CLI copies only `skills/store-review-audit/` (SKILL.md, references and scripts). Everything else in the repository (README, docs, examples, CI) stays out of the installed skill.
 
-After the first push, inspect the Actions run. If successful, create a release tagged `v0.1.0`. Describe it as an initial release and state that its tests cover the validator rather than real-world store acceptance.
+## Releasing a version
 
-## Share
+1. Run the tests: `python3 -m unittest discover -s skills/store-review-audit/scripts -p 'test_*.py' -v`.
+2. If policies changed, run `python3 skills/store-review-audit/scripts/fetch_policies.py --write` and review the changed clauses against the checklist, rules and special cases.
+3. Update `VERSION` and `CHANGELOG.md`, commit, and push to `main`.
+4. Check that the Tests workflow passed, then tag the release (`git tag v0.2.0 && git push origin v0.2.0`) and create a GitHub release that states what the tests cover and what they do not.
 
-Use [LINKEDIN_POST.md](LINKEDIN_POST.md) after publishing. Replace [REPOSITORY_URL] with the real URL. Do not claim the repository is live before it is published.
+Never commit a real audit ledger: `audits/` is ignored for that reason.
