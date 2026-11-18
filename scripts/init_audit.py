@@ -7,7 +7,7 @@ from pathlib import Path
 
 RULES = Path(__file__).resolve().parents[1] / "references" / "rules.json"
 
-def make_audit(platform, app_id, build, locales, territories):
+def make_audit(platform, app_id, build, locales, territories, commit=""):
     if platform not in {"apple", "google"}:
         raise ValueError("platform must be apple or google")
     if not app_id.strip() or not build.strip():
@@ -16,7 +16,7 @@ def make_audit(platform, app_id, build, locales, territories):
         raise ValueError("at least one locale and territory is required")
     rules = [r for r in json.loads(RULES.read_text())["rules"] if r["platform"] in {"all", platform}]
     return {
-        "scope": {"app_id": app_id, "platform": platform, "build": build,
+        "scope": {"app_id": app_id, "platform": platform, "build": build, "commit": commit,
                   "audit_date": date.today().isoformat(), "account_type": "unknown",
                   "locales": list(dict.fromkeys(locales)), "territories": list(dict.fromkeys(territories))},
         "features": {r["feature"]: {"value": None, "evidence": []} for r in rules if r["feature"]},
@@ -32,12 +32,13 @@ def main():
     p.add_argument("--platform", required=True, choices=["apple", "google"])
     p.add_argument("--app-id", required=True)
     p.add_argument("--build", required=True)
-    p.add_argument("--locales", required=True, nargs="+")
-    p.add_argument("--territories", required=True, nargs="+")
+    p.add_argument("--commit", default="", help="source commit of the audited build; code evidence must match it")
+    p.add_argument("--locales", required=True, nargs="+", help="use UNKNOWN if not established")
+    p.add_argument("--territories", required=True, nargs="+", help="use UNKNOWN if not established")
     p.add_argument("--output", required=True, type=Path)
     a = p.parse_args()
     try:
-        data = make_audit(a.platform, a.app_id, a.build, a.locales, a.territories)
+        data = make_audit(a.platform, a.app_id, a.build, a.locales, a.territories, a.commit)
         a.output.parent.mkdir(parents=True, exist_ok=True)
         with a.output.open("x", encoding="utf-8") as f:
             json.dump(data, f, ensure_ascii=False, indent=2)

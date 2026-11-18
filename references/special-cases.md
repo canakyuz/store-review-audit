@@ -47,6 +47,14 @@ Record entity, licence and territory evidence for medical claims and dosage tool
 
 Monitoring tools set the monitoring-tool flag, show a persistent notification and a distinct icon, and disclose the function in the listing. Apps respect FLAG_SECURE content of other apps.
 
+## Guest and automatic accounts
+
+A server-side account created silently at first launch is an account for Apple: 5.1.1(v) deletion applies (Apple account deletion FAQ). Google defines an app account differently; decide G03 and C10 for Google from its own text and record the reasoning. Never let one platform's answer stand in for the other.
+
+## Hidden opponents and house players
+
+If the app seats bots or house players against users, especially where purchasable currency is staked, check that nothing misleads users about who they play (Apple 5.6 and 2.3, Google Deceptive Behavior), and record how the app labels them.
+
 ## Rejection response
 
 A notice may not list every issue: recheck the whole app before resubmitting. Split metadata, binary, account and policy issues. Give the smallest truthful fix, whether a new build appears necessary, and verify resubmission options. Draft a factual reply with build, each issue, completed changes, navigation and evidence. Use future tense for incomplete work. One fixed link does not resolve every issue. Do not send under audit-only authorization.

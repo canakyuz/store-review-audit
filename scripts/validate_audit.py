@@ -10,7 +10,7 @@ RULES = Path(__file__).resolve().parents[1] / "references" / "rules.json"
 KINDS = {"runtime", "console", "code", "artifact", "document"}
 OFFICIAL = {
     "apple": {"developer.apple.com", "apple.com", "www.apple.com", "support.apple.com"},
-    "google": {"developer.android.com", "support.google.com", "play.google.com", "play.google"},
+    "google": {"developer.android.com", "developers.google.com", "support.google.com", "play.google.com", "play.google"},
 }
 
 def validate(data):
@@ -52,6 +52,8 @@ def validate(data):
             error(f"scope.{key}: require nonempty string list")
         elif len(set(value)) != len(value):
             error(f"scope.{key}: duplicates")
+        elif "UNKNOWN" in value:
+            gaps.append(f"scope.{key}: not established")
     if scope.get("account_type") not in {"individual", "organization", "unknown"}:
         error("account_type: individual, organization or unknown")
     if scope.get("account_type") == "unknown":
@@ -83,9 +85,18 @@ def validate(data):
             if ev.get("checked_at") != scope.get("audit_date"):
                 error(f"{where}/{ref}: evidence must be rechecked during this audit")
                 valid = False
-            if ev.get("kind") in {"runtime", "artifact", "code"} and ev.get("build") != scope.get("build"):
+            if ev.get("kind") in {"runtime", "artifact"} and ev.get("build") != scope.get("build"):
                 error(f"{where}/{ref}: wrong or absent build")
                 valid = False
+            # Code is bound to the build through its commit. Code from another
+            # repository (a backend) names that repo and its own commit.
+            if ev.get("kind") == "code":
+                if not isinstance(ev.get("commit"), str) or not ev["commit"].strip():
+                    error(f"{where}/{ref}: code evidence needs the commit it was read at")
+                    valid = False
+                elif not ev.get("repo") and ev["commit"] != scope.get("commit"):
+                    error(f"{where}/{ref}: app code must be read at scope.commit, the commit of the audited build")
+                    valid = False
             if ev.get("kind") == "runtime":
                 for key in ("environment", "steps", "expected", "actual"):
                     if not isinstance(ev.get(key), str) or not ev[key].strip():
@@ -160,6 +171,8 @@ def validate(data):
         policy_for(c.get("policies"), cid)
         if status == "FAIL":
             failures.append(cid)
+            if not isinstance(c.get("finding"), str) or not c["finding"].strip():
+                error(f"{cid}: failing observation (finding) required")
             if c.get("severity") not in {"BLOCKER", "HIGH", "MEDIUM"}:
                 error(f"{cid}: failure severity required")
             if not c.get("fix") or not c.get("retest"):
@@ -177,6 +190,8 @@ def validate(data):
                 locales = c.get("locales_verified", [])
                 if not isinstance(locales, list) or set(locales) != set(scope.get("locales", [])):
                     error(f"{cid}: all configured locales must be verified")
+    if not policies:
+        gaps.append("No official policy was recorded as checked during this audit")
     subs = features.get("subscriptions", {})
     purchases = features.get("purchases", {})
     if isinstance(subs, dict) and isinstance(purchases, dict) and subs.get("value") is True and purchases.get("value") is not True:

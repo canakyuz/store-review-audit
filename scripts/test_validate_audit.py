@@ -11,13 +11,13 @@ def fixture(platform="apple"):
     rules = [r for r in json.loads(RULES.read_text())["rules"] if r["platform"] in {"all", platform}]
     evidences = [
         {"id": k, "kind": k, "location": "synthetic fixture only", "observed": "synthetic observation",
-         "checked_at": today, "app_id": "test.app", "platform": platform, "build": "42"}
+         "checked_at": today, "app_id": "test.app", "platform": platform, "build": "42", "commit": "abc123"}
         for k in ["runtime", "console", "code", "artifact", "document"]
     ]
     evidences[0].update(environment="Synthetic device/OS", steps="Synthetic steps",
                         expected="Synthetic expected outcome", actual="Synthetic actual outcome", outcome="PASS")
     return {
-        "scope": {"app_id": "test.app", "platform": platform, "build": "42",
+        "scope": {"app_id": "test.app", "platform": platform, "build": "42", "commit": "abc123",
                   "audit_date": today, "account_type": "organization",
                   "locales": ["en-GB", "tr"], "territories": ["GB", "TR"]},
         "features": {r["feature"]: {"value": True, "evidence": ["runtime"]} for r in rules if r["feature"]},
@@ -80,7 +80,7 @@ class GateTests(unittest.TestCase):
         control(self.d,"C13").update(status="N/A",reason="Inspected build has no ads")
         self.assertEqual(validate(self.d)["verdict"],"EVIDENCE_CONTRACT_COMPLETE")
     def test_medium_failure_still_blocks(self):
-        control(self.d,"C04").update(status="FAIL",severity="MEDIUM",fix="Correct listing",retest="Reopen listing")
+        control(self.d,"C04").update(status="FAIL",severity="MEDIUM",finding="Listing claims a feature the build lacks",fix="Correct listing",retest="Reopen listing")
         self.assertEqual(validate(self.d)["verdict"],"BLOCKED")
     def test_unresolved_rejection(self):
         self.d["rejections"]=[{"id":"R1","text":"EULA missing","control_id":"A01","state":"unresolved"}]
@@ -130,6 +130,32 @@ class GateTests(unittest.TestCase):
         self.d["verdict"]="READY"
         self.d["controls"].pop()
         self.assertEqual(validate(self.d)["verdict"],"INCOMPLETE")
+    def test_failure_without_observation(self):
+        control(self.d,"C04").update(status="FAIL",severity="MEDIUM",fix="Correct listing",retest="Reopen listing")
+        self.assertEqual(validate(self.d)["verdict"],"INVALID")
+    def test_code_read_at_another_commit(self):
+        self.d["evidence"][2]["commit"]="def456"
+        self.rejected()
+    def test_code_without_commit(self):
+        del self.d["evidence"][2]["commit"]
+        self.rejected()
+    def test_backend_code_names_its_repo(self):
+        self.d["evidence"][2].update(repo="example/backend", commit="999fff")
+        self.assertEqual(validate(self.d)["verdict"],"EVIDENCE_CONTRACT_COMPLETE")
+    def test_unknown_territories_are_a_gap(self):
+        self.d["scope"]["territories"]=["UNKNOWN"]
+        r=validate(self.d)
+        self.assertEqual(r["verdict"],"INCOMPLETE")
+        self.assertIn("scope.territories: not established", r["gaps"])
+    def test_no_policy_records_is_a_gap(self):
+        for c in self.d["controls"]:
+            c.update(status="UNKNOWN",missing_evidence="x",next_action="y")
+        self.d["policies"]=[]
+        self.assertIn("No official policy was recorded as checked during this audit", validate(self.d)["gaps"])
+    def test_verified_no_third_party_login_is_na(self):
+        self.d["features"]["third_party_login"]={"value":False,"evidence":["code"]}
+        control(self.d,"A03").update(status="N/A",reason="Only email sign-in in the inspected build")
+        self.assertEqual(validate(self.d)["verdict"],"EVIDENCE_CONTRACT_COMPLETE")
     def test_empty_observed_pass(self):
         control(self.d,"C11")["result"]=" "
         self.rejected()

@@ -30,17 +30,21 @@ Use applicable test cases; justify cases that genuinely cannot apply. These are 
 
 ## Machine-readable report
 
-For a full audit, create audit.json alongside the human report and run:
-python3 <skill-directory>/scripts/validate_audit.py <audit.json>
+For a full audit, create one ledger per platform next to the human report, named apple.json and google.json, starting from the generator so every control begins UNKNOWN:
+python3 <skill-directory>/scripts/init_audit.py --platform apple --app-id <id> --build <build> --commit <git commit of the build> --locales <...> --territories <...> --output apple.json
+Then run:
+python3 <skill-directory>/scripts/validate_audit.py apple.json
 
 Do not skip a nonzero exit or relabel it PASS. Fix an invalid report or leave incomplete/blocked work explicit. On a narrow rejection explanation, do not manufacture a full report; clearly state the limited scope.
 
 Top-level keys:
-- scope: app_id, platform (apple/google), build, audit_date (YYYY-MM-DD), account_type (individual/organization/unknown), locales (array), territories (array).
-- features: every feature named in rules.json, each as {"value": true/false/null, "evidence": ["evidence-id"]}. Do not place secrets in this record.
-- evidence: objects with id, kind (runtime/console/code/artifact/document), location, observed, checked_at (audit date), app_id, platform; include build for runtime/code/artifact. Runtime evidence additionally requires environment (device/OS/account class), steps, expected, actual and outcome (PASS/FAIL), plus a sanitized log reference where available. Failed runtime evidence cannot support PASS. Do not represent a suite with a failed subcase as an overall passing observation.
+- scope: app_id, platform (apple/google), build, commit (the source commit of that build; needed for code evidence), audit_date (YYYY-MM-DD), account_type (individual/organization/unknown), locales (array), territories (array). Use ["UNKNOWN"] for locales or territories you could not establish; that keeps the audit incomplete instead of inventing a value. When the build number is assigned remotely (for example EAS autoIncrement), record the version plus commit and say so.
+- features: every feature named in rules.json (defined in its `features` object), each as {"value": true/false/null, "evidence": ["evidence-id"]}. Do not place secrets in this record.
+- evidence: objects with id, kind (runtime/console/code/artifact/document), location, observed, checked_at (audit date), app_id, platform; include build for runtime/artifact. Code evidence carries commit: app code must be read at scope.commit; code from another repository (a backend) adds repo and its own commit. Runtime evidence additionally requires environment (device/OS/account class), steps, expected, actual and outcome (PASS/FAIL), plus a sanitized log reference where available. Failed runtime evidence cannot support PASS. Do not represent a suite with a failed subcase as an overall passing observation.
 - policies: objects with id, official HTTPS url, section, checked_at (audit date), effective ("current"). Separately document any future announced deadline.
-- controls: objects with id and status. PASS: evidence IDs, policy IDs, concrete result and locales_verified for locale gates. FAIL: evidence, policies, severity (BLOCKER/HIGH/MEDIUM), fix and retest. UNKNOWN: missing_evidence and next_action. N/A: reason, supported by the verified feature absence.
+- controls: objects with id and status. PASS: evidence IDs, policy IDs, concrete result and locales_verified for locale gates. FAIL: finding (the failing observation), evidence, policies, severity (BLOCKER/HIGH/MEDIUM), fix and retest. UNKNOWN: missing_evidence and next_action, plus optional observed for what code or documents already show (for example "verified in code, not at runtime"). N/A: reason, supported by the verified feature absence.
+- Severity: BLOCKER when a review message, console gate or submission check stops the release (missing required SDK, missing required declaration, an open rejection). HIGH for a supported violation of an explicit rule that review would likely reject. MEDIUM for a narrower issue.
+- A code-and-document audit without console or runtime access cannot reach PASS for most controls; that is intended. Put what you verified in observed and in the human report.
 - rejections: explicit array of each distinct issue with id, text, control_id and state ("resolved" or "unresolved"). Resolved requires corresponding PASS; do not silently drop the original rejection. If a submission-specific message lacks a matching general clause, cite the nearest relevant official source and explicitly preserve the message as the specific authority; never invent a policy match.
 
 Output meaning:

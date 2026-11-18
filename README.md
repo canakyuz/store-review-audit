@@ -38,6 +38,7 @@ python3 scripts/init_audit.py \
   --platform apple \
   --app-id com.example.app \
   --build 42 \
+  --commit 1a2b3c4 \
   --locales en-GB tr \
   --territories GB TR \
   --output audits/apple-42.json

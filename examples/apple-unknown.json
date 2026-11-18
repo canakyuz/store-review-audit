@@ -12,7 +12,8 @@
     "territories": [
       "GB",
       "TR"
-    ]
+    ],
+    "commit": ""
   },
   "features": {
     "accounts": {
@@ -56,6 +57,10 @@
       "evidence": []
     },
     "regulated": {
+      "value": null,
+      "evidence": []
+    },
+    "third_party_login": {
       "value": null,
       "evidence": []
     }

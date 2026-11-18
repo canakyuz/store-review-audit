@@ -1,10 +1,10 @@
 # Output contract
 
-Scale detail to the request. Default to Turkish and clickable official sources.
+Scale detail to the request. Write in the user's language (English by default) with clickable official sources. If your environment cannot write files, return the report and the ledgers in your reply instead of skipping them.
 
 ## Scope and verdict
 
-For full audits also deliver audit.json using strict-mode.md and rules.json, with the validator result, coverage counts, unresolved rejection inventory and evidence gaps. Do not claim automated review approval. Distinguish internal evidence-gate requirements from store requirements. Record exact source/observation references and every locale; summarize individual runtime test cases and results.
+For full audits also deliver one ledger per platform (apple.json, google.json) using strict-mode.md and rules.json, with the validator result, coverage counts, unresolved rejection inventory and evidence gaps. Do not claim automated review approval. Distinguish internal evidence-gate requirements from store requirements. Record exact source/observation references and every locale; summarize individual runtime test cases and results.
 
 Record date/app/platform/version/build/account type/territories/locales and inspected evidence. State inaccessible console/build/runtime areas.
 Choose blocked / incomplete evidence / no blockers found in inspected scope. Do not equate a clean scope with guaranteed approval.

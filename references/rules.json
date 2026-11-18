@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "description": "Internal audit evidence gates; not a copy of store policy. Always verify official requirements.",
   "rules": [
     {
@@ -353,7 +353,7 @@
       "id": "A03",
       "title": "Login-service rule applicability and implementation",
       "platform": "apple",
-      "feature": null,
+      "feature": "third_party_login",
       "evidence_groups": [
         [
           "runtime"
@@ -423,5 +423,19 @@
       ],
       "all_locales": false
     }
-  ]
+  ],
+  "features": {
+    "accounts": "The app creates or uses an account, including one created automatically (guest or device account).",
+    "purchases": "Any in-app purchase, consumable, non-consumable or subscription, through any billing system.",
+    "subscriptions": "Auto-renewing subscriptions.",
+    "ads": "Any advertising SDK or ad placement, including rewarded ads.",
+    "game_economy": "A virtual currency or item economy: buying, earning, staking, losing or transferring in-app value, including service credits that can be wagered or won.",
+    "kids": "Children are a target audience, or the app is in a kids or Families program.",
+    "ugc": "Users can publish content other users see: text, names, images, chat, profiles.",
+    "ai": "Generative AI output or user data sent to a model provider.",
+    "health": "Health, fitness, medical or wellness data or claims, HealthKit or Health Connect.",
+    "sensitive_permissions": "Permissions or APIs a store restricts or asks to declare (Google restricted permissions, background location, foreground services, full-screen intent, accessibility, VPN), not ordinary runtime permissions such as camera with a purpose string.",
+    "regulated": "Activity that needs a licence or regulated entity in some territory: finance, crypto, gambling with real value, medical, insurance, legal services.",
+    "third_party_login": "Sign-in through a third-party or social login service (Apple counts this for 4.8)."
+  }
 }

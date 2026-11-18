@@ -26,7 +26,7 @@ Use as evidence-gathering prompts. Confirm the current applicable rule before re
 | EULA | Standard EULA link in every localized description for subscriptions, or configured custom EULA/territories. Check in-app privacy/terms access separately. |
 | App Privacy | Compare labels to app/partner data flows, distinguishing on-device from transmitted processing. |
 | Native privacy | PrivacyInfo.xcprivacy, required-reason APIs, relevant SDK manifests/signatures, permission descriptions and ATT applicability. Manifests do not replace labels. |
-| Deletion | Applicable in-app deletion and associated-data removal. Distinguish deactivation and subscription cancellation. |
+| Deletion | Applicable in-app deletion and associated-data removal. Distinguish deactivation and subscription cancellation. An account the app creates automatically (guest or device account) still needs an in-app way to start deletion (Apple account deletion FAQ). |
 | Rating/entity | Current questionnaire, regional result, content and relevant publisher-entity restrictions/review message. |
 | Submission | Build processing, signing, entitlements, export compliance, current SDK requirements and IAP/review attachments. Binary: no private or deprecated APIs, no downloaded executable code, no hidden or obfuscated features, WebKit for web browsing, works on IPv6-only networks (2.5). |
 | Platform technologies | Each entitlement, extension and framework the build uses (App Clips, widgets, keyboards, Safari extensions, SiriKit, CallKit, Apple Pay, Wallet, Game Center, MusicKit, Matter, Face ID) against its clause in 2.5, 4.4, 4.5 and 4.9. |
