@@ -15,7 +15,7 @@ Choose blocked / incomplete evidence / no blockers found in inspected scope. Do 
 | --- | --- | --- | --- | --- | --- | --- |
 | ... | Apple or Google | PASS / FAIL / UNKNOWN / N/A; severity for FAIL | Observed fact, build and locale | Official section/link/access date/effective scope | Exact code/field/document change | Reproducible check and observed result |
 
-Never fill placeholders as inspected facts. Include PASS evidence/N/A reasons compactly in a coverage table. Separate review-message evidence, public policy and inference.
+Never fill placeholders as inspected facts. List FAIL and material UNKNOWN findings in the table; summarise the rest in one coverage line per status (for example "N/A: C15 no child audience, C16 no user content") instead of repeating the ledger. Separate review-message evidence, public policy and inference.
 
 ## Action order
 

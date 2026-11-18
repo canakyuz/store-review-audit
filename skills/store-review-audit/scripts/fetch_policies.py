@@ -8,6 +8,7 @@ normalised text. It stores no policy text: Apple and Google own that text.
 
   fetch_policies.py --write   fetch everything and rewrite the catalogue
   fetch_policies.py --check   fetch everything and report changes; exit 1 if any
+  fetch_policies.py --get ID  print the current text of one catalogue item (for an audit)
   exit 2: a source could not be fetched (nothing compared, catalogue untouched)
 
 Full texts go to .policy-cache/ (git-ignored) so a change can be diffed locally.
@@ -37,6 +38,7 @@ GOOGLE_ANSWER = re.compile(r"https://support\.google\.com/googleplay/android-dev
 APPLE_SECTIONS = ("introduction", "before-you-submit", "after-you-submit")
 TIMEOUT = 30
 RETRIES = 4
+BACKOFF = 15  # seconds, multiplied by the attempt number
 PAUSE = 1.0  # between requests to one host; Google answers 429 to a burst of ~60
 USER_AGENT = "store-review-audit-policy-check/1.0"
 
@@ -51,13 +53,16 @@ def fetch_once(url: str) -> str:
         try:
             req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT, "Accept-Language": "en"})
             with urllib.request.urlopen(req, timeout=TIMEOUT) as resp:
+                # A captcha interstitial will not clear by waiting; stop at once.
+                if "/sorry/" in resp.geturl():
+                    raise FetchError(f"blocked by a captcha page: {url}")
                 return resp.read().decode("utf-8", errors="replace")
         except urllib.error.HTTPError as exc:
             last = exc
             if exc.code not in (429, 500, 502, 503, 504):
                 break
             retry_after = exc.headers.get("Retry-After", "")
-            time.sleep(int(retry_after) if retry_after.isdigit() else 15 * (attempt + 1))
+            time.sleep(int(retry_after) if retry_after.isdigit() else BACKOFF * (attempt + 1))
         except (urllib.error.URLError, TimeoutError) as exc:
             last = exc
             time.sleep(5 * (attempt + 1))
@@ -185,16 +190,41 @@ def topic_pages(known_urls: set[str]) -> list[dict]:
     return items
 
 
+def progress(message: str) -> None:
+    print(message, file=sys.stderr, flush=True)
+
+
 def build() -> list[dict]:
+    progress("fetching Apple guidelines")
     items = apple_guidelines(fetch(APPLE_GUIDELINES))
+    progress("fetching Google policy pages")
     index = fetch(GOOGLE_POLICY_INDEX)
     items += google_policies(index)
     covered = {APPLE_GUIDELINES.rstrip("/"), GOOGLE_POLICY_INDEX.rstrip("/")}
     covered |= {f"https://support.google.com/googleplay/android-developer/answer/{a}" for a in GOOGLE_ANSWER.findall(index)}
     # Some help-centre answers serve the same article under a second id; keep one.
     seen = {i["sha256"] for i in items}
+    progress("fetching topic pages")
     items += [t for t in topic_pages(covered) if t["sha256"] not in seen]
     return items
+
+
+def get_one(item_id: str) -> dict:
+    """Fetch the live text of one catalogue item; same parsing as build()."""
+    catalog = {i["id"]: i for i in json.loads(CATALOG.read_text(encoding="utf-8"))["items"]}
+    if item_id not in catalog:
+        raise KeyError(f"unknown catalogue id: {item_id}")
+    url = catalog[item_id]["url"]
+    if item_id.startswith("apple:"):
+        found = [i for i in apple_guidelines(fetch(APPLE_GUIDELINES)) if i["id"] == item_id]
+        if not found:
+            raise KeyError(f"{item_id} is no longer on the guidelines page")
+        return found[0]
+    doc = apple_doc_text(url)
+    if doc is not None:
+        return item(item_id, "apple", doc[:90], url, doc)
+    page = fetch(url)
+    return item(item_id, catalog[item_id]["platform"], title_of(page), url, google_page(url, page))
 
 
 def compare(old: list[dict], new: list[dict]) -> dict:
@@ -222,9 +252,23 @@ def main(argv: list[str] | None = None) -> int:
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--write", action="store_true", help="rewrite the catalogue")
     mode.add_argument("--check", action="store_true", help="report changes against the catalogue")
+    mode.add_argument("--get", metavar="ID", help="print the live text of one catalogue item")
     parser.add_argument("--date", help="catalogue date, YYYY-MM-DD (default: keep or today)")
     args = parser.parse_args(argv)
 
+    if args.get:
+        global RETRIES, BACKOFF
+        RETRIES, BACKOFF = 2, 5  # an audit should not wait minutes for one page
+        try:
+            one = get_one(args.get)
+        except (FetchError, KeyError) as exc:
+            print(f"error\t{exc}", file=sys.stderr)
+            return 2
+        known = {i["id"]: i["sha256"] for i in json.loads(CATALOG.read_text(encoding="utf-8"))["items"]}
+        same = known.get(args.get) == one["sha256"]
+        print(f"{one['url']}\nmatches catalogue: {'yes' if same else 'no, the page changed since the catalogue was checked'}\n")
+        print(one["_text"])
+        return 0
     try:
         items = build()
     except FetchError as exc:

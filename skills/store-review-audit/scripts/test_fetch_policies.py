@@ -81,6 +81,33 @@ class CheckModeTest(unittest.TestCase):
                 self.assertEqual(fp.main(["--write"]), 2)
             self.assertEqual(catalog.read_text(), "{}")
 
+    def test_get_prints_one_item_and_says_whether_it_matches(self):
+        clause = fp.apple_guidelines(APPLE_PAGE)[2]
+        with tempfile.TemporaryDirectory() as tmp:
+            catalog = Path(tmp) / "policy-catalog.json"
+            catalog.write_text(json.dumps({"checked": "2026-11-18", "items": fp.public([clause])}))
+            out = io.StringIO()
+            with mock.patch.object(fp, "CATALOG", catalog), mock.patch.object(fp, "fetch", return_value=APPLE_PAGE), redirect_stdout(out):
+                self.assertEqual(fp.main(["--get", "apple:1.1.1"]), 0)
+            self.assertIn("matches catalogue: yes", out.getvalue())
+            self.assertIn("1.1.1 Defamatory content.", out.getvalue())
+
+    def test_get_unknown_id_exits_two(self):
+        with mock.patch("sys.stderr", io.StringIO()):
+            self.assertEqual(fp.main(["--get", "apple:no-such-clause"]), 2)
+
+    def test_captcha_redirect_fails_without_retrying(self):
+        class Resp:
+            def __enter__(self): return self
+            def __exit__(self, *a): return False
+            def geturl(self): return "https://www.google.com/sorry/index?continue=x"
+            def read(self): return b"captcha"
+        with mock.patch("urllib.request.urlopen", return_value=Resp()) as opened, mock.patch("time.sleep") as slept:
+            with self.assertRaises(fp.FetchError):
+                fp.fetch_once("https://support.google.com/x")
+        self.assertEqual(opened.call_count, 1)
+        slept.assert_not_called()
+
     def test_catalogue_never_stores_policy_text(self):
         self.assertNotIn("_text", fp.public([self.entry("apple:1", "secret text")])[0])
 
