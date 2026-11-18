@@ -2,14 +2,15 @@ name: Policy watch
 
 # Weekly: fetch the Apple and Google publishing policies, compare each clause
 # hash with skills/store-review-audit/references/policy-catalog.json and open an issue when anything
-# changed. The catalogue is only updated by a reviewed commit, never here.
+# changed. With no change, only the catalogue's "checked" date moves forward, so the
+# policy digest stays usable; changed clauses are updated by a reviewed commit, never here.
 on:
   schedule:
     - cron: "17 6 * * 1"
   workflow_dispatch:
 
 permissions:
-  contents: read
+  contents: write
   issues: write
 
 jobs:
@@ -18,8 +19,6 @@ jobs:
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v7
-        with:
-          persist-credentials: false
       - uses: actions/setup-python@v7
         with:
           python-version: "3.12"
@@ -34,6 +33,20 @@ jobs:
           # 0: no change, 1: changes found, 2: a source could not be fetched
           if [ "$code" -eq 2 ]; then exit 1; fi
           exit 0
+      - name: Record the check date when nothing changed
+        if: steps.check.outputs.code == '0'
+        run: |
+          python3 - <<'PY'
+          import json, datetime, pathlib
+          p = pathlib.Path("skills/store-review-audit/references/policy-catalog.json")
+          data = json.loads(p.read_text())
+          data["checked"] = datetime.date.today().isoformat()
+          p.write_text(json.dumps(data, indent=1, ensure_ascii=True) + "\n")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "chore: policy catalogue checked $(date -u +%F), no changes" || exit 0
+          git push
       - name: Open or update the policy change issue
         if: steps.check.outputs.code == '1'
         env:
@@ -47,7 +60,7 @@ jobs:
             cat changes.txt
             echo '```'
             echo
-            echo "Review each item against skills/store-review-audit/references/checklist.md, rules.json and special-cases.md."
+            echo "Review each item against skills/store-review-audit/references/checklist.md, rules.json and special-cases.md, and rewrite its entry in policy-digest.json."
             echo "When done, run \`python3 skills/store-review-audit/scripts/fetch_policies.py --write\` and commit the catalogue with the skill changes."
           } > body.md
           existing=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number')

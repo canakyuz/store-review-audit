@@ -6,12 +6,28 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urlparse
 
-RULES = Path(__file__).resolve().parents[1] / "references" / "rules.json"
-KINDS = {"runtime", "console", "code", "artifact", "document"}
+REFS = Path(__file__).resolve().parents[1] / "references"
+RULES = REFS / "rules.json"
+CATALOG = REFS / "policy-catalog.json"
+DIGEST = REFS / "policy-digest.json"
+DIGEST_MAX_AGE_DAYS = 14
+KINDS = {"runtime", "console", "code", "artifact", "document", "message"}
 OFFICIAL = {
     "apple": {"developer.apple.com", "apple.com", "www.apple.com", "support.apple.com"},
     "google": {"developer.android.com", "developers.google.com", "support.google.com", "play.google.com", "play.google"},
 }
+
+def load_digest():
+    """Digest entries usable today: their hash still matches the catalogue."""
+    try:
+        catalog = json.loads(CATALOG.read_text())
+        digest = json.loads(DIGEST.read_text())
+    except (OSError, ValueError):
+        return {}, None
+    current = {i["id"]: i["sha256"] for i in catalog.get("items", [])}
+    usable = {d["id"]: d for d in digest if current.get(d.get("id")) == d.get("sha256")}
+    return usable, catalog.get("checked")
+
 
 def validate(data):
     errors, gaps, failures = [], [], []
@@ -108,6 +124,7 @@ def validate(data):
             if valid:
                 found.append(ev)
         return found
+    digest, catalog_checked = load_digest()
     def policy_for(refs, where):
         if not isinstance(refs, list) or not refs:
             error(f"{where}: current official policy references required")
@@ -117,6 +134,24 @@ def validate(data):
                 error(f"{where}: unknown policy reference")
                 continue
             p = policies[ref]
+            # A store review message is the specific authority for its own submission.
+            if p.get("message_evidence"):
+                ev = evidence.get(p["message_evidence"])
+                if not ev or ev.get("kind") != "message":
+                    error(f"{where}/{ref}: message_evidence must name evidence of kind message")
+                if not p.get("section"):
+                    error(f"{where}/{ref}: quote the guideline the message cites in section")
+                continue
+            if p.get("via") == "digest":
+                entry = digest.get(p.get("catalog_id"))
+                if not entry or entry.get("url") != p.get("url"):
+                    error(f"{where}/{ref}: digest policy needs a catalog_id whose digest matches the current catalogue and its url")
+                try:
+                    age = (date.fromisoformat(scope["audit_date"]) - date.fromisoformat(catalog_checked)).days
+                except (ValueError, KeyError, TypeError):
+                    age = None
+                if age is None or not 0 <= age <= DIGEST_MAX_AGE_DAYS:
+                    error(f"{where}/{ref}: policy catalogue older than {DIGEST_MAX_AGE_DAYS} days; update the skill or fetch the page")
             u = urlparse(p.get("url", "") if isinstance(p.get("url"), str) else "")
             if u.scheme != "https" or u.hostname not in OFFICIAL.get(platform, set()):
                 error(f"{where}/{ref}: official platform source required")

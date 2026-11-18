@@ -2,7 +2,11 @@
 """Synthetic regression tests for the evidence gate; no live app data."""
 import copy
 import json
+import tempfile
 import unittest
+from pathlib import Path
+from unittest import mock
+import validate_audit
 from datetime import date
 from validate_audit import validate, RULES
 
@@ -159,6 +163,56 @@ class GateTests(unittest.TestCase):
     def test_empty_observed_pass(self):
         control(self.d,"C11")["result"]=" "
         self.rejected()
+
+class PolicySourceTests(unittest.TestCase):
+    """Policy records that rest on the digest or on a store review message."""
+    URL = "https://support.google.com/googleplay/android-developer/answer/9857753?hl=en"
+
+    def setUp(self):
+        self.d = fixture("google")
+        self.tmp = tempfile.TemporaryDirectory()
+        tmp = Path(self.tmp.name)
+        self.catalog, self.digest = tmp / "catalog.json", tmp / "digest.json"
+        self.write(checked=date.today().isoformat(), catalog_sha="aaa", digest_sha="aaa")
+        self.patches = [mock.patch.object(validate_audit, "CATALOG", self.catalog), mock.patch.object(validate_audit, "DIGEST", self.digest)]
+        for p in self.patches: p.start()
+        self.d["policies"] = [{"id": "policy", "url": self.URL, "section": "Ads: interstitial timing", "checked_at": date.today().isoformat(),
+                               "effective": "current", "via": "digest", "catalog_id": "google:policy:9857753"}]
+
+    def tearDown(self):
+        for p in self.patches: p.stop()
+        self.tmp.cleanup()
+
+    def write(self, checked, catalog_sha, digest_sha):
+        self.catalog.write_text(json.dumps({"checked": checked, "items": [{"id": "google:policy:9857753", "sha256": catalog_sha, "url": self.URL}]}))
+        self.digest.write_text(json.dumps([{"id": "google:policy:9857753", "sha256": digest_sha, "url": self.URL, "requirements": ["x"]}]))
+
+    def test_current_digest_supports_a_policy_record(self):
+        self.assertEqual(validate(self.d)["verdict"], "EVIDENCE_CONTRACT_COMPLETE")
+
+    def test_digest_written_for_an_older_page_is_rejected(self):
+        self.write(checked=date.today().isoformat(), catalog_sha="bbb", digest_sha="aaa")
+        self.assertEqual(validate(self.d)["verdict"], "INVALID")
+
+    def test_stale_catalogue_is_rejected(self):
+        self.write(checked="2020-01-01", catalog_sha="aaa", digest_sha="aaa")
+        self.assertEqual(validate(self.d)["verdict"], "INVALID")
+
+    def test_review_message_can_back_a_failure(self):
+        d = fixture("apple")
+        d["evidence"].append({"id": "msg", "kind": "message", "location": "review-message.txt", "observed": "3.1.2 EULA missing",
+                              "checked_at": date.today().isoformat(), "app_id": "test.app", "platform": "apple"})
+        d["policies"].append({"id": "review", "message_evidence": "msg", "section": "Guideline 3.1.2 as cited in the message",
+                              "checked_at": date.today().isoformat(), "effective": "current"})
+        control(d, "A01").update(status="FAIL", severity="BLOCKER", finding="de-DE description has no EULA link", policies=["review"], fix="Add link", retest="Reopen")
+        self.assertEqual(validate(d)["verdict"], "BLOCKED")
+
+    def test_message_policy_must_point_at_a_message(self):
+        d = fixture("apple")
+        d["policies"].append({"id": "review", "message_evidence": "document", "section": "3.1.2", "checked_at": date.today().isoformat(), "effective": "current"})
+        control(d, "A01").update(policies=["review"])
+        self.assertEqual(validate(d)["verdict"], "INVALID")
+
 
 if __name__ == "__main__":
     unittest.main(verbosity=2)
