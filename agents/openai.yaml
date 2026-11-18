@@ -1,0 +1,8 @@
+interface:
+  display_name: "Store Review Audit"
+  short_description: "Evidence-based App Store and Google Play release audits"
+  default_prompt: "Use $store-review-audit to audit my app for both stores, require evidence for each check, and identify unresolved release blockers."
+  icon_small: "./assets/icon.svg"
+  icon_large: "./assets/icon.svg"
+policy:
+  allow_implicit_invocation: true

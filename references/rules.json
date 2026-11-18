@@ -1,0 +1,427 @@
+{
+  "version": 2,
+  "description": "Internal audit evidence gates; not a copy of store policy. Always verify official requirements.",
+  "rules": [
+    {
+      "id": "C01",
+      "title": "Identity, exact build and scope",
+      "platform": "all",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "console",
+          "artifact"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C02",
+      "title": "Publisher eligibility and pending console tasks",
+      "platform": "all",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "console"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C03",
+      "title": "Reviewer access and core runtime flow",
+      "platform": "all",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "runtime"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C04",
+      "title": "Store listing accuracy and every locale",
+      "platform": "all",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "console"
+        ],
+        [
+          "runtime"
+        ]
+      ],
+      "all_locales": true
+    },
+    {
+      "id": "C05",
+      "title": "Privacy policy identity, content and access",
+      "platform": "all",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "document"
+        ],
+        [
+          "runtime"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C06",
+      "title": "SDK/backend data inventory and declaration consistency",
+      "platform": "all",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "code",
+          "artifact"
+        ],
+        [
+          "console"
+        ],
+        [
+          "runtime"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C07",
+      "title": "Audience, content and age declarations",
+      "platform": "all",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "console"
+        ],
+        [
+          "runtime"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C08",
+      "title": "Rights, originality and substantive functionality",
+      "platform": "all",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "document",
+          "code"
+        ],
+        [
+          "runtime"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C09",
+      "title": "Build compatibility, signing and release prerequisites",
+      "platform": "all",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "artifact"
+        ],
+        [
+          "console"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C10",
+      "title": "In-app account and associated-data deletion",
+      "platform": "all",
+      "feature": "accounts",
+      "evidence_groups": [
+        [
+          "runtime"
+        ],
+        [
+          "code",
+          "artifact"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C11",
+      "title": "Purchases, restore and entitlements",
+      "platform": "all",
+      "feature": "purchases",
+      "evidence_groups": [
+        [
+          "runtime"
+        ],
+        [
+          "console"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C12",
+      "title": "Subscription terms, price, renewal and cancellation",
+      "platform": "all",
+      "feature": "subscriptions",
+      "evidence_groups": [
+        [
+          "runtime"
+        ],
+        [
+          "console"
+        ]
+      ],
+      "all_locales": true
+    },
+    {
+      "id": "C13",
+      "title": "Ads, consent and SDK behaviour",
+      "platform": "all",
+      "feature": "ads",
+      "evidence_groups": [
+        [
+          "runtime"
+        ],
+        [
+          "code",
+          "artifact"
+        ],
+        [
+          "console"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C14",
+      "title": "Currency, wagers, prizes and entity classification",
+      "platform": "all",
+      "feature": "game_economy",
+      "evidence_groups": [
+        [
+          "runtime"
+        ],
+        [
+          "code",
+          "artifact"
+        ],
+        [
+          "console"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C15",
+      "title": "Children's content, gates and SDK eligibility",
+      "platform": "all",
+      "feature": "kids",
+      "evidence_groups": [
+        [
+          "runtime"
+        ],
+        [
+          "console"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C16",
+      "title": "UGC/chat reporting, blocking and moderation",
+      "platform": "all",
+      "feature": "ugc",
+      "evidence_groups": [
+        [
+          "runtime"
+        ],
+        [
+          "code",
+          "artifact"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C17",
+      "title": "AI content safeguards and third-party data sharing",
+      "platform": "all",
+      "feature": "ai",
+      "evidence_groups": [
+        [
+          "runtime"
+        ],
+        [
+          "code",
+          "artifact"
+        ],
+        [
+          "document"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C18",
+      "title": "Health claims, data permissions and declarations",
+      "platform": "all",
+      "feature": "health",
+      "evidence_groups": [
+        [
+          "runtime"
+        ],
+        [
+          "console"
+        ],
+        [
+          "document"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C19",
+      "title": "Sensitive permissions and background behaviour",
+      "platform": "all",
+      "feature": "sensitive_permissions",
+      "evidence_groups": [
+        [
+          "artifact"
+        ],
+        [
+          "runtime"
+        ],
+        [
+          "console"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "C20",
+      "title": "Regulated features and territorial eligibility",
+      "platform": "all",
+      "feature": "regulated",
+      "evidence_groups": [
+        [
+          "document"
+        ],
+        [
+          "console"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "A01",
+      "title": "EULA configuration and complete localization coverage",
+      "platform": "apple",
+      "feature": "subscriptions",
+      "evidence_groups": [
+        [
+          "console"
+        ],
+        [
+          "document"
+        ]
+      ],
+      "all_locales": true
+    },
+    {
+      "id": "A02",
+      "title": "App Privacy labels and native privacy manifests",
+      "platform": "apple",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "console"
+        ],
+        [
+          "artifact"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "A03",
+      "title": "Login-service rule applicability and implementation",
+      "platform": "apple",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "runtime"
+        ],
+        [
+          "code",
+          "artifact"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "G01",
+      "title": "All applicable App content declarations",
+      "platform": "google",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "console"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "G02",
+      "title": "Data safety inventory and declarations",
+      "platform": "google",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "console"
+        ],
+        [
+          "code",
+          "artifact"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "G03",
+      "title": "External account-deletion resource",
+      "platform": "google",
+      "feature": "accounts",
+      "evidence_groups": [
+        [
+          "document"
+        ],
+        [
+          "runtime"
+        ],
+        [
+          "console"
+        ]
+      ],
+      "all_locales": false
+    },
+    {
+      "id": "G04",
+      "title": "Production access, testing and device verification applicability",
+      "platform": "google",
+      "feature": null,
+      "evidence_groups": [
+        [
+          "console"
+        ]
+      ],
+      "all_locales": false
+    }
+  ]
+}

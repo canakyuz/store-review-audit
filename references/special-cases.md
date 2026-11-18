@@ -1,0 +1,41 @@
+# Conditional checks and recurring failures
+
+## Games, coins and gambling
+
+Map currency acquisition (purchase/ad/free), stakes, possible losses, reward determination, player transfers, cash-out/redemption and real-world prizes. Inspect gameplay and backend rules. A board-game label proves nothing; no cash-out does not by itself rule out simulated gambling.
+
+Apply each store independently. Google checks include real-money stakes/prizes, regions/eligibility, gambling ads and ratings separately from virtual-only play. Do not transfer Apple's organization rule mechanically to Google. Check loot boxes/contests where present. Do not equate store taxonomy with a legal gambling classification.
+
+Illustrative rejection pattern: a review message may block an app that declares simulated gambling while its publisher is an individual. Preserve the exact current message as submission-specific evidence. If the content exists, investigate the stated organization/transfer remedy; if absent, correct the declaration truthfully. Never simply switch the answer to No.
+
+## Subscriptions and documents
+
+Align product configuration, UI, entitlements and locale-specific disclosures. Exercise purchase/cancel/restore/expiry and relevant revocation/error cases as engineering verification; do not label every test a verbatim policy requirement.
+
+For a subscription rejection concerning EULA metadata, inspect every localized description or the configured custom EULA as applicable. A privacy-policy link alone does not address a missing EULA. If standard-EULA use is confirmed, preserve existing descriptions and append the appropriate label:
+
+English: Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
+Turkish: Kullanım Koşulları (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
+Do not automatically use Apple's EULA for Android. Verify the developer's applicable terms; do not invent legal obligations or claim GDPR compliance.
+
+## Expo / React Native / RevenueCat / AdMob
+
+Inspect package/lockfiles, app.json/app.config.*, eas.json, Info.plist, entitlements, merged AndroidManifest.xml, privacy manifests, production environment references and actual artifacts when available. Native dependencies/plugins can add permissions. Declared config is not proof of uploaded-build contents.
+
+For RevenueCat, independently verify iOS/Android apps, product/offering/package mappings, entitlements, project association and production keys by presence without exposing values. Check store integration and purchase evidence. A working iOS offering does not prove Android works.
+
+For ads, inspect SDK versions, formats/placement/reward flow, age settings, data sharing and consent configuration. Verify applicable Google consent requirements and Apple ATT separately; UMP and ATT are not interchangeable. Do not label SDK traffic anonymous without evidence.
+
+## AI, health, kids and UGC
+
+- AI: inspect generated content types, abuse controls/reporting and model-provider data flows. Verify Google's current AI rules and Apple's privacy/consent rules for third-party AI sharing.
+- Health/fitness: distinguish wellness from diagnosis/treatment; inspect HealthKit/Health Connect, declarations, sensitive-data use and evidence for claims. Do not invent regulatory clearance.
+- Kids: inspect intended audience and actual age flows, SDK/ad eligibility, parental gates, external links and data practices against each platform.
+- UGC/chat: inspect reporting, blocking, moderation and contact paths against current policies.
+- Spam/template apps: compare meaningful workflows/content/value across sibling apps. Icon/name/colour changes alone do not establish that functionality/spam concerns were resolved.
+
+## Rejection response
+
+Split metadata, binary, account and policy issues. Give the smallest truthful fix, whether a new build appears necessary, and verify resubmission options. Draft a factual reply with build, each issue, completed changes, navigation and evidence. Use future tense for incomplete work. One fixed link does not resolve every issue. Do not send under audit-only authorization.

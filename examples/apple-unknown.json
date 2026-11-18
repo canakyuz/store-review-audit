@@ -1,0 +1,206 @@
+{
+  "scope": {
+    "app_id": "com.example.app",
+    "platform": "apple",
+    "build": "42",
+    "audit_date": "2026-11-17",
+    "account_type": "unknown",
+    "locales": [
+      "en-GB",
+      "tr"
+    ],
+    "territories": [
+      "GB",
+      "TR"
+    ]
+  },
+  "features": {
+    "accounts": {
+      "value": null,
+      "evidence": []
+    },
+    "purchases": {
+      "value": null,
+      "evidence": []
+    },
+    "subscriptions": {
+      "value": null,
+      "evidence": []
+    },
+    "ads": {
+      "value": null,
+      "evidence": []
+    },
+    "game_economy": {
+      "value": null,
+      "evidence": []
+    },
+    "kids": {
+      "value": null,
+      "evidence": []
+    },
+    "ugc": {
+      "value": null,
+      "evidence": []
+    },
+    "ai": {
+      "value": null,
+      "evidence": []
+    },
+    "health": {
+      "value": null,
+      "evidence": []
+    },
+    "sensitive_permissions": {
+      "value": null,
+      "evidence": []
+    },
+    "regulated": {
+      "value": null,
+      "evidence": []
+    }
+  },
+  "evidence": [],
+  "policies": [],
+  "controls": [
+    {
+      "id": "C01",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Identity, exact build and scope",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C02",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Publisher eligibility and pending console tasks",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C03",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Reviewer access and core runtime flow",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C04",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Store listing accuracy and every locale",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C05",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Privacy policy identity, content and access",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C06",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: SDK/backend data inventory and declaration consistency",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C07",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Audience, content and age declarations",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C08",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Rights, originality and substantive functionality",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C09",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Build compatibility, signing and release prerequisites",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C10",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: In-app account and associated-data deletion",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C11",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Purchases, restore and entitlements",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C12",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Subscription terms, price, renewal and cancellation",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C13",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Ads, consent and SDK behaviour",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C14",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Currency, wagers, prizes and entity classification",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C15",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Children's content, gates and SDK eligibility",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C16",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: UGC/chat reporting, blocking and moderation",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C17",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: AI content safeguards and third-party data sharing",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C18",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Health claims, data permissions and declarations",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C19",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Sensitive permissions and background behaviour",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "C20",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Regulated features and territorial eligibility",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "A01",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: EULA configuration and complete localization coverage",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "A02",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: App Privacy labels and native privacy manifests",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    },
+    {
+      "id": "A03",
+      "status": "UNKNOWN",
+      "missing_evidence": "Current app, console and policy evidence for: Login-service rule applicability and implementation",
+      "next_action": "Inspect applicability and collect evidence under strict-mode.md."
+    }
+  ],
+  "rejections": []
+}
