@@ -23,7 +23,7 @@ For full preflight audits, strict mode is mandatory. Read [strict-mode.md](refer
 
 Policy reading is the largest cost of an audit. If your environment can run subagents or a smaller model, give each worker the applicable clauses or pages for one platform and ask for verbatim quotes with URL, section and access date, in the ledger's `policies` format. Keep applicability, PASS/FAIL, declaration conflicts and legal drafts with the main agent. Audit Apple and Google in separate contexts when possible. Without subagents, do the same steps yourself. A single page you can search locally (the Apple guidelines) needs no worker.
 
-Fetch one catalogue item with scripts/fetch_policies.py --get <id>; it says whether the page still matches the catalogue. If a Google page cannot be fetched (support.google.com may answer HTTP 429 or a captcha), use its entry in [policy-digest.json](references/policy-digest.json): requirements paraphrased from the page, valid while their hash matches the catalogue. Record such a policy with via "digest" (see strict-mode.md). Never fill a gap from memory.
+Fetch the applicable items in one call: scripts/fetch_policies.py --get <id> [<id> ...]. It prints live text and whether it still matches the catalogue; when a page cannot be fetched (support.google.com may answer HTTP 429 or a captcha) it prints the entry from [policy-digest.json](references/policy-digest.json) instead, paraphrased requirements valid while their hash matches the catalogue. Record those with via "digest" (see strict-mode.md). Never fill a gap from memory.
 
 ## Evidence rules
 

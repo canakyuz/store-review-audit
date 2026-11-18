@@ -92,8 +92,22 @@ class CheckModeTest(unittest.TestCase):
             self.assertIn("matches catalogue: yes", out.getvalue())
             self.assertIn("1.1.1 Defamatory content.", out.getvalue())
 
+    def test_get_falls_back_to_a_current_digest_entry(self):
+        page = fp.item("google:policy:1", "google", "Ads", "https://support.google.com/x?hl=en", "ads text")
+        with tempfile.TemporaryDirectory() as tmp:
+            catalog, digest = Path(tmp) / "c.json", Path(tmp) / "d.json"
+            catalog.write_text(json.dumps({"checked": "2026-11-18", "items": fp.public([page])}))
+            digest.write_text(json.dumps([{"id": "google:policy:1", "sha256": page["sha256"], "url": page["url"], "requirements": ["Ads must not imitate system UI."], "announced": []}]))
+            out = io.StringIO()
+            with mock.patch.object(fp, "CATALOG", catalog), mock.patch.object(fp, "DIGEST", digest), \
+                    mock.patch.object(fp, "fetch", side_effect=fp.FetchError("429")), redirect_stdout(out):
+                self.assertEqual(fp.main(["--get", "google:policy:1"]), 0)
+            self.assertIn("source: digest", out.getvalue())
+            self.assertIn("Ads must not imitate system UI.", out.getvalue())
+            self.assertIn('catalog_id "google:policy:1"', out.getvalue())
+
     def test_get_unknown_id_exits_two(self):
-        with mock.patch("sys.stderr", io.StringIO()):
+        with mock.patch("sys.stderr", io.StringIO()), redirect_stdout(io.StringIO()):
             self.assertEqual(fp.main(["--get", "apple:no-such-clause"]), 2)
 
     def test_captcha_redirect_fails_without_retrying(self):

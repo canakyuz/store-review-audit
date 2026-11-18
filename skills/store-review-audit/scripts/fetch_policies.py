@@ -8,7 +8,8 @@ normalised text. It stores no policy text: Apple and Google own that text.
 
   fetch_policies.py --write   fetch everything and rewrite the catalogue
   fetch_policies.py --check   fetch everything and report changes; exit 1 if any
-  fetch_policies.py --get ID  print the current text of one catalogue item (for an audit)
+  fetch_policies.py --get ID [ID ...]  print the live text of catalogue items for an audit;
+                              an item that cannot be fetched prints its digest entry instead
   exit 2: a source could not be fetched (nothing compared, catalogue untouched)
 
 Full texts go to .policy-cache/ (git-ignored) so a change can be diffed locally.
@@ -31,6 +32,7 @@ ROOT = Path(__file__).resolve().parent.parent
 CATALOG = ROOT / "references" / "policy-catalog.json"
 SOURCES_MD = ROOT / "references" / "sources.md"
 CACHE = ROOT / ".policy-cache"
+DIGEST = ROOT / "references" / "policy-digest.json"
 
 APPLE_GUIDELINES = "https://developer.apple.com/app-store/review/guidelines/"
 GOOGLE_POLICY_INDEX = "https://play.google/developer-content-policy/"
@@ -190,6 +192,47 @@ def topic_pages(known_urls: set[str]) -> list[dict]:
     return items
 
 
+def get_items(ids: list[str]) -> int:
+    """Live text where reachable, else the digest entry; one guidelines fetch for all Apple ids."""
+    global RETRIES, BACKOFF
+    RETRIES, BACKOFF = 1, 0  # an audit should not wait on a rate-limited host; the digest is the fallback
+    data = json.loads(CATALOG.read_text(encoding="utf-8"))
+    catalog = {i["id"]: i for i in data["items"]}
+    digest = {d["id"]: d for d in json.loads(DIGEST.read_text(encoding="utf-8"))} if DIGEST.exists() else {}
+    guidelines = None
+    if any(i.startswith("apple:") for i in ids):
+        try:
+            guidelines = {i["id"]: i for i in apple_guidelines(fetch(APPLE_GUIDELINES))}
+        except FetchError as exc:
+            print(f"error\t{exc}", file=sys.stderr)
+            return 2
+    code = 0
+    for item_id in ids:
+        print(f"=== {item_id}")
+        try:
+            one = get_one(item_id, catalog, guidelines)
+            same = catalog[item_id]["sha256"] == one["sha256"]
+            print(f"source: live\nurl: {one['url']}\nmatches catalogue: {'yes' if same else 'no, the page changed since the catalogue was checked'}\n")
+            print(one["_text"] + "\n")
+        except KeyError as exc:
+            print(f"error: {exc}\n")
+            code = 2
+        except FetchError as exc:
+            entry = digest.get(item_id)
+            if not entry or entry["sha256"] != catalog[item_id]["sha256"]:
+                print(f"error: {exc}; no current digest entry\n")
+                code = 2
+                continue
+            print(f"source: digest (page unreachable: {exc})\nurl: {entry['url']}\ncatalogue checked: {data.get('checked')}\n"
+                  f'record with via "digest", catalog_id "{item_id}" and exactly this url\n')
+            for r in entry["requirements"]:
+                print("- " + r)
+            for a in entry.get("announced", []):
+                print(f"- announced, effective {a['effective']}: {a['text']}")
+            print()
+    return code
+
+
 def progress(message: str) -> None:
     print(message, file=sys.stderr, flush=True)
 
@@ -209,17 +252,17 @@ def build() -> list[dict]:
     return items
 
 
-def get_one(item_id: str) -> dict:
+def get_one(item_id: str, catalog: dict, guidelines: dict | None = None) -> dict:
     """Fetch the live text of one catalogue item; same parsing as build()."""
-    catalog = {i["id"]: i for i in json.loads(CATALOG.read_text(encoding="utf-8"))["items"]}
     if item_id not in catalog:
         raise KeyError(f"unknown catalogue id: {item_id}")
     url = catalog[item_id]["url"]
     if item_id.startswith("apple:"):
-        found = [i for i in apple_guidelines(fetch(APPLE_GUIDELINES)) if i["id"] == item_id]
-        if not found:
+        if guidelines is None:
+            guidelines = {i["id"]: i for i in apple_guidelines(fetch(APPLE_GUIDELINES))}
+        if item_id not in guidelines:
             raise KeyError(f"{item_id} is no longer on the guidelines page")
-        return found[0]
+        return guidelines[item_id]
     doc = apple_doc_text(url)
     if doc is not None:
         return item(item_id, "apple", doc[:90], url, doc)
@@ -252,23 +295,12 @@ def main(argv: list[str] | None = None) -> int:
     mode = parser.add_mutually_exclusive_group(required=True)
     mode.add_argument("--write", action="store_true", help="rewrite the catalogue")
     mode.add_argument("--check", action="store_true", help="report changes against the catalogue")
-    mode.add_argument("--get", metavar="ID", help="print the live text of one catalogue item")
+    mode.add_argument("--get", metavar="ID", nargs="+", help="print the live text of catalogue items")
     parser.add_argument("--date", help="catalogue date, YYYY-MM-DD (default: keep or today)")
     args = parser.parse_args(argv)
 
     if args.get:
-        global RETRIES, BACKOFF
-        RETRIES, BACKOFF = 2, 5  # an audit should not wait minutes for one page
-        try:
-            one = get_one(args.get)
-        except (FetchError, KeyError) as exc:
-            print(f"error\t{exc}", file=sys.stderr)
-            return 2
-        known = {i["id"]: i["sha256"] for i in json.loads(CATALOG.read_text(encoding="utf-8"))["items"]}
-        same = known.get(args.get) == one["sha256"]
-        print(f"{one['url']}\nmatches catalogue: {'yes' if same else 'no, the page changed since the catalogue was checked'}\n")
-        print(one["_text"])
-        return 0
+        return get_items(args.get)
     try:
         items = build()
     except FetchError as exc:

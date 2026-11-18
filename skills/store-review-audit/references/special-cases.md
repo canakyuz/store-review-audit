@@ -6,6 +6,8 @@ Map currency acquisition (purchase/ad/free), stakes, possible losses, reward det
 
 Apply each store independently. Google checks include real-money stakes/prizes, regions/eligibility, gambling ads and ratings separately from virtual-only play. Do not transfer Apple's organization rule mechanically to Google. Check loot boxes/contests where present. Do not equate store taxonomy with a legal gambling classification.
 
+Paid randomized rewards (a spin, chest or draw bought with real money or with currency that can be bought) are loot boxes: both stores require the odds to be disclosed before purchase (Apple 3.1.1, Google Payments).
+
 Sweepstakes and contests (Apple 5.3): the developer is the sponsor and the in-app official rules state that Apple is not a sponsor. Google real-money gambling: free download, no Play Billing for wagers, responsible-gambling information; loyalty programs follow their own rules.
 
 Illustrative rejection pattern: a review message may block an app that declares simulated gambling while its publisher is an individual. Preserve the exact current message as submission-specific evidence. If the content exists, investigate the stated organization/transfer remedy; if absent, correct the declaration truthfully. Never simply switch the answer to No.
