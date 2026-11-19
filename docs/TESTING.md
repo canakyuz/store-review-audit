@@ -1,5 +1,12 @@
 # Validation
 
+## 0.4.0 (2026-11-19)
+
+- 65 automated tests pass locally and on GitHub Actions.
+- Benchmark run 3 with the 0.4.0 candidate, from a clean install: 15 of 15 seeded problems caught, 0 of 14 traps failed, 54 of 54 checks (156k agent tokens).
+- Google digest: 80 random requirements checked against the page text by an independent agent, 73 correct, 7 imprecise, 0 wrong; all 550 sentences were then rechecked for the two error types found and 30 were corrected.
+- Coverage: 596 requirements checked against the skill text; 425 reached by a specific line, 141 routed to the full policy (niche categories), 30 missed and now covered.
+
 ## 0.3.0 (2026-11-18)
 
 - 62 automated tests pass locally on Python 3.12.

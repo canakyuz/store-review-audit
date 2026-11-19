@@ -1,6 +1,6 @@
 # Output contract
 
-Scale detail to the request. Write in the user's language (English by default) with clickable official sources. If your environment cannot write files, return the report and the ledgers in your reply instead of skipping them.
+Scale detail to the request. Write in the user's language (English by default) with clickable official sources. If the report or ledgers cannot be written as files for any reason, return them in your reply instead of skipping them.
 
 ## Scope and verdict
 

@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.4.0 (2026-11-19)
+
+- The catalogue also watches the Apple Developer Program License Agreement, App Store Connect screenshot specifications, Google's target SDK requirements, the Data safety form and Play store listing graphics (214 items).
+- Google digest accuracy: an independent check of 80 random requirements found 73 correct, 7 imprecise and none wrong; a full pass then corrected 30 more sentences where "should" had become "must" or a condition had been dropped.
+- Coverage recheck of all 596 Google requirements and open Apple clauses against the skill: 30 that ordinary apps can break were not reached by any checklist line; ten added sentences now cover them.
+- `fetch_policies.py --get ... --grep WORD` prints only the relevant sentences.
+- The policy watch can rewrite the catalogue on demand and reports the branch through an issue.
+- Clarified: code that shows a behaviour can support FAIL, G04 for organization accounts, review-message records, returning the report when files cannot be written.
+
 ## 0.3.1 (2026-11-18)
 
 - `fetch_policies.py --list WORD` finds catalogue ids by title.

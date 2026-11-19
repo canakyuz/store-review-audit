@@ -118,6 +118,10 @@ class CheckModeTest(unittest.TestCase):
             self.assertIn("=== apple:1.1.2", out.getvalue())
             self.assertNotIn("=== apple:1\n", out.getvalue())
 
+    def test_grep_keeps_only_matching_sentences(self):
+        self.assertEqual(fp.matching("Ads are fine. Location needs a declaration. Done.", ["location"]), "Location needs a declaration.")
+        self.assertIn("no sentence mentions", fp.matching("Ads are fine.", ["sms"]))
+
     def test_get_unknown_id_exits_two(self):
         with mock.patch("sys.stderr", io.StringIO()), redirect_stdout(io.StringIO()):
             self.assertEqual(fp.main(["--get", "apple:no-such-clause"]), 2)

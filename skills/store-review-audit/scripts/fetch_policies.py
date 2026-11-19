@@ -9,7 +9,8 @@ normalised text. It stores no policy text: Apple and Google own that text.
   fetch_policies.py --write   fetch everything and rewrite the catalogue
   fetch_policies.py --check   fetch everything and report changes; exit 1 if any
   fetch_policies.py --list [WORD]     list catalogue ids and titles, optionally filtered
-  fetch_policies.py --get ID [ID ...]  print the live text of catalogue items for an audit;
+  fetch_policies.py --get ID [ID ...] [--grep WORD ...]  print the live text of catalogue
+                              items for an audit, or only the sentences containing a WORD;
                               an item that cannot be fetched prints its digest entry instead
   exit 2: a source could not be fetched (nothing compared, catalogue untouched)
 
@@ -193,7 +194,17 @@ def topic_pages(known_urls: set[str]) -> list[dict]:
     return items
 
 
-def get_items(ids: list[str]) -> int:
+def matching(text: str, words: list[str] | None) -> str:
+    """Whole text, or only the sentences that mention one of the words."""
+    if not words:
+        return text
+    lowered = [w.lower() for w in words]
+    sentences = re.split(r"(?<=[.!?])\s+", text)
+    hits = [s for s in sentences if any(w in s.lower() for w in lowered)]
+    return "\n".join(hits) if hits else "(no sentence mentions " + ", ".join(words) + ")"
+
+
+def get_items(ids: list[str], words: list[str] | None = None) -> int:
     """Live text where reachable, else the digest entry; one guidelines fetch for all Apple ids."""
     global RETRIES, BACKOFF
     RETRIES, BACKOFF = 1, 0  # an audit should not wait on a rate-limited host; the digest is the fallback
@@ -222,7 +233,7 @@ def get_items(ids: list[str]) -> int:
             one = get_one(item_id, catalog, guidelines)
             same = catalog[item_id]["sha256"] == one["sha256"]
             print(f"source: live\nurl: {one['url']}\nmatches catalogue: {'yes' if same else 'no, the page changed since the catalogue was checked'}\n")
-            print(one["_text"] + "\n")
+            print(matching(one["_text"], words) + "\n")
         except KeyError as exc:
             print(f"error: {exc}\n")
             code = 2
@@ -235,7 +246,8 @@ def get_items(ids: list[str]) -> int:
             print(f"source: digest (page unreachable; audits do not retry: {exc})\nurl: {entry['url']}\ncatalogue checked: {data.get('checked')}\n"
                   f'record with via "digest", catalog_id "{item_id}" and exactly this url\n')
             for r in entry["requirements"]:
-                print("- " + r)
+                if not words or any(w.lower() in r.lower() for w in words):
+                    print("- " + r)
             for a in entry.get("announced", []):
                 print(f"- announced, effective {a['effective']}: {a['text']}")
             print()
@@ -306,11 +318,12 @@ def main(argv: list[str] | None = None) -> int:
     mode.add_argument("--check", action="store_true", help="report changes against the catalogue")
     mode.add_argument("--get", metavar="ID", nargs="+", help="print the live text of catalogue items")
     mode.add_argument("--list", metavar="WORD", nargs="?", const="", help="list catalogue ids and titles containing WORD")
+    parser.add_argument("--grep", metavar="WORD", nargs="+", help="with --get: print only sentences containing a WORD")
     parser.add_argument("--date", help="catalogue date, YYYY-MM-DD (default: keep or today)")
     args = parser.parse_args(argv)
 
     if args.get:
-        return get_items(args.get)
+        return get_items(args.get, args.grep)
     if args.list is not None:
         word = args.list.lower()
         for i in json.loads(CATALOG.read_text(encoding="utf-8"))["items"]:
