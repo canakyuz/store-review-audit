@@ -1,5 +1,5 @@
 {
- "checked": "2026-11-18",
+ "checked": "2026-11-19",
  "items": [
   {
    "id": "apple:introduction",
@@ -1498,6 +1498,14 @@
    "words": 712
   },
   {
+   "id": "topic:developer.android.com/google/play/requirements/target-sdk",
+   "platform": "google",
+   "title": "Meet Google Play's target API level requirement | Other Play guides | Android Developers",
+   "url": "https://developer.android.com/google/play/requirements/target-sdk",
+   "sha256": "5f322ba3ba1a408c8cf3819e088068e61d2c3030b72f2cb38328b696f8f85290",
+   "words": 2873
+  },
+  {
    "id": "topic:developer.apple.com/app-store/app-privacy-details",
    "platform": "apple",
    "title": "App Privacy Details - App Store - Apple Developer",
@@ -1570,6 +1578,14 @@
    "words": 3348
   },
   {
+   "id": "topic:developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications",
+   "platform": "apple",
+   "title": "Screenshot specifications - App information - Reference - App Store Connect - Help - Apple Developer",
+   "url": "https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications",
+   "sha256": "91bf0faed1ae513d125778e859f8a99de919ce32224240b9f79c43355db6d7af",
+   "words": 1421
+  },
+  {
    "id": "topic:developer.apple.com/help/app-store-connect/transfer-an-app/overview-of-app-transfer",
    "platform": "apple",
    "title": "Overview of app transfer - Transfer an app - App Store Connect - Help - Apple Developer",
@@ -1610,12 +1626,28 @@
    "words": 574
   },
   {
+   "id": "topic:developer.apple.com/support/terms/apple-developer-program-license-agreement",
+   "platform": "apple",
+   "title": "Apple Developer Program License Agreement - Agreements and Guidelines - Support - Apple Developer",
+   "url": "https://developer.apple.com/support/terms/apple-developer-program-license-agreement/",
+   "sha256": "51ff933feffc1f74c8c6b9468f4fefd9f28fbf0271e22506b0371476269e005f",
+   "words": 98524
+  },
+  {
    "id": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
    "platform": "google",
    "title": "Google Play",
    "url": "https://play.google/intl/en_uk/developer-distribution-agreement.html",
    "sha256": "ea7dc6336f87f73bae379faa2887c6bf43ce6d45bec6e508a194054dc6d20ead",
    "words": 6428
+  },
+  {
+   "id": "topic:support.google.com/googleplay/android-developer/answer/10787469",
+   "platform": "google",
+   "title": "Provide information for Google Play's Data safety section - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/10787469",
+   "sha256": "077a56368b42fc156d870fcceeff945293260fec202249f4178d7193b5533f75",
+   "words": 10138
   },
   {
    "id": "topic:support.google.com/googleplay/android-developer/answer/13327111",
@@ -1664,6 +1696,14 @@
    "url": "https://support.google.com/googleplay/android-developer/answer/9859455",
    "sha256": "10dd363cbd1627724473cdaf397f1ccc192805de79f1c7b45b52b476392fcb3c",
    "words": 1556
+  },
+  {
+   "id": "topic:support.google.com/googleplay/android-developer/answer/9866151",
+   "platform": "google",
+   "title": "Add preview assets to showcase your app - Play Console Help",
+   "url": "https://support.google.com/googleplay/android-developer/answer/9866151",
+   "sha256": "0c97c78470c3051e15ce5991e111a1e75d2802772ebfb87220e995d79f224205",
+   "words": 4259
   },
   {
    "id": "topic:www.apple.com/legal/internet-services/itunes/dev/stdeula",
