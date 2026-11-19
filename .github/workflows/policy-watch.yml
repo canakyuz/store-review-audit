@@ -17,7 +17,6 @@ on:
 permissions:
   contents: write
   issues: write
-  pull-requests: write
 
 jobs:
   check:
@@ -40,7 +39,8 @@ jobs:
           git checkout -b "$branch"
           git commit -am "chore: rewrite policy catalogue from current sources" || { echo "catalogue unchanged"; exit 0; }
           git push origin "$branch"
-          gh pr create --title "Rewrite policy catalogue" --body "Rewritten from the current sources by the Policy watch workflow. Update policy-digest.json for any changed Google policy page before merging." --head "$branch"
+          # Actions may not open pull requests in this repository; an issue points at the branch instead.
+          gh issue create --title "Policy catalogue rewritten on $branch" --body "Review and merge https://github.com/${{ github.repository }}/compare/main...$branch . Update policy-digest.json for any changed Google policy page first."
       - name: Compare policies with the catalogue
         if: ${{ !inputs.rewrite }}
         id: check
