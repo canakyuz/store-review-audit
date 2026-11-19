@@ -6194,5 +6194,3926 @@
     "applied": "2026-11-18"
    }
   ]
+ },
+ "recheck": {
+  "date": "2026-11-19",
+  "method": "Every Google digest requirement and the 68 Apple clauses earlier found partial or uncovered were checked against the skill as written.",
+  "result": {
+   "counts": {
+    "google": {
+     "covered": 369,
+     "general": 133,
+     "missed": 26
+    },
+    "apple": {
+     "covered": 56,
+     "general": 8,
+     "missed": 4
+    },
+    "total": {
+     "covered": 425,
+     "general": 141,
+     "missed": 30
+    }
+   },
+   "proposals": {
+    "P1": {
+     "file": "checklist.md",
+     "row_or_section": "Baseline: both stores / Quality",
+     "text": "Notifications serve only the app's own features with clear attribution and never advertise other apps or third-party services, and the app never urges users to restart the device, turn off security features or Play Protect, remove other apps or believe the device is infected (Apple 2.4.4, Google Unauthorized Use of System Functionality, Deceptive Behavior and Mobile Unwanted Software)."
+    },
+    "P2": {
+     "file": "checklist.md",
+     "row_or_section": "Google Play / Listing",
+     "text": "The description has no keyword stuffing, word lists or comparisons with other apps, the title, icon and developer name use no ALL CAPS outside the brand or repeated special characters, the icon shows no fake notification dot or misleading download symbol, and features that differ by region or device and significant changes since the last version are stated in the listing and What's new."
+    },
+    "P3": {
+     "file": "checklist.md",
+     "row_or_section": "Google Play / Listing",
+     "text": "Ask how the app is promoted, including by ad networks and affiliates: no ads resembling system alerts, no sexually explicit ads, no unsolicited SMS and no redirect or download to Google Play without user action (Google App Promotion)."
+    },
+    "P4": {
+     "file": "special-cases.md",
+     "row_or_section": "Expo / React Native / RevenueCat / AdMob, ads paragraph",
+     "text": "No ad is hidden, off screen or placed where users tap by accident, no ad click or personal data is required before the app can be used, and the app is not designed mainly to display ads (Apple 3.2.2, Google Ads and Ad Fraud)."
+    },
+    "P5": {
+     "file": "checklist.md",
+     "row_or_section": "Apple / Core rules",
+     "text": "Business rules outside 3.1: prices are not irrationally high, the app does not arbitrarily restrict who may use it by location or carrier, and it offers no App Store-like catalogue of third-party apps and no manipulation of rank on other services (Apple 3 and 3.2.2)."
+    },
+    "P6": {
+     "file": "checklist.md",
+     "row_or_section": "Baseline: both stores / Rights/originality",
+     "text": "No Apple emoji images are bundled in the binary or shown on Android (Apple 4.5.6), and a custom emoji font or library supports the current Unicode Emoji version on Android 12 or later (Google Android Emoji Policy)."
+    },
+    "P7": {
+     "file": "checklist.md",
+     "row_or_section": "Google Play / Code integrity",
+     "text": "No code or SDK version that introduces or exploits a security vulnerability, including any vulnerability Play Console reports for the app."
+    },
+    "P8": {
+     "file": "checklist.md",
+     "row_or_section": "Google Play / Permissions",
+     "text": "Each runtime permission is requested in context when its feature is used, and data already granted gets fresh consent before any new use."
+    },
+    "P9": {
+     "file": "checklist.md",
+     "row_or_section": "Google Play / Data safety",
+     "text": "Age Signals API results are used only to meet legal age obligations, never for ads, analytics, personalization, profiling or transfer to third parties."
+    },
+    "P10": {
+     "file": "special-cases.md",
+     "row_or_section": "AI, health, kids and UGC / AI bullet",
+     "text": "Media-altering or generating features add a clear watermark or disclaimer to realistic alterations involving public figures or news broadcasts, and the listing does not use public figures or sensitive events to advertise them (Google Deceptive Behavior)."
+    }
+   },
+   "missed": [
+    {
+     "source": "google:policy:11190644",
+     "requirement": "Apps must support the latest Unicode Emoji on Android 12 and later, and apps with custom emoji implementations, including third-party libraries, must add full support within 4 months of a new Unicode Emoji release.",
+     "why_it_matters": "Any app rendering emoji through its own font or library on Android 12+; chat and keyboard apps commonly bundle one.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Baseline: both stores / Rights/originality",
+      "text": "No Apple emoji images are bundled in the binary or shown on Android (Apple 4.5.6), and a custom emoji font or library supports the current Unicode Emoji version on Android 12 or later (Google Android Emoji Policy)."
+     },
+     "proposal_id": "P6"
+    },
+    {
+     "source": "google:policy:11190644",
+     "requirement": "Apps with custom emoji implementations, including ones from third-party libraries, must fully support a new Unicode Emoji release on Android 12 or later within 4 months of its release.",
+     "why_it_matters": "Same: bundled emoji libraries go stale silently and fall out of the 4-month window.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Baseline: both stores / Rights/originality",
+      "text": "No Apple emoji images are bundled in the binary or shown on Android (Apple 4.5.6), and a custom emoji font or library supports the current Unicode Emoji version on Android 12 or later (Google Android Emoji Policy)."
+     },
+     "proposal_id": "P6"
+    },
+    {
+     "source": "google:policy:12579724",
+     "requirement": "Apps must request sensitive permissions in context, incrementally, so users understand why, and must obtain fresh affirmative consent before using the data for any purpose beyond what the user agreed to.",
+     "why_it_matters": "Requesting every permission at first launch is a common pattern in Expo/RN starters and a frequent Play finding.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Permissions",
+      "text": "Each runtime permission is requested in context when its feature is used, and data already granted gets fresh consent before any new use."
+     },
+     "proposal_id": "P8"
+    },
+    {
+     "source": "google:policy:12579724",
+     "requirement": "Data from the Age Signals API may be used only to meet legal obligations such as providing age-appropriate experiences, never for advertising, marketing, personalization, analytics, profiling or transfer to third parties unless legally required.",
+     "why_it_matters": "Age-verification laws push ordinary apps to integrate Age Signals; its use limits are not in Data safety or the Kids bullet.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Data safety",
+      "text": "Age Signals API results are used only to meet legal age obligations, never for ads, analytics, personalization, profiling or transfer to third parties."
+     },
+     "proposal_id": "P9"
+    },
+    {
+     "source": "google:policy:9857753",
+     "requirement": "Apps must not force users to click an ad or submit personal information for advertising purposes before they can fully use the app.",
+     "why_it_matters": "Ad-supported apps that gate content behind an ad click or a data form break the Ads policy; nothing asks about it.",
+     "proposal": {
+      "file": "special-cases.md",
+      "row_or_section": "Expo / React Native / RevenueCat / AdMob, ads paragraph",
+      "text": "No ad is hidden, off screen or placed where users tap by accident, no ad click or personal data is required before the app can be used, and the app is not designed mainly to display ads (Apple 3.2.2, Google Ads and Ad Fraud)."
+     },
+     "proposal_id": "P4"
+    },
+    {
+     "source": "google:policy:9888077",
+     "requirement": "Apps must not mislead users into removing or disabling third-party apps or changing device settings, and must not encourage or incentivize such removal or changes unless it is part of a verifiable security service.",
+     "why_it_matters": "Cleaner, battery and security apps commonly nudge users to uninstall apps or change settings.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Baseline: both stores / Quality",
+      "text": "Notifications serve only the app's own features with clear attribution and never advertise other apps or third-party services, and the app never urges users to restart the device, turn off security features or Play Protect, remove other apps or believe the device is infected (Apple 2.4.4, Google Unauthorized Use of System Functionality, Deceptive Behavior and Mobile Unwanted Software)."
+     },
+     "proposal_id": "P1"
+    },
+    {
+     "source": "google:policy:9888077",
+     "requirement": "Apps whose core functionality differs by geography, device parameters or other user-dependent data must prominently disclose those differences in the store listing.",
+     "why_it_matters": "Region- or device-dependent features (common with regional pricing, content licensing or hardware features) must be stated in the listing; the skill only puts regional differences in review notes.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Listing",
+      "text": "The description has no keyword stuffing, word lists or comparisons with other apps, the title, icon and developer name use no ALL CAPS outside the brand or repeated special characters, the icon shows no fake notification dot or misleading download symbol, and features that differ by region or device and significant changes since the last version are stated in the listing and What's new."
+     },
+     "proposal_id": "P2"
+    },
+    {
+     "source": "google:policy:9888077",
+     "requirement": "Apps that change significantly between versions must alert users (for example in What's new) and update the store listing.",
+     "why_it_matters": "Significant changes must be reflected in What's new and the listing; the checklist only bans promotional release notes.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Listing",
+      "text": "The description has no keyword stuffing, word lists or comparisons with other apps, the title, icon and developer name use no ALL CAPS outside the brand or repeated special characters, the icon shows no fake notification dot or misleading download symbol, and features that differ by region or device and significant changes since the last version are stated in the listing and What's new."
+     },
+     "proposal_id": "P2"
+    },
+    {
+     "source": "google:policy:9888077",
+     "requirement": "Apps must not create, promote or help create demonstrably misleading imagery, audio, video or text that may cause harm regarding sensitive events, politics, social issues or public concern; exceptions exist for public interest, clearly artificial images, obvious satire or parody, and media carrying user-facing disclaimers or watermarks.",
+     "why_it_matters": "AI photo, video and voice generators are a large consumer category; the AI bullet points at the AI-Generated Content page, not Deceptive Behavior's manipulated-media rules.",
+     "proposal": {
+      "file": "special-cases.md",
+      "row_or_section": "AI, health, kids and UGC / AI bullet",
+      "text": "Media-altering or generating features add a clear watermark or disclaimer to realistic alterations involving public figures or news broadcasts, and the listing does not use public figures or sensitive events to advertise them (Google Deceptive Behavior)."
+     },
+     "proposal_id": "P10"
+    },
+    {
+     "source": "google:policy:9888077",
+     "requirement": "Apps must not alter media to mimic a news broadcast using real outlet names or logos, or add public figures to clips, without a clear watermark or disclaimer.",
+     "why_it_matters": "Same category: news-style or public-figure edits need a watermark or disclaimer.",
+     "proposal": {
+      "file": "special-cases.md",
+      "row_or_section": "AI, health, kids and UGC / AI bullet",
+      "text": "Media-altering or generating features add a clear watermark or disclaimer to realistic alterations involving public figures or news broadcasts, and the listing does not use public figures or sensitive events to advertise them (Google Deceptive Behavior)."
+     },
+     "proposal_id": "P10"
+    },
+    {
+     "source": "google:policy:9888077",
+     "requirement": "Store listings must not use public figures or media from sensitive events to advertise media-altering capabilities.",
+     "why_it_matters": "Listings for face-swap and AI video apps often feature celebrities.",
+     "proposal": {
+      "file": "special-cases.md",
+      "row_or_section": "AI, health, kids and UGC / AI bullet",
+      "text": "Media-altering or generating features add a clear watermark or disclaimer to realistic alterations involving public figures or news broadcasts, and the listing does not use public figures or sensitive events to advertise them (Google Deceptive Behavior)."
+     },
+     "proposal_id": "P10"
+    },
+    {
+     "source": "google:policy:9888379",
+     "requirement": "Apps must not contain code that introduces or exploits security vulnerabilities.",
+     "why_it_matters": "Play issues security-vulnerability notices for app code and outdated SDK versions; no line asks the auditor to look for them.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Code integrity",
+      "text": "No code or SDK version that introduces or exploits a security vulnerability, including any vulnerability Play Console reports for the app."
+     },
+     "proposal_id": "P7"
+    },
+    {
+     "source": "google:policy:9898842",
+     "requirement": "The description must not contain repetitive or unrelated keywords or references, word blocks, vertical or horizontal word lists, or data comparisons with other apps or brands.",
+     "why_it_matters": "Keyword stuffing and comparison tables are among the most common Play metadata rejections.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Listing",
+      "text": "The description has no keyword stuffing, word lists or comparisons with other apps, the title, icon and developer name use no ALL CAPS outside the brand or repeated special characters, the icon shows no fake notification dot or misleading download symbol, and features that differ by region or device and significant changes since the last version are stated in the listing and What's new."
+     },
+     "proposal_id": "P2"
+    },
+    {
+     "source": "google:policy:9898842",
+     "requirement": "The title, icon and developer name must not contain emojis, emoticons (including kaomojis), repeated or irrelevant special characters, or ALL CAPS unless part of the brand name.",
+     "why_it_matters": "The checklist bans emoji in title and icon but not ALL CAPS, repeated special characters or the developer name.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Listing",
+      "text": "The description has no keyword stuffing, word lists or comparisons with other apps, the title, icon and developer name use no ALL CAPS outside the brand or repeated special characters, the icon shows no fake notification dot or misleading download symbol, and features that differ by region or device and significant changes since the last version are stated in the listing and What's new."
+     },
+     "proposal_id": "P2"
+    },
+    {
+     "source": "google:policy:9898842",
+     "requirement": "App icons must not use misleading symbols, such as a new-message dot when there are no new messages or a download or install symbol when the app is not about downloading content.",
+     "why_it_matters": "Fake badge dots on icons are a common growth trick and an explicit metadata violation.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Listing",
+      "text": "The description has no keyword stuffing, word lists or comparisons with other apps, the title, icon and developer name use no ALL CAPS outside the brand or repeated special characters, the icon shows no fake notification dot or misleading download symbol, and features that differ by region or device and significant changes since the last version are stated in the listing and What's new."
+     },
+     "proposal_id": "P2"
+    },
+    {
+     "source": "google:policy:9899004",
+     "requirement": "Apps must not engage in or benefit from promotion practices, such as ads, that are deceptive or harmful or that violate Developer Program Policies, wherever the promotion runs (websites, apps or other properties).",
+     "why_it_matters": "Most apps buy installs; Google enforces against the app for its promotion, which the skill never asks about.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Listing",
+      "text": "Ask how the app is promoted, including by ad networks and affiliates: no ads resembling system alerts, no sexually explicit ads, no unsolicited SMS and no redirect or download to Google Play without user action (Google App Promotion)."
+     },
+     "proposal_id": "P3"
+    },
+    {
+     "source": "google:policy:9899004",
+     "requirement": "Promotion must not use ads resembling system notifications or alerts, or misleading text or imagery to elicit downloads.",
+     "why_it_matters": "System-alert style ads from ad networks are attributed to the promoted app.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Listing",
+      "text": "Ask how the app is promoted, including by ad networks and affiliates: no ads resembling system alerts, no sexually explicit ads, no unsolicited SMS and no redirect or download to Google Play without user action (Google App Promotion)."
+     },
+     "proposal_id": "P3"
+    },
+    {
+     "source": "google:policy:9899004",
+     "requirement": "Apps must not be promoted with sexually explicit ads directing users to the Play listing.",
+     "why_it_matters": "Sexually explicit acquisition ads lead to enforcement on the app.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Listing",
+      "text": "Ask how the app is promoted, including by ad networks and affiliates: no ads resembling system alerts, no sexually explicit ads, no unsolicited SMS and no redirect or download to Google Play without user action (Google App Promotion)."
+     },
+     "proposal_id": "P3"
+    },
+    {
+     "source": "google:policy:9899004",
+     "requirement": "Promotion or installation tactics must not redirect users to Google Play or download apps without informed user action.",
+     "why_it_matters": "Auto-redirect to Play is a common ad-network practice.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Listing",
+      "text": "Ask how the app is promoted, including by ad networks and affiliates: no ads resembling system alerts, no sexually explicit ads, no unsolicited SMS and no redirect or download to Google Play without user action (Google App Promotion)."
+     },
+     "proposal_id": "P3"
+    },
+    {
+     "source": "google:policy:9899004",
+     "requirement": "Apps must not be promoted through unsolicited SMS.",
+     "why_it_matters": "SMS promotion campaigns are common in some markets.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Listing",
+      "text": "Ask how the app is promoted, including by ad networks and affiliates: no ads resembling system alerts, no sexually explicit ads, no unsolicited SMS and no redirect or download to Google Play without user action (Google App Promotion)."
+     },
+     "proposal_id": "P3"
+    },
+    {
+     "source": "google:policy:9899004",
+     "requirement": "Developers are responsible for ensuring that ad networks, affiliates and ads associated with the app comply with these rules.",
+     "why_it_matters": "The developer is responsible for affiliates and ad networks.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Google Play / Listing",
+      "text": "Ask how the app is promoted, including by ad networks and affiliates: no ads resembling system alerts, no sexually explicit ads, no unsolicited SMS and no redirect or download to Google Play without user action (Google App Promotion)."
+     },
+     "proposal_id": "P3"
+    },
+    {
+     "source": "google:policy:9969861",
+     "requirement": "Apps may use system-level notifications only for the app's own integral features (such as an airline's deals or a game's in-game promotions), clearly attributed to the app, and must not use them to serve ads or promote a different app or third-party service.",
+     "why_it_matters": "Many apps send push; using system notifications to advertise other apps or third parties is prohibited, and the checklist's push rules are Apple-only.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Baseline: both stores / Quality",
+      "text": "Notifications serve only the app's own features with clear attribution and never advertise other apps or third-party services, and the app never urges users to restart the device, turn off security features or Play Protect, remove other apps or believe the device is infected (Apple 2.4.4, Google Unauthorized Use of System Functionality, Deceptive Behavior and Mobile Unwanted Software)."
+     },
+     "proposal_id": "P1"
+    },
+    {
+     "source": "google:policy:9969955",
+     "requirement": "Apps must not render ads that are hidden, off-screen or otherwise invisible to the user.",
+     "why_it_matters": "Hidden or stacked banners occur in ad-mediated apps and count as ad fraud.",
+     "proposal": {
+      "file": "special-cases.md",
+      "row_or_section": "Expo / React Native / RevenueCat / AdMob, ads paragraph",
+      "text": "No ad is hidden, off screen or placed where users tap by accident, no ad click or personal data is required before the app can be used, and the app is not designed mainly to display ads (Apple 3.2.2, Google Ads and Ad Fraud)."
+     },
+     "proposal_id": "P4"
+    },
+    {
+     "source": "google:policy:9969955",
+     "requirement": "Apps must not automatically generate ad clicks without user intent, or network traffic equivalent to clicks, and must not implement ads in ways that trick users into accidental clicks.",
+     "why_it_matters": "Ads placed next to navigation buttons cause accidental clicks; the ads paragraph covers only interstitial timing and close buttons.",
+     "proposal": {
+      "file": "special-cases.md",
+      "row_or_section": "Expo / React Native / RevenueCat / AdMob, ads paragraph",
+      "text": "No ad is hidden, off screen or placed where users tap by accident, no ad click or personal data is required before the app can be used, and the app is not designed mainly to display ads (Apple 3.2.2, Google Ads and Ad Fraud)."
+     },
+     "proposal_id": "P4"
+    },
+    {
+     "source": "google:policy:9970222",
+     "requirement": "Apps must not misrepresent the state of the device, for example by claiming it is in a critical security state or infected with viruses.",
+     "why_it_matters": "Fake 'device infected' or 'battery critical' warnings are typical of cleaner and booster apps.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Baseline: both stores / Quality",
+      "text": "Notifications serve only the app's own features with clear attribution and never advertise other apps or third-party services, and the app never urges users to restart the device, turn off security features or Play Protect, remove other apps or believe the device is infected (Apple 2.4.4, Google Unauthorized Use of System Functionality, Deceptive Behavior and Mobile Unwanted Software)."
+     },
+     "proposal_id": "P1"
+    },
+    {
+     "source": "google:policy:9970222",
+     "requirement": "Apps must not ask or trick users into turning off device protections such as Google Play Protect, including by offering features or rewards in exchange.",
+     "why_it_matters": "Asking users to disable Play Protect (often for sideloaded add-ons) is prohibited.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Baseline: both stores / Quality",
+      "text": "Notifications serve only the app's own features with clear attribution and never advertise other apps or third-party services, and the app never urges users to restart the device, turn off security features or Play Protect, remove other apps or believe the device is infected (Apple 2.4.4, Google Unauthorized Use of System Functionality, Deceptive Behavior and Mobile Unwanted Software)."
+     },
+     "proposal_id": "P1"
+    },
+    {
+     "source": "apple:2.4.4",
+     "requirement": "2.4.4 Apps should never suggest or require a restart of the device or modifications to system settings unrelated to the core functionality of the app. For example, don\u2019t encourage users to turn off Wi-Fi, disable security features, etc.",
+     "why_it_matters": "Apps that tell users to restart, turn off Wi-Fi or disable security features are rejected; Runtime conduct only covers the app changing system controls itself.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Baseline: both stores / Quality",
+      "text": "Notifications serve only the app's own features with clear attribution and never advertise other apps or third-party services, and the app never urges users to restart the device, turn off security features or Play Protect, remove other apps or believe the device is infected (Apple 2.4.4, Google Unauthorized Use of System Functionality, Deceptive Behavior and Mobile Unwanted Software)."
+     },
+     "proposal_id": "P1"
+    },
+    {
+     "source": "apple:3",
+     "requirement": "3. Business There are many ways to monetize your app on the App Store. If your business model isn\u2019t obvious, make sure to explain in its metadata and App Review notes. If we can\u2019t understand how your app works or your in-app purchases aren\u2019t immediately obvious, it will delay your review and may trigger a rejection. And while pricing is up to you, we won\u2019t distribute apps and in-app purchase items that are clear rip-offs. We\u2019ll reject expensive apps that try to cheat users with irrationally high prices. If we find that you have attempted to manipulate reviews, inflate your chart rankings with ",
+     "why_it_matters": "Every paid app or IAP is exposed to the irrationally-high-price rule in the section 3 preamble, which an auditor reading 3.1 skips.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Apple / Core rules",
+      "text": "Business rules outside 3.1: prices are not irrationally high, the app does not arbitrarily restrict who may use it by location or carrier, and it offers no App Store-like catalogue of third-party apps and no manipulation of rank on other services (Apple 3 and 3.2.2)."
+     },
+     "proposal_id": "P5"
+    },
+    {
+     "source": "apple:3.2.2",
+     "requirement": "3.2.2 Unacceptable (i) Creating an interface for displaying third-party apps, extensions, or plug-ins similar to the App Store or as a general-interest collection. (ii) Intentionally omitted. (iii) Artificially increasing the number of impressions or click-throughs of ads, as well as apps that are designed predominantly for the display of ads. (iv) Unless you are an approved nonprofit or otherwise permitted under Section 3.2.1 (vi) above, collecting funds within the app for charities and fundraisers. Apps that seek to raise money for such causes must be free on the App Store and may only colle",
+     "why_it_matters": "3.2.2(iii) ad-display apps, (v) arbitrary geo or carrier restriction, (i) store-like catalogues and (vii) rank manipulation are not named; loans, charity and forced ratings parts are covered.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Apple / Core rules",
+      "text": "Business rules outside 3.1: prices are not irrationally high, the app does not arbitrarily restrict who may use it by location or carrier, and it offers no App Store-like catalogue of third-party apps and no manipulation of rank on other services (Apple 3 and 3.2.2)."
+     },
+     "proposal_id": "P5"
+    },
+    {
+     "source": "apple:4.5.6",
+     "requirement": "4.5.6 Apps may use Unicode characters that render as Apple emoji in their app and app metadata. Apple emoji may not be used on other platforms or embedded directly in your app binary.",
+     "why_it_matters": "Cross-platform apps (React Native emoji pickers, shared asset packs) often bundle Apple emoji images, which is prohibited in the binary and on Android.",
+     "proposal": {
+      "file": "checklist.md",
+      "row_or_section": "Baseline: both stores / Rights/originality",
+      "text": "No Apple emoji images are bundled in the binary or shown on Android (Apple 4.5.6), and a custom emoji font or library supports the current Unicode Emoji version on Android 12 or later (Google Android Emoji Policy)."
+     },
+     "proposal_id": "P6"
+    }
+   ],
+   "classification": [
+    {
+     "source": "google:policy:10148323",
+     "n": "0.0",
+     "status": "covered",
+     "ref": "C04/C08 checklist Google Listing: no impersonation"
+    },
+    {
+     "source": "google:policy:10788890",
+     "n": "2.0",
+     "status": "covered",
+     "ref": "C02/G04 checklist Account, Production access, Reviewer access"
+    },
+    {
+     "source": "google:policy:10788890",
+     "n": "2.1",
+     "status": "covered",
+     "ref": "C02/G04 checklist Account, Production access, Reviewer access"
+    },
+    {
+     "source": "google:policy:10788890",
+     "n": "2.2",
+     "status": "covered",
+     "ref": "C02/G04 checklist Account, Production access, Reviewer access"
+    },
+    {
+     "source": "google:policy:10788890",
+     "n": "2.3",
+     "status": "covered",
+     "ref": "C02/G04 checklist Account, Production access, Reviewer access"
+    },
+    {
+     "source": "google:policy:10788890",
+     "n": "2.4",
+     "status": "covered",
+     "ref": "C02/G04 checklist Account, Production access, Reviewer access"
+    },
+    {
+     "source": "google:policy:10788890",
+     "n": "2.5",
+     "status": "covered",
+     "ref": "C02/G04 checklist Account, Production access, Reviewer access"
+    },
+    {
+     "source": "google:policy:10788890",
+     "n": "2.6",
+     "status": "covered",
+     "ref": "C02/G04 checklist Account, Production access, Reviewer access"
+    },
+    {
+     "source": "google:policy:10788890",
+     "n": "2.7",
+     "status": "covered",
+     "ref": "C02/G04 checklist Account, Production access, Reviewer access"
+    },
+    {
+     "source": "google:policy:10788890",
+     "n": "2.8",
+     "status": "covered",
+     "ref": "C02/G04 checklist Account, Production access, Reviewer access"
+    },
+    {
+     "source": "google:policy:10788890",
+     "n": "2.9",
+     "status": "general",
+     "ref": "Account transfer conduct"
+    },
+    {
+     "source": "google:policy:11189134",
+     "n": "3.0",
+     "status": "general",
+     "ref": "Hostile downloaders: browsers/file sharing only"
+    },
+    {
+     "source": "google:policy:11189134",
+     "n": "3.1",
+     "status": "general",
+     "ref": "Hostile downloaders: browsers/file sharing only"
+    },
+    {
+     "source": "google:policy:11190644",
+     "n": "4.0",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:11190644",
+     "n": "4.1",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:11917020",
+     "n": "5.0",
+     "status": "covered",
+     "ref": "C09 checklist Google Build/release: target API"
+    },
+    {
+     "source": "google:policy:11917020",
+     "n": "5.1",
+     "status": "covered",
+     "ref": "C09 checklist Google Build/release: target API"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.0",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.1",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.2",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.3",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.4",
+     "status": "covered",
+     "ref": "C03 checklist Quality: denied permissions; C19"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.5",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.6",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.7",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.8",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.9",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.10",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.11",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.12",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.13",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.14",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.15",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.16",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.17",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.18",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.19",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.20",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.21",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.22",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.23",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.24",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.25",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.26",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.27",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.28",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.29",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.30",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.31",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.32",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.33",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.34",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.35",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.36",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions (named restricted permissions, background location, FGS, full-screen intent, media, accessibility, VPN); C18 special-cases Health"
+    },
+    {
+     "source": "google:policy:12579724",
+     "n": "6.37",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:12918983",
+     "n": "7.0",
+     "status": "general",
+     "ref": "Obligations on ads SDK providers, not app developers"
+    },
+    {
+     "source": "google:policy:12918983",
+     "n": "7.1",
+     "status": "general",
+     "ref": "Obligations on ads SDK providers, not app developers"
+    },
+    {
+     "source": "google:policy:12918983",
+     "n": "7.2",
+     "status": "general",
+     "ref": "Obligations on ads SDK providers, not app developers"
+    },
+    {
+     "source": "google:policy:12918983",
+     "n": "7.3",
+     "status": "covered",
+     "ref": "C15 special-cases Kids: Families ad-format limits"
+    },
+    {
+     "source": "google:policy:12918983",
+     "n": "7.4",
+     "status": "general",
+     "ref": "Obligations on ads SDK providers, not app developers"
+    },
+    {
+     "source": "google:policy:12918983",
+     "n": "7.5",
+     "status": "general",
+     "ref": "Obligations on ads SDK providers, not app developers"
+    },
+    {
+     "source": "google:policy:12918983",
+     "n": "7.6",
+     "status": "general",
+     "ref": "Obligations on ads SDK providers, not app developers"
+    },
+    {
+     "source": "google:policy:12918983",
+     "n": "7.7",
+     "status": "general",
+     "ref": "Obligations on ads SDK providers, not app developers"
+    },
+    {
+     "source": "google:policy:12918983",
+     "n": "7.8",
+     "status": "covered",
+     "ref": "C15 special-cases Kids: Families identifier limits"
+    },
+    {
+     "source": "google:policy:12918983",
+     "n": "7.9",
+     "status": "general",
+     "ref": "Obligations on ads SDK providers, not app developers"
+    },
+    {
+     "source": "google:policy:12918983",
+     "n": "7.10",
+     "status": "general",
+     "ref": "Obligations on ads SDK providers, not app developers"
+    },
+    {
+     "source": "google:policy:12918983",
+     "n": "7.11",
+     "status": "general",
+     "ref": "Obligations on ads SDK providers, not app developers"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.0",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.1",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.2",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.3",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.4",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.5",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.6",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.7",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.8",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.9",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.10",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.11",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.12",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.13",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.14",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.15",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.16",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13323374",
+     "n": "8.17",
+     "status": "covered",
+     "ref": "C06/G02 checklist Data inventory, Data safety, Code integrity"
+    },
+    {
+     "source": "google:policy:13607354",
+     "n": "9.0",
+     "status": "covered",
+     "ref": "C20 special-cases Regulated services: crypto, no on-device mining"
+    },
+    {
+     "source": "google:policy:13607354",
+     "n": "9.1",
+     "status": "covered",
+     "ref": "C20 special-cases Regulated services: crypto, no on-device mining"
+    },
+    {
+     "source": "google:policy:13607354",
+     "n": "9.2",
+     "status": "general",
+     "ref": "Blockchain/NFT: regulated module routes to full policy"
+    },
+    {
+     "source": "google:policy:13607354",
+     "n": "9.3",
+     "status": "general",
+     "ref": "Blockchain/NFT: regulated module routes to full policy"
+    },
+    {
+     "source": "google:policy:13607354",
+     "n": "9.4",
+     "status": "general",
+     "ref": "Blockchain/NFT: regulated module routes to full policy"
+    },
+    {
+     "source": "google:policy:13607354",
+     "n": "9.5",
+     "status": "general",
+     "ref": "Blockchain/NFT: regulated module routes to full policy"
+    },
+    {
+     "source": "google:policy:13607354",
+     "n": "9.6",
+     "status": "general",
+     "ref": "Blockchain/NFT: regulated module routes to full policy"
+    },
+    {
+     "source": "google:policy:13607354",
+     "n": "9.7",
+     "status": "general",
+     "ref": "Blockchain/NFT: regulated module routes to full policy"
+    },
+    {
+     "source": "google:policy:13607354",
+     "n": "9.8",
+     "status": "general",
+     "ref": "Blockchain/NFT: regulated module routes to full policy"
+    },
+    {
+     "source": "google:policy:13985936",
+     "n": "10.0",
+     "status": "covered",
+     "ref": "C17 checklist Restricted content (AI output); special-cases AI bullet (abuse controls/reporting)"
+    },
+    {
+     "source": "google:policy:13985936",
+     "n": "10.1",
+     "status": "covered",
+     "ref": "C17 checklist Restricted content (AI output); special-cases AI bullet (abuse controls/reporting)"
+    },
+    {
+     "source": "google:policy:13985936",
+     "n": "10.2",
+     "status": "covered",
+     "ref": "C17 special-cases AI bullet: abuse controls/reporting"
+    },
+    {
+     "source": "google:policy:16302250",
+     "n": "11.0",
+     "status": "covered",
+     "ref": "G01/C16 checklist Google App content: minor-blocking where required; special-cases Games (real-money)"
+    },
+    {
+     "source": "google:policy:16302250",
+     "n": "11.1",
+     "status": "covered",
+     "ref": "G01/C16 checklist Google App content: minor-blocking where required; special-cases Games (real-money)"
+    },
+    {
+     "source": "google:policy:16302250",
+     "n": "11.2",
+     "status": "covered",
+     "ref": "G01/C16 checklist Google App content: minor-blocking where required; special-cases Games (real-money)"
+    },
+    {
+     "source": "google:policy:16302250",
+     "n": "11.3",
+     "status": "covered",
+     "ref": "G01/C16 checklist Google App content: minor-blocking where required; special-cases Games (real-money)"
+    },
+    {
+     "source": "google:policy:17190352",
+     "n": "12.0",
+     "status": "general",
+     "ref": "Version record; crane games"
+    },
+    {
+     "source": "google:policy:17190352",
+     "n": "12.1",
+     "status": "general",
+     "ref": "Version record; crane games"
+    },
+    {
+     "source": "google:policy:18100766",
+     "n": "13.0",
+     "status": "covered",
+     "ref": "C03 checklist Quality: same behaviour during review"
+    },
+    {
+     "source": "google:policy:18100766",
+     "n": "13.1",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions: MANAGE_EXTERNAL_STORAGE, accessibility"
+    },
+    {
+     "source": "google:policy:18100766",
+     "n": "13.2",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions: MANAGE_EXTERNAL_STORAGE, accessibility"
+    },
+    {
+     "source": "google:policy:18100766",
+     "n": "13.3",
+     "status": "general",
+     "ref": "Regional or niche"
+    },
+    {
+     "source": "google:policy:18100766",
+     "n": "13.4",
+     "status": "general",
+     "ref": "Regional or niche"
+    },
+    {
+     "source": "google:policy:18100766",
+     "n": "13.5",
+     "status": "covered",
+     "ref": "C11 checklist Google Billing"
+    },
+    {
+     "source": "google:policy:18100766",
+     "n": "13.6",
+     "status": "covered",
+     "ref": "C02/G04 checklist Production access: trader status declaration"
+    },
+    {
+     "source": "google:policy:18100766",
+     "n": "13.7",
+     "status": "general",
+     "ref": "Regional or niche"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.0",
+     "status": "covered",
+     "ref": "C13 special-cases Ads paragraph (content rating, system UI, outside app, lock screen, interstitial timing and close button)"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.1",
+     "status": "covered",
+     "ref": "C13 special-cases Ads paragraph (content rating, system UI, outside app, lock screen, interstitial timing and close button)"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.2",
+     "status": "covered",
+     "ref": "C13 special-cases Ads paragraph (content rating, system UI, outside app, lock screen, interstitial timing and close button)"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.3",
+     "status": "covered",
+     "ref": "C13 special-cases Ads paragraph (content rating, system UI, outside app, lock screen, interstitial timing and close button)"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.4",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.5",
+     "status": "covered",
+     "ref": "C13 special-cases Ads paragraph (content rating, system UI, outside app, lock screen, interstitial timing and close button)"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.6",
+     "status": "covered",
+     "ref": "C13 special-cases Ads paragraph (content rating, system UI, outside app, lock screen, interstitial timing and close button)"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.7",
+     "status": "covered",
+     "ref": "C13 special-cases Ads paragraph (content rating, system UI, outside app, lock screen, interstitial timing and close button)"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.8",
+     "status": "covered",
+     "ref": "C13 special-cases Ads paragraph (content rating, system UI, outside app, lock screen, interstitial timing and close button)"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.9",
+     "status": "covered",
+     "ref": "C13 special-cases Ads paragraph (content rating, system UI, outside app, lock screen, interstitial timing and close button)"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.10",
+     "status": "covered",
+     "ref": "C13 special-cases Ads paragraph (content rating, system UI, outside app, lock screen, interstitial timing and close button)"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.11",
+     "status": "general",
+     "ref": "Ad fraud: deliberate conduct"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.12",
+     "status": "covered",
+     "ref": "C19 Permissions: location; C13 Ads"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.13",
+     "status": "covered",
+     "ref": "G02 checklist Google Data safety: identifier rules; C05 Privacy"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.14",
+     "status": "covered",
+     "ref": "G02 checklist Google Data safety: identifier rules; C05 Privacy"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.15",
+     "status": "covered",
+     "ref": "G02 checklist Google Data safety: identifier rules; C05 Privacy"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.16",
+     "status": "covered",
+     "ref": "G02 checklist Google Data safety: identifier rules; C05 Privacy"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.17",
+     "status": "covered",
+     "ref": "G02 checklist Google Data safety: identifier rules; C05 Privacy"
+    },
+    {
+     "source": "google:policy:9857753",
+     "n": "14.18",
+     "status": "covered",
+     "ref": "G02 checklist Google Data safety: identifier rules; C05 Privacy"
+    },
+    {
+     "source": "google:policy:9858738",
+     "n": "15.0",
+     "status": "covered",
+     "ref": "C11/C14 checklist Google Billing; Listing extra-purchase marking; special-cases loot boxes"
+    },
+    {
+     "source": "google:policy:9858738",
+     "n": "15.1",
+     "status": "covered",
+     "ref": "C11/C14 checklist Google Billing; Listing extra-purchase marking; special-cases loot boxes"
+    },
+    {
+     "source": "google:policy:9858738",
+     "n": "15.2",
+     "status": "covered",
+     "ref": "C11/C14 checklist Google Billing; Listing extra-purchase marking; special-cases loot boxes"
+    },
+    {
+     "source": "google:policy:9858738",
+     "n": "15.3",
+     "status": "covered",
+     "ref": "C11/C14 checklist Google Billing; Listing extra-purchase marking; special-cases loot boxes"
+    },
+    {
+     "source": "google:policy:9858738",
+     "n": "15.4",
+     "status": "covered",
+     "ref": "C11/C14 checklist Google Billing; Listing extra-purchase marking; special-cases loot boxes"
+    },
+    {
+     "source": "google:policy:9858738",
+     "n": "15.5",
+     "status": "covered",
+     "ref": "C11/C14 checklist Google Billing; Listing extra-purchase marking; special-cases loot boxes"
+    },
+    {
+     "source": "google:policy:9858738",
+     "n": "15.6",
+     "status": "covered",
+     "ref": "C11/C14 checklist Google Billing; Listing extra-purchase marking; special-cases loot boxes"
+    },
+    {
+     "source": "google:policy:9858738",
+     "n": "15.7",
+     "status": "covered",
+     "ref": "C11/C14 checklist Google Billing; Listing extra-purchase marking; special-cases loot boxes"
+    },
+    {
+     "source": "google:policy:9858738",
+     "n": "15.8",
+     "status": "covered",
+     "ref": "C11/C14 checklist Google Billing; Listing extra-purchase marking; special-cases loot boxes"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.0",
+     "status": "covered",
+     "ref": "C20 special-cases Regulated services (loans APR and term, binary options, licence evidence; Google Financial Services)"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.1",
+     "status": "covered",
+     "ref": "C20 special-cases Regulated services (loans APR and term, binary options, licence evidence; Google Financial Services)"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.2",
+     "status": "covered",
+     "ref": "G01 checklist Google App content: all declarations"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.3",
+     "status": "covered",
+     "ref": "C20 special-cases Regulated services (loans APR and term, binary options, licence evidence; Google Financial Services)"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.4",
+     "status": "covered",
+     "ref": "C20 special-cases Regulated services (loans APR and term, binary options, licence evidence; Google Financial Services)"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.5",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.6",
+     "status": "covered",
+     "ref": "C20 special-cases Regulated services (loans APR and term, binary options, licence evidence; Google Financial Services)"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.7",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.8",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.9",
+     "status": "covered",
+     "ref": "C20 special-cases Regulated services (loans APR and term, binary options, licence evidence; Google Financial Services)"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.10",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.11",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.12",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.13",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.14",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.15",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.16",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.17",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.18",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876821",
+     "n": "16.19",
+     "status": "general",
+     "ref": "Country-specific finance rules: conditional module routes to full Financial Services policy"
+    },
+    {
+     "source": "google:policy:9876937",
+     "n": "17.0",
+     "status": "covered",
+     "ref": "C16 special-cases UGC/chat bullet (terms before posting, reporting, blocking, moderation, sexual content filtered)"
+    },
+    {
+     "source": "google:policy:9876937",
+     "n": "17.1",
+     "status": "covered",
+     "ref": "C16 special-cases UGC/chat bullet (terms before posting, reporting, blocking, moderation, sexual content filtered)"
+    },
+    {
+     "source": "google:policy:9876937",
+     "n": "17.2",
+     "status": "covered",
+     "ref": "C16 special-cases UGC/chat bullet (terms before posting, reporting, blocking, moderation, sexual content filtered)"
+    },
+    {
+     "source": "google:policy:9876937",
+     "n": "17.3",
+     "status": "covered",
+     "ref": "C16 special-cases UGC/chat bullet (terms before posting, reporting, blocking, moderation, sexual content filtered)"
+    },
+    {
+     "source": "google:policy:9876937",
+     "n": "17.4",
+     "status": "covered",
+     "ref": "C16 special-cases UGC/chat bullet (terms before posting, reporting, blocking, moderation, sexual content filtered)"
+    },
+    {
+     "source": "google:policy:9876937",
+     "n": "17.5",
+     "status": "covered",
+     "ref": "C16 special-cases UGC/chat bullet (terms before posting, reporting, blocking, moderation, sexual content filtered)"
+    },
+    {
+     "source": "google:policy:9876937",
+     "n": "17.6",
+     "status": "general",
+     "ref": "AR UGC / monetization safeguards: UGC module routes to full policy"
+    },
+    {
+     "source": "google:policy:9876937",
+     "n": "17.7",
+     "status": "general",
+     "ref": "AR UGC / monetization safeguards: UGC module routes to full policy"
+    },
+    {
+     "source": "google:policy:9876937",
+     "n": "17.8",
+     "status": "covered",
+     "ref": "C16 special-cases UGC/chat bullet (terms before posting, reporting, blocking, moderation, sexual content filtered)"
+    },
+    {
+     "source": "google:policy:9876937",
+     "n": "17.9",
+     "status": "covered",
+     "ref": "C16 special-cases UGC/chat bullet (terms before posting, reporting, blocking, moderation, sexual content filtered)"
+    },
+    {
+     "source": "google:policy:9876937",
+     "n": "17.10",
+     "status": "covered",
+     "ref": "C16 special-cases UGC/chat bullet (terms before posting, reporting, blocking, moderation, sexual content filtered)"
+    },
+    {
+     "source": "google:policy:9876937",
+     "n": "17.11",
+     "status": "covered",
+     "ref": "C16 special-cases UGC/chat bullet (terms before posting, reporting, blocking, moderation, sexual content filtered)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.0",
+     "status": "covered",
+     "ref": "C14/C20 special-cases Games, coins and gambling (real-money, loyalty, gambling ads)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.1",
+     "status": "covered",
+     "ref": "C14/C20 special-cases Games, coins and gambling (real-money, loyalty, gambling ads)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.2",
+     "status": "covered",
+     "ref": "C14/C20 special-cases Games, coins and gambling (real-money, loyalty, gambling ads)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.3",
+     "status": "covered",
+     "ref": "C14/C20 special-cases Games, coins and gambling (real-money, loyalty, gambling ads)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.4",
+     "status": "covered",
+     "ref": "C14/C20 special-cases Games, coins and gambling (real-money, loyalty, gambling ads)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.5",
+     "status": "general",
+     "ref": "Licensed gambling / DFS specifics"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.6",
+     "status": "covered",
+     "ref": "C14/C20 special-cases Games, coins and gambling (real-money, loyalty, gambling ads)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.7",
+     "status": "covered",
+     "ref": "C14/C20 special-cases Games, coins and gambling (real-money, loyalty, gambling ads)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.8",
+     "status": "covered",
+     "ref": "C14/C20 special-cases Games, coins and gambling (real-money, loyalty, gambling ads)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.9",
+     "status": "covered",
+     "ref": "C14/C20 special-cases Games, coins and gambling (real-money, loyalty, gambling ads)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.10",
+     "status": "covered",
+     "ref": "C14/C20 special-cases Games, coins and gambling (real-money, loyalty, gambling ads)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.11",
+     "status": "covered",
+     "ref": "C14/C20 special-cases Games, coins and gambling (real-money, loyalty, gambling ads)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.12",
+     "status": "covered",
+     "ref": "C14/C20 special-cases Games, coins and gambling (real-money, loyalty, gambling ads)"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.13",
+     "status": "general",
+     "ref": "Licensed gambling / DFS specifics"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.14",
+     "status": "general",
+     "ref": "Licensed gambling / DFS specifics"
+    },
+    {
+     "source": "google:policy:9877032",
+     "n": "18.15",
+     "status": "general",
+     "ref": "Licensed gambling / DFS specifics"
+    },
+    {
+     "source": "google:policy:9878809",
+     "n": "19.0",
+     "status": "covered",
+     "ref": "C07/C16 checklist Restricted content (Google Restricted Content); Google App content child-safety standards"
+    },
+    {
+     "source": "google:policy:9878809",
+     "n": "19.1",
+     "status": "covered",
+     "ref": "C07/C16 checklist Restricted content (Google Restricted Content); Google App content child-safety standards"
+    },
+    {
+     "source": "google:policy:9878809",
+     "n": "19.2",
+     "status": "covered",
+     "ref": "C07/C16 checklist Restricted content (Google Restricted Content); Google App content child-safety standards"
+    },
+    {
+     "source": "google:policy:9878809",
+     "n": "19.3",
+     "status": "covered",
+     "ref": "C07/C16 checklist Restricted content (Google Restricted Content); Google App content child-safety standards"
+    },
+    {
+     "source": "google:policy:9878809",
+     "n": "19.4",
+     "status": "covered",
+     "ref": "C07/C16 checklist Restricted content (Google Restricted Content); Google App content child-safety standards"
+    },
+    {
+     "source": "google:policy:9878809",
+     "n": "19.5",
+     "status": "covered",
+     "ref": "C07/C16 checklist Restricted content (Google Restricted Content); Google App content child-safety standards"
+    },
+    {
+     "source": "google:policy:9878809",
+     "n": "19.6",
+     "status": "covered",
+     "ref": "C07/C16 checklist Restricted content (Google Restricted Content); Google App content child-safety standards"
+    },
+    {
+     "source": "google:policy:9878809",
+     "n": "19.7",
+     "status": "covered",
+     "ref": "C07/C16 checklist Restricted content (Google Restricted Content); Google App content child-safety standards"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.0",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.1",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.2",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.3",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.4",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.5",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.6",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.7",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.8",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.9",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.10",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.11",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.12",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.13",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.14",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.15",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878810",
+     "n": "20.16",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Google Restricted Content)"
+    },
+    {
+     "source": "google:policy:9878877",
+     "n": "21.0",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content"
+    },
+    {
+     "source": "google:policy:9878877",
+     "n": "21.1",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.0",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.1",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.2",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.3",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.4",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.5",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.6",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.7",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.8",
+     "status": "general",
+     "ref": "Narrow health sub-categories"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.9",
+     "status": "general",
+     "ref": "Narrow health sub-categories"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.10",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.11",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.12",
+     "status": "general",
+     "ref": "Narrow health sub-categories"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.13",
+     "status": "general",
+     "ref": "Narrow health sub-categories"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.14",
+     "status": "general",
+     "ref": "Narrow health sub-categories"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.15",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.16",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.17",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.18",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.19",
+     "status": "covered",
+     "ref": "C18 special-cases Health/fitness bullet; G01 App content declarations"
+    },
+    {
+     "source": "google:policy:9878878",
+     "n": "22.20",
+     "status": "general",
+     "ref": "Narrow health sub-categories"
+    },
+    {
+     "source": "google:policy:9888072",
+     "n": "23.0",
+     "status": "covered",
+     "ref": "C08 checklist Rights/originality (rights, infringement, counterfeit)"
+    },
+    {
+     "source": "google:policy:9888072",
+     "n": "23.1",
+     "status": "covered",
+     "ref": "C08 checklist Rights/originality (rights, infringement, counterfeit)"
+    },
+    {
+     "source": "google:policy:9888072",
+     "n": "23.2",
+     "status": "covered",
+     "ref": "C08 checklist Rights/originality (rights, infringement, counterfeit)"
+    },
+    {
+     "source": "google:policy:9888072",
+     "n": "23.3",
+     "status": "covered",
+     "ref": "C08 checklist Rights/originality (rights, infringement, counterfeit)"
+    },
+    {
+     "source": "google:policy:9888072",
+     "n": "23.4",
+     "status": "covered",
+     "ref": "C08 checklist Rights/originality (rights, infringement, counterfeit)"
+    },
+    {
+     "source": "google:policy:9888072",
+     "n": "23.5",
+     "status": "covered",
+     "ref": "C08 checklist Rights/originality (rights, infringement, counterfeit)"
+    },
+    {
+     "source": "google:policy:9888072",
+     "n": "23.6",
+     "status": "general",
+     "ref": "Advisory"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.0",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.1",
+     "status": "general",
+     "ref": "Legal-basis or niche (security apps, Google-sourced EEA data)"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.2",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.3",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.4",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.5",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.6",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.7",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.8",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.9",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.10",
+     "status": "general",
+     "ref": "Legal-basis or niche (security apps, Google-sourced EEA data)"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.11",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.12",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.13",
+     "status": "general",
+     "ref": "Legal-basis or niche (security apps, Google-sourced EEA data)"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.14",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.15",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.16",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.17",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.18",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.19",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.20",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.21",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.22",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.23",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.24",
+     "status": "covered",
+     "ref": "C05/C06/G02/G03/C10 checklist Data safety, Privacy, Deletion rows"
+    },
+    {
+     "source": "google:policy:9888076",
+     "n": "24.25",
+     "status": "general",
+     "ref": "Legal-basis or niche (security apps, Google-sourced EEA data)"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.0",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.1",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.2",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.3",
+     "status": "general",
+     "ref": "Election content: niche"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.4",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.5",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.6",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.7",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.8",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.9",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.10",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.11",
+     "status": "covered",
+     "ref": "C07 checklist Restricted content: fake official documents"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.12",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.13",
+     "status": "covered",
+     "ref": "C03 checklist Quality: prompt before large downloads"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.14",
+     "status": "covered",
+     "ref": "C07 checklist Restricted content: personal data of people who did not consent"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.15",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.16",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.17",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.18",
+     "status": "covered",
+     "ref": "C07 Restricted content applies to media apps"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.19",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.20",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.21",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.22",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.23",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888077",
+     "n": "25.24",
+     "status": "covered",
+     "ref": "C04/C08/C03 checklist Listing, Quality, Code integrity"
+    },
+    {
+     "source": "google:policy:9888374",
+     "n": "26.0",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing: no impersonation"
+    },
+    {
+     "source": "google:policy:9888374",
+     "n": "26.1",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing: no impersonation"
+    },
+    {
+     "source": "google:policy:9888374",
+     "n": "26.2",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing: no impersonation"
+    },
+    {
+     "source": "google:policy:9888374",
+     "n": "26.3",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing: no impersonation"
+    },
+    {
+     "source": "google:policy:9888374",
+     "n": "26.4",
+     "status": "general",
+     "ref": "Android Brand Guidelines"
+    },
+    {
+     "source": "google:policy:9888374",
+     "n": "26.5",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing: no impersonation"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.0",
+     "status": "covered",
+     "ref": "C19/C09 checklist Google Permissions and Code integrity"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.1",
+     "status": "general",
+     "ref": "Technical or niche"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.2",
+     "status": "covered",
+     "ref": "C19/C09 checklist Google Permissions and Code integrity"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.3",
+     "status": "covered",
+     "ref": "C19/C09 checklist Google Permissions and Code integrity"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.4",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.5",
+     "status": "covered",
+     "ref": "C19/C09 checklist Google Permissions and Code integrity"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.6",
+     "status": "general",
+     "ref": "Technical or niche"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.7",
+     "status": "general",
+     "ref": "Technical or niche"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.8",
+     "status": "covered",
+     "ref": "C19/C09 checklist Google Permissions and Code integrity"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.9",
+     "status": "covered",
+     "ref": "C19/C09 checklist Google Permissions and Code integrity"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.10",
+     "status": "covered",
+     "ref": "C19/C09 checklist Google Permissions and Code integrity"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.11",
+     "status": "covered",
+     "ref": "C19/C09 checklist Google Permissions and Code integrity"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.12",
+     "status": "general",
+     "ref": "Technical or niche"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.13",
+     "status": "covered",
+     "ref": "C19/C09 checklist Google Permissions and Code integrity"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.14",
+     "status": "covered",
+     "ref": "C19/C09 checklist Google Permissions and Code integrity"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.15",
+     "status": "general",
+     "ref": "Technical or niche"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.16",
+     "status": "covered",
+     "ref": "special-cases Monitoring and screen capture: FLAG_SECURE"
+    },
+    {
+     "source": "google:policy:9888379",
+     "n": "27.17",
+     "status": "general",
+     "ref": "Technical or niche"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.0",
+     "status": "covered",
+     "ref": "C09/C06 checklist Google Code integrity"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.1",
+     "status": "covered",
+     "ref": "C09/C06 checklist Google Code integrity"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.2",
+     "status": "covered",
+     "ref": "C12 checklist Subscription UI: no accidental-subscribe flow"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.3",
+     "status": "covered",
+     "ref": "C19 special-cases Monitoring and screen capture"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.4",
+     "status": "covered",
+     "ref": "C19 special-cases Monitoring and screen capture"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.5",
+     "status": "covered",
+     "ref": "C19 special-cases Monitoring and screen capture"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.6",
+     "status": "general",
+     "ref": "Malicious behaviour; not applicable to ordinary apps"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.7",
+     "status": "general",
+     "ref": "Malicious behaviour; not applicable to ordinary apps"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.8",
+     "status": "general",
+     "ref": "Malicious behaviour; not applicable to ordinary apps"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.9",
+     "status": "general",
+     "ref": "Malicious behaviour; not applicable to ordinary apps"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.10",
+     "status": "general",
+     "ref": "Malicious behaviour; not applicable to ordinary apps"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.11",
+     "status": "general",
+     "ref": "Malicious behaviour; not applicable to ordinary apps"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.12",
+     "status": "covered",
+     "ref": "C03 checklist Quality: no messages sent without confirmation"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.13",
+     "status": "covered",
+     "ref": "C09/C06 checklist Google Code integrity"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.14",
+     "status": "covered",
+     "ref": "C09/C06 checklist Google Code integrity"
+    },
+    {
+     "source": "google:policy:9888380",
+     "n": "28.15",
+     "status": "general",
+     "ref": "Malicious behaviour; not applicable to ordinary apps"
+    },
+    {
+     "source": "google:policy:9888689",
+     "n": "29.0",
+     "status": "covered",
+     "ref": "C02/C04 checklist Account identity, Listing accuracy"
+    },
+    {
+     "source": "google:policy:9888689",
+     "n": "29.1",
+     "status": "covered",
+     "ref": "C02/C04 checklist Account identity, Listing accuracy"
+    },
+    {
+     "source": "google:policy:9888689",
+     "n": "29.2",
+     "status": "covered",
+     "ref": "C02/C04 checklist Account identity, Listing accuracy"
+    },
+    {
+     "source": "google:policy:9888689",
+     "n": "29.3",
+     "status": "general",
+     "ref": "Coordinated political deception"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.0",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet (Families identifier, location, ad-format limits, SDK eligibility)"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.1",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet (Families identifier, location, ad-format limits, SDK eligibility)"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.2",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet (Families identifier, location, ad-format limits, SDK eligibility)"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.3",
+     "status": "general",
+     "ref": "Kids module routes to full Families policy"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.4",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet (Families identifier, location, ad-format limits, SDK eligibility)"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.5",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet (Families identifier, location, ad-format limits, SDK eligibility)"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.6",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet (Families identifier, location, ad-format limits, SDK eligibility)"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.7",
+     "status": "general",
+     "ref": "Kids module routes to full Families policy"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.8",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet (Families identifier, location, ad-format limits, SDK eligibility)"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.9",
+     "status": "general",
+     "ref": "Kids module routes to full Families policy"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.10",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet (Families identifier, location, ad-format limits, SDK eligibility)"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.11",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet (Families identifier, location, ad-format limits, SDK eligibility)"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.12",
+     "status": "general",
+     "ref": "Kids module routes to full Families policy"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.13",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet (Families identifier, location, ad-format limits, SDK eligibility)"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.14",
+     "status": "general",
+     "ref": "Kids module routes to full Families policy"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.15",
+     "status": "general",
+     "ref": "Kids module routes to full Families policy"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.16",
+     "status": "general",
+     "ref": "Kids module routes to full Families policy"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.17",
+     "status": "general",
+     "ref": "Kids module routes to full Families policy"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.18",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet (Families identifier, location, ad-format limits, SDK eligibility)"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.19",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet (Families identifier, location, ad-format limits, SDK eligibility)"
+    },
+    {
+     "source": "google:policy:9893335",
+     "n": "30.20",
+     "status": "general",
+     "ref": "Kids module routes to full Families policy"
+    },
+    {
+     "source": "google:policy:9898684",
+     "n": "31.0",
+     "status": "covered",
+     "ref": "C03 checklist Quality: no forced or incentivized ratings"
+    },
+    {
+     "source": "google:policy:9898684",
+     "n": "31.1",
+     "status": "covered",
+     "ref": "C03 checklist Quality: no forced or incentivized ratings"
+    },
+    {
+     "source": "google:policy:9898684",
+     "n": "31.2",
+     "status": "general",
+     "ref": "Developer conduct outside the build"
+    },
+    {
+     "source": "google:policy:9898684",
+     "n": "31.3",
+     "status": "general",
+     "ref": "Developer conduct outside the build"
+    },
+    {
+     "source": "google:policy:9898684",
+     "n": "31.4",
+     "status": "general",
+     "ref": "Developer conduct outside the build"
+    },
+    {
+     "source": "google:policy:9898684",
+     "n": "31.5",
+     "status": "general",
+     "ref": "Developer conduct outside the build"
+    },
+    {
+     "source": "google:policy:9898783",
+     "n": "32.0",
+     "status": "covered",
+     "ref": "C08/C03 checklist Rights/originality, Quality"
+    },
+    {
+     "source": "google:policy:9898783",
+     "n": "32.1",
+     "status": "covered",
+     "ref": "C08/C03 checklist Rights/originality, Quality"
+    },
+    {
+     "source": "google:policy:9898783",
+     "n": "32.2",
+     "status": "covered",
+     "ref": "C08/C03 checklist Rights/originality, Quality"
+    },
+    {
+     "source": "google:policy:9898842",
+     "n": "33.0",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing"
+    },
+    {
+     "source": "google:policy:9898842",
+     "n": "33.1",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing"
+    },
+    {
+     "source": "google:policy:9898842",
+     "n": "33.2",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing"
+    },
+    {
+     "source": "google:policy:9898842",
+     "n": "33.3",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9898842",
+     "n": "33.4",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9898842",
+     "n": "33.5",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing"
+    },
+    {
+     "source": "google:policy:9898842",
+     "n": "33.6",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing"
+    },
+    {
+     "source": "google:policy:9898842",
+     "n": "33.7",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9898842",
+     "n": "33.8",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing"
+    },
+    {
+     "source": "google:policy:9898842",
+     "n": "33.9",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing"
+    },
+    {
+     "source": "google:policy:9898842",
+     "n": "33.10",
+     "status": "general",
+     "ref": "Pointer to other policies"
+    },
+    {
+     "source": "google:policy:9898843",
+     "n": "34.0",
+     "status": "covered",
+     "ref": "C07 checklist Audience; Rating/entity"
+    },
+    {
+     "source": "google:policy:9898843",
+     "n": "34.1",
+     "status": "covered",
+     "ref": "C07 checklist Audience; Rating/entity"
+    },
+    {
+     "source": "google:policy:9898843",
+     "n": "34.2",
+     "status": "covered",
+     "ref": "C07 checklist Audience; Rating/entity"
+    },
+    {
+     "source": "google:policy:9898843",
+     "n": "34.3",
+     "status": "covered",
+     "ref": "C07 checklist Audience; Rating/entity"
+    },
+    {
+     "source": "google:policy:9898843",
+     "n": "34.4",
+     "status": "general",
+     "ref": "Age-based notices"
+    },
+    {
+     "source": "google:policy:9899004",
+     "n": "35.0",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9899004",
+     "n": "35.1",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9899004",
+     "n": "35.2",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9899004",
+     "n": "35.3",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9899004",
+     "n": "35.4",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9899004",
+     "n": "35.5",
+     "status": "covered",
+     "ref": "C04 checklist Google Listing: no promotional claims in title or icon"
+    },
+    {
+     "source": "google:policy:9899004",
+     "n": "35.6",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9899034",
+     "n": "36.0",
+     "status": "covered",
+     "ref": "C03/C08 checklist Quality (messages confirmed), special-cases Spam/template apps"
+    },
+    {
+     "source": "google:policy:9899034",
+     "n": "36.1",
+     "status": "covered",
+     "ref": "C03/C08 checklist Quality (messages confirmed), special-cases Spam/template apps"
+    },
+    {
+     "source": "google:policy:9899034",
+     "n": "36.2",
+     "status": "covered",
+     "ref": "C03/C08 checklist Quality (messages confirmed), special-cases Spam/template apps"
+    },
+    {
+     "source": "google:policy:9899034",
+     "n": "36.3",
+     "status": "covered",
+     "ref": "C03/C08 checklist Quality (messages confirmed), special-cases Spam/template apps"
+    },
+    {
+     "source": "google:policy:9899034",
+     "n": "36.4",
+     "status": "covered",
+     "ref": "C03/C08 checklist Quality (messages confirmed), special-cases Spam/template apps"
+    },
+    {
+     "source": "google:policy:9899234",
+     "n": "38.0",
+     "status": "covered",
+     "ref": "special-cases Rejection response; C06 SDK responsibility"
+    },
+    {
+     "source": "google:policy:9899234",
+     "n": "38.1",
+     "status": "covered",
+     "ref": "special-cases Rejection response; C06 SDK responsibility"
+    },
+    {
+     "source": "google:policy:9899234",
+     "n": "38.2",
+     "status": "general",
+     "ref": "Account conduct"
+    },
+    {
+     "source": "google:policy:9899234",
+     "n": "38.3",
+     "status": "general",
+     "ref": "Account conduct"
+    },
+    {
+     "source": "google:policy:9899816",
+     "n": "39.0",
+     "status": "covered",
+     "ref": "C07/C08 checklist Audience (web access), special-cases mini apps"
+    },
+    {
+     "source": "google:policy:9899816",
+     "n": "39.1",
+     "status": "general",
+     "ref": "Developer website / ecosystem trust"
+    },
+    {
+     "source": "google:policy:9899816",
+     "n": "39.2",
+     "status": "covered",
+     "ref": "C19 Permissions: REQUEST_INSTALL_PACKAGES"
+    },
+    {
+     "source": "google:policy:9899816",
+     "n": "39.3",
+     "status": "covered",
+     "ref": "C07/C08 checklist Audience (web access), special-cases mini apps"
+    },
+    {
+     "source": "google:policy:9899816",
+     "n": "39.4",
+     "status": "covered",
+     "ref": "C07/C08 checklist Audience (web access), special-cases mini apps"
+    },
+    {
+     "source": "google:policy:9899816",
+     "n": "39.5",
+     "status": "general",
+     "ref": "Developer website / ecosystem trust"
+    },
+    {
+     "source": "google:policy:9900182",
+     "n": "40.0",
+     "status": "general",
+     "ref": "Instant apps: niche technical spec"
+    },
+    {
+     "source": "google:policy:9900182",
+     "n": "40.1",
+     "status": "general",
+     "ref": "Instant apps: niche technical spec"
+    },
+    {
+     "source": "google:policy:9900182",
+     "n": "40.2",
+     "status": "general",
+     "ref": "Instant apps: niche technical spec"
+    },
+    {
+     "source": "google:policy:9900182",
+     "n": "40.3",
+     "status": "general",
+     "ref": "Instant apps: niche technical spec"
+    },
+    {
+     "source": "google:policy:9900182",
+     "n": "40.4",
+     "status": "general",
+     "ref": "Instant apps: niche technical spec"
+    },
+    {
+     "source": "google:policy:9900182",
+     "n": "40.5",
+     "status": "general",
+     "ref": "Instant apps: niche technical spec"
+    },
+    {
+     "source": "google:policy:9900182",
+     "n": "40.6",
+     "status": "general",
+     "ref": "Instant apps: niche technical spec"
+    },
+    {
+     "source": "google:policy:9900182",
+     "n": "40.7",
+     "status": "general",
+     "ref": "Instant apps: niche technical spec"
+    },
+    {
+     "source": "google:policy:9900533",
+     "n": "41.0",
+     "status": "covered",
+     "ref": "C12 checklist Google Subscription UI"
+    },
+    {
+     "source": "google:policy:9900533",
+     "n": "41.1",
+     "status": "covered",
+     "ref": "C12 checklist Google Subscription UI"
+    },
+    {
+     "source": "google:policy:9900533",
+     "n": "41.2",
+     "status": "covered",
+     "ref": "C12 checklist Google Subscription UI"
+    },
+    {
+     "source": "google:policy:9900533",
+     "n": "41.3",
+     "status": "covered",
+     "ref": "C12 checklist Google Subscription UI"
+    },
+    {
+     "source": "google:policy:9900533",
+     "n": "41.4",
+     "status": "covered",
+     "ref": "C12 checklist Google Subscription UI"
+    },
+    {
+     "source": "google:policy:9900533",
+     "n": "41.5",
+     "status": "covered",
+     "ref": "C12 checklist Google Subscription UI"
+    },
+    {
+     "source": "google:policy:9900533",
+     "n": "41.6",
+     "status": "covered",
+     "ref": "C12 checklist Google Subscription UI"
+    },
+    {
+     "source": "google:policy:9900533",
+     "n": "41.7",
+     "status": "covered",
+     "ref": "C12 checklist Google Subscription UI"
+    },
+    {
+     "source": "google:policy:9900533",
+     "n": "41.8",
+     "status": "covered",
+     "ref": "C12 checklist Google Subscription UI"
+    },
+    {
+     "source": "google:policy:9900533",
+     "n": "41.9",
+     "status": "covered",
+     "ref": "C12 checklist Google Subscription UI"
+    },
+    {
+     "source": "google:policy:9900533",
+     "n": "41.10",
+     "status": "covered",
+     "ref": "C12 checklist Google Subscription UI"
+    },
+    {
+     "source": "google:policy:9900533",
+     "n": "41.11",
+     "status": "general",
+     "ref": "Policy-change notices"
+    },
+    {
+     "source": "google:policy:9900633",
+     "n": "42.0",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet: SDK/ad eligibility"
+    },
+    {
+     "source": "google:policy:9900633",
+     "n": "42.1",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet: SDK/ad eligibility"
+    },
+    {
+     "source": "google:policy:9900633",
+     "n": "42.2",
+     "status": "covered",
+     "ref": "C15 special-cases Kids bullet: SDK/ad eligibility"
+    },
+    {
+     "source": "google:policy:9900633",
+     "n": "42.3",
+     "status": "general",
+     "ref": "In-house promotion or SDK-provider obligations"
+    },
+    {
+     "source": "google:policy:9900633",
+     "n": "42.4",
+     "status": "general",
+     "ref": "In-house promotion or SDK-provider obligations"
+    },
+    {
+     "source": "google:policy:9900633",
+     "n": "42.5",
+     "status": "general",
+     "ref": "In-house promotion or SDK-provider obligations"
+    },
+    {
+     "source": "google:policy:9900633",
+     "n": "42.6",
+     "status": "general",
+     "ref": "In-house promotion or SDK-provider obligations"
+    },
+    {
+     "source": "google:policy:9935326",
+     "n": "43.0",
+     "status": "covered",
+     "ref": "G01 checklist Google App content declarations"
+    },
+    {
+     "source": "google:policy:9935326",
+     "n": "43.1",
+     "status": "general",
+     "ref": "News: conditional module routes to full policy"
+    },
+    {
+     "source": "google:policy:9935326",
+     "n": "43.2",
+     "status": "general",
+     "ref": "News: conditional module routes to full policy"
+    },
+    {
+     "source": "google:policy:9935326",
+     "n": "43.3",
+     "status": "general",
+     "ref": "News: conditional module routes to full policy"
+    },
+    {
+     "source": "google:policy:9935326",
+     "n": "43.4",
+     "status": "general",
+     "ref": "News: conditional module routes to full policy"
+    },
+    {
+     "source": "google:policy:9935326",
+     "n": "43.5",
+     "status": "general",
+     "ref": "News: conditional module routes to full policy"
+    },
+    {
+     "source": "google:policy:9935326",
+     "n": "43.6",
+     "status": "general",
+     "ref": "News: conditional module routes to full policy"
+    },
+    {
+     "source": "google:policy:9969861",
+     "n": "47.0",
+     "status": "covered",
+     "ref": "C03 checklist Quality: no imitation of system UI or alerts"
+    },
+    {
+     "source": "google:policy:9969861",
+     "n": "47.1",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9969955",
+     "n": "48.0",
+     "status": "general",
+     "ref": "Deliberate ad fraud; not an ordinary audit item"
+    },
+    {
+     "source": "google:policy:9969955",
+     "n": "48.1",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9969955",
+     "n": "48.2",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9969955",
+     "n": "48.3",
+     "status": "general",
+     "ref": "Deliberate ad fraud; not an ordinary audit item"
+    },
+    {
+     "source": "google:policy:9969955",
+     "n": "48.4",
+     "status": "covered",
+     "ref": "C13 special-cases Ads: never outside the app"
+    },
+    {
+     "source": "google:policy:9969955",
+     "n": "48.5",
+     "status": "general",
+     "ref": "Deliberate ad fraud; not an ordinary audit item"
+    },
+    {
+     "source": "google:policy:9970222",
+     "n": "50.0",
+     "status": "covered",
+     "ref": "C08/C03 checklist Code integrity, Quality, Listing"
+    },
+    {
+     "source": "google:policy:9970222",
+     "n": "50.1",
+     "status": "covered",
+     "ref": "C08/C03 checklist Code integrity, Quality, Listing"
+    },
+    {
+     "source": "google:policy:9970222",
+     "n": "50.2",
+     "status": "covered",
+     "ref": "C08/C03 checklist Code integrity, Quality, Listing"
+    },
+    {
+     "source": "google:policy:9970222",
+     "n": "50.3",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9970222",
+     "n": "50.4",
+     "status": "general",
+     "ref": "Ad-inflation fraud / uninstall clarity"
+    },
+    {
+     "source": "google:policy:9970222",
+     "n": "50.5",
+     "status": "covered",
+     "ref": "C08/C03 checklist Code integrity, Quality, Listing"
+    },
+    {
+     "source": "google:policy:9970222",
+     "n": "50.6",
+     "status": "covered",
+     "ref": "C08/C03 checklist Code integrity, Quality, Listing"
+    },
+    {
+     "source": "google:policy:9970222",
+     "n": "50.7",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "google:policy:9970222",
+     "n": "50.8",
+     "status": "covered",
+     "ref": "C08/C03 checklist Code integrity, Quality, Listing"
+    },
+    {
+     "source": "google:policy:9970222",
+     "n": "50.9",
+     "status": "general",
+     "ref": "Ad-inflation fraud / uninstall clarity"
+    },
+    {
+     "source": "google:policy:9970222",
+     "n": "50.10",
+     "status": "covered",
+     "ref": "C08/C03 checklist Code integrity, Quality, Listing"
+    },
+    {
+     "source": "topic:developer.android.com/distribute/play-policies",
+     "n": "51.0",
+     "status": "covered",
+     "ref": "G01/G04 checklist Google App content child-safety standards; Production access package registration"
+    },
+    {
+     "source": "topic:developer.android.com/distribute/play-policies",
+     "n": "51.1",
+     "status": "covered",
+     "ref": "G01/G04 checklist Google App content child-safety standards; Production access package registration"
+    },
+    {
+     "source": "topic:developer.android.com/distribute/play-policies",
+     "n": "51.2",
+     "status": "covered",
+     "ref": "G01/G04 checklist Google App content child-safety standards; Production access package registration"
+    },
+    {
+     "source": "topic:developer.android.com/distribute/play-policies",
+     "n": "51.3",
+     "status": "covered",
+     "ref": "G01/G04 checklist Google App content child-safety standards; Production access package registration"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.0",
+     "status": "covered",
+     "ref": "C02 checklist Account (agreements, monetization setup, identity)"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.1",
+     "status": "covered",
+     "ref": "C02 checklist Account (agreements, monetization setup, identity)"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.2",
+     "status": "covered",
+     "ref": "C02 checklist Account (agreements, monetization setup, identity)"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.3",
+     "status": "covered",
+     "ref": "C02 checklist Account (agreements, monetization setup, identity)"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.4",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.5",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.6",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.7",
+     "status": "covered",
+     "ref": "C02 checklist Account (agreements, monetization setup, identity)"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.8",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.9",
+     "status": "covered",
+     "ref": "C19 Permissions: REQUEST_INSTALL_PACKAGES"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.10",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.11",
+     "status": "covered",
+     "ref": "C02 checklist Account (agreements, monetization setup, identity)"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.12",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.13",
+     "status": "covered",
+     "ref": "C02 checklist Account (agreements, monetization setup, identity)"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.14",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.15",
+     "status": "covered",
+     "ref": "C02 checklist Account (agreements, monetization setup, identity)"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.16",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.17",
+     "status": "covered",
+     "ref": "C02 checklist Account (agreements, monetization setup, identity)"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.18",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.19",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.20",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.21",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:play.google/intl/en_uk/developer-distribution-agreement.html",
+     "n": "52.22",
+     "status": "general",
+     "ref": "Distribution Agreement business terms"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13327111",
+     "n": "53.0",
+     "status": "covered",
+     "ref": "C10/G03 checklist Google Deletion row"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13327111",
+     "n": "53.1",
+     "status": "covered",
+     "ref": "C10/G03 checklist Google Deletion row"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13327111",
+     "n": "53.2",
+     "status": "covered",
+     "ref": "C10/G03 checklist Google Deletion row"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13327111",
+     "n": "53.3",
+     "status": "covered",
+     "ref": "C10/G03 checklist Google Deletion row"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13327111",
+     "n": "53.4",
+     "status": "covered",
+     "ref": "C10/G03 checklist Google Deletion row"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13327111",
+     "n": "53.5",
+     "status": "covered",
+     "ref": "C10/G03 checklist Google Deletion row"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13327111",
+     "n": "53.6",
+     "status": "covered",
+     "ref": "C10/G03 checklist Google Deletion row"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13327111",
+     "n": "53.7",
+     "status": "covered",
+     "ref": "C10/G03 checklist Google Deletion row"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13327111",
+     "n": "53.8",
+     "status": "covered",
+     "ref": "C10/G03 checklist Google Deletion row"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13327111",
+     "n": "53.9",
+     "status": "general",
+     "ref": "TV/Wear surfaces"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13392821",
+     "n": "54.0",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions: FGS with a video per type, full-screen intent"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13392821",
+     "n": "54.1",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions: FGS with a video per type, full-screen intent"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13392821",
+     "n": "54.2",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions: FGS with a video per type, full-screen intent"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13392821",
+     "n": "54.3",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions: FGS with a video per type, full-screen intent"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13392821",
+     "n": "54.4",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions: FGS with a video per type, full-screen intent"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13392821",
+     "n": "54.5",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions: FGS with a video per type, full-screen intent"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13392821",
+     "n": "54.6",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions: FGS with a video per type, full-screen intent"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/13392821",
+     "n": "54.7",
+     "status": "covered",
+     "ref": "C19 checklist Google Permissions: FGS with a video per type, full-screen intent"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/14151465",
+     "n": "55.0",
+     "status": "covered",
+     "ref": "G04 checklist Google Production access: testing requirements"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/14151465",
+     "n": "55.1",
+     "status": "covered",
+     "ref": "G04 checklist Google Production access: testing requirements"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/14151465",
+     "n": "55.2",
+     "status": "covered",
+     "ref": "G04 checklist Google Production access: testing requirements"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/14151465",
+     "n": "55.3",
+     "status": "covered",
+     "ref": "G04 checklist Google Production access: testing requirements"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/14151465",
+     "n": "55.4",
+     "status": "covered",
+     "ref": "G04 checklist Google Production access: testing requirements"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/14316361",
+     "n": "56.0",
+     "status": "covered",
+     "ref": "G04 checklist Google Production access: device verification"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859348",
+     "n": "57.0",
+     "status": "covered",
+     "ref": "C09 checklist Google Build/release"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859348",
+     "n": "57.1",
+     "status": "covered",
+     "ref": "C09 checklist Google Build/release"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859348",
+     "n": "57.2",
+     "status": "covered",
+     "ref": "C09 checklist Google Build/release"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859348",
+     "n": "57.3",
+     "status": "general",
+     "ref": "Console mechanics enforced by the console"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859348",
+     "n": "57.4",
+     "status": "general",
+     "ref": "Console mechanics enforced by the console"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859348",
+     "n": "57.5",
+     "status": "covered",
+     "ref": "C09 checklist Google Build/release"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859348",
+     "n": "57.6",
+     "status": "covered",
+     "ref": "C09 checklist Google Build/release"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859348",
+     "n": "57.7",
+     "status": "general",
+     "ref": "Console mechanics enforced by the console"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859348",
+     "n": "57.8",
+     "status": "covered",
+     "ref": "C09 checklist Google Build/release"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859455",
+     "n": "58.0",
+     "status": "covered",
+     "ref": "G01/C03/C05 checklist Google App content, Privacy, Reviewer access"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859455",
+     "n": "58.1",
+     "status": "covered",
+     "ref": "G01/C03/C05 checklist Google App content, Privacy, Reviewer access"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859455",
+     "n": "58.2",
+     "status": "covered",
+     "ref": "G01/C03/C05 checklist Google App content, Privacy, Reviewer access"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859455",
+     "n": "58.3",
+     "status": "covered",
+     "ref": "G01/C03/C05 checklist Google App content, Privacy, Reviewer access"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859455",
+     "n": "58.4",
+     "status": "general",
+     "ref": "Paid placements local law"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859455",
+     "n": "58.5",
+     "status": "covered",
+     "ref": "G01/C03/C05 checklist Google App content, Privacy, Reviewer access"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859455",
+     "n": "58.6",
+     "status": "covered",
+     "ref": "G01/C03/C05 checklist Google App content, Privacy, Reviewer access"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859455",
+     "n": "58.7",
+     "status": "covered",
+     "ref": "G01/C03/C05 checklist Google App content, Privacy, Reviewer access"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859455",
+     "n": "58.8",
+     "status": "covered",
+     "ref": "G01/C03/C05 checklist Google App content, Privacy, Reviewer access"
+    },
+    {
+     "source": "topic:support.google.com/googleplay/android-developer/answer/9859455",
+     "n": "58.9",
+     "status": "covered",
+     "ref": "G01/C03/C05 checklist Google App content, Privacy, Reviewer access"
+    },
+    {
+     "source": "apple:before-you-submit",
+     "status": "covered",
+     "ref": "C03 checklist Reviewer access: review notes for changed or non-obvious features and purchases, current contact"
+    },
+    {
+     "source": "apple:1.1",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Apple 1.1 and 1.4)"
+    },
+    {
+     "source": "apple:1.1.1",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Apple 1.1)"
+    },
+    {
+     "source": "apple:1.1.2",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Apple 1.1)"
+    },
+    {
+     "source": "apple:1.1.3",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Apple 1.1)"
+    },
+    {
+     "source": "apple:1.1.4",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Apple 1.1)"
+    },
+    {
+     "source": "apple:1.1.5",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Apple 1.1)"
+    },
+    {
+     "source": "apple:1.1.6",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Apple 1.1)"
+    },
+    {
+     "source": "apple:1.1.7",
+     "status": "covered",
+     "ref": "C07 checklist Baseline Restricted content (Apple 1.1)"
+    },
+    {
+     "source": "apple:1.2.1",
+     "status": "general",
+     "ref": "Creator platforms: UGC module; special-cases UGC/chat"
+    },
+    {
+     "source": "apple:1.4.1",
+     "status": "covered",
+     "ref": "C07/C18 checklist Restricted content (Apple 1.4); special-cases Health"
+    },
+    {
+     "source": "apple:1.4.2",
+     "status": "covered",
+     "ref": "C20 special-cases Regulated services: dosage tools"
+    },
+    {
+     "source": "apple:1.4.3",
+     "status": "covered",
+     "ref": "C07 checklist Restricted content (Apple 1.4)"
+    },
+    {
+     "source": "apple:1.4.4",
+     "status": "covered",
+     "ref": "C07 checklist Restricted content (Apple 1.4)"
+    },
+    {
+     "source": "apple:1.4.5",
+     "status": "covered",
+     "ref": "C07 checklist Restricted content (Apple 1.4)"
+    },
+    {
+     "source": "apple:1.5",
+     "status": "general",
+     "ref": "Support contact covered by C04 Listing support URL; Wallet pass signing is niche"
+    },
+    {
+     "source": "apple:1.7",
+     "status": "covered",
+     "ref": "C20 special-cases Regulated services (Apple 1.7)"
+    },
+    {
+     "source": "apple:2.2",
+     "status": "covered",
+     "ref": "C04 checklist Listing: not a beta, demo or trial"
+    },
+    {
+     "source": "apple:2.3.2",
+     "status": "covered",
+     "ref": "C04 checklist Listing: extra-purchase marking, promoted purchases"
+    },
+    {
+     "source": "apple:2.3.11",
+     "status": "covered",
+     "ref": "C04 checklist Listing: pre-orders match the build"
+    },
+    {
+     "source": "apple:2.3.13",
+     "status": "covered",
+     "ref": "C04 checklist Listing: in-app events"
+    },
+    {
+     "source": "apple:2.3.14",
+     "status": "covered",
+     "ref": "C04 checklist Listing: creative assets"
+    },
+    {
+     "source": "apple:2.4.2",
+     "status": "covered",
+     "ref": "C03 checklist Apple Runtime conduct: battery, heat, mining"
+    },
+    {
+     "source": "apple:2.4.3",
+     "status": "general",
+     "ref": "tvOS only"
+    },
+    {
+     "source": "apple:2.4.4",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "apple:2.4.5",
+     "status": "general",
+     "ref": "Mac App Store only"
+    },
+    {
+     "source": "apple:2.5.1",
+     "status": "covered",
+     "ref": "C09 checklist Apple Submission: private or deprecated APIs; Platform technologies"
+    },
+    {
+     "source": "apple:2.5.2",
+     "status": "covered",
+     "ref": "C09 checklist Apple Submission: no downloaded executable code"
+    },
+    {
+     "source": "apple:2.5.3",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies (2.5) and Submission"
+    },
+    {
+     "source": "apple:2.5.5",
+     "status": "covered",
+     "ref": "C09 checklist Apple Submission: IPv6-only networks"
+    },
+    {
+     "source": "apple:2.5.6",
+     "status": "covered",
+     "ref": "C09 checklist Apple Submission: WebKit"
+    },
+    {
+     "source": "apple:2.5.8",
+     "status": "covered",
+     "ref": "C03 checklist Apple Runtime conduct: home screen unchanged"
+    },
+    {
+     "source": "apple:2.5.9",
+     "status": "covered",
+     "ref": "C03 checklist Apple Runtime conduct: system controls unchanged"
+    },
+    {
+     "source": "apple:2.5.11",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies: SiriKit"
+    },
+    {
+     "source": "apple:2.5.12",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies: CallKit"
+    },
+    {
+     "source": "apple:2.5.13",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies: Face ID"
+    },
+    {
+     "source": "apple:2.5.14",
+     "status": "covered",
+     "ref": "C03 checklist Apple Runtime conduct: recording indicator"
+    },
+    {
+     "source": "apple:2.5.15",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies: each framework against 2.5"
+    },
+    {
+     "source": "apple:2.5.16",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies: App Clips, widgets"
+    },
+    {
+     "source": "apple:2.5.17",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies: Matter"
+    },
+    {
+     "source": "apple:2.5.18",
+     "status": "covered",
+     "ref": "C13 special-cases Ads paragraph (main binary, why shown, report, no health or children targeting, close button)"
+    },
+    {
+     "source": "apple:2.5.19",
+     "status": "covered",
+     "ref": "C09 checklist Apple Submission: no hidden or obfuscated features"
+    },
+    {
+     "source": "apple:3",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "apple:3.1.5",
+     "status": "covered",
+     "ref": "C20 special-cases Regulated services: crypto, no on-device mining (3.1.5)"
+    },
+    {
+     "source": "apple:3.2.1",
+     "status": "general",
+     "ref": "Insurance, nonprofit and rental specifics: regulated module"
+    },
+    {
+     "source": "apple:3.2.2",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "apple:4.4",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies (4.4)"
+    },
+    {
+     "source": "apple:4.4.1",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies: keyboards"
+    },
+    {
+     "source": "apple:4.4.2",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies: Safari extensions"
+    },
+    {
+     "source": "apple:4.5.1",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies (4.5)"
+    },
+    {
+     "source": "apple:4.5.2",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies: MusicKit"
+    },
+    {
+     "source": "apple:4.5.3",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies: Game Center (4.5)"
+    },
+    {
+     "source": "apple:4.5.4",
+     "status": "covered",
+     "ref": "C03 checklist Apple Runtime conduct: push rules"
+    },
+    {
+     "source": "apple:4.5.5",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies: Game Center"
+    },
+    {
+     "source": "apple:4.5.6",
+     "status": "missed",
+     "ref": ""
+    },
+    {
+     "source": "apple:4.7",
+     "status": "covered",
+     "ref": "C16/C17 special-cases mini apps bullet (Apple 4.7)"
+    },
+    {
+     "source": "apple:4.7.1",
+     "status": "covered",
+     "ref": "special-cases mini apps bullet: privacy, payment and moderation rules to each"
+    },
+    {
+     "source": "apple:4.7.2",
+     "status": "general",
+     "ref": "special-cases mini apps bullet routes to 4.7"
+    },
+    {
+     "source": "apple:4.7.3",
+     "status": "covered",
+     "ref": "special-cases mini apps bullet: per-instance consent"
+    },
+    {
+     "source": "apple:4.7.4",
+     "status": "general",
+     "ref": "special-cases mini apps bullet routes to 4.7"
+    },
+    {
+     "source": "apple:4.7.5",
+     "status": "general",
+     "ref": "special-cases mini apps bullet routes to 4.7"
+    },
+    {
+     "source": "apple:4.9",
+     "status": "covered",
+     "ref": "C09 checklist Apple Platform technologies: Apple Pay (4.9)"
+    },
+    {
+     "source": "apple:4.10",
+     "status": "covered",
+     "ref": "C11 checklist Apple Purchases (4.10)"
+    },
+    {
+     "source": "apple:5.3.1",
+     "status": "covered",
+     "ref": "C14 special-cases Sweepstakes and contests (5.3)"
+    },
+    {
+     "source": "apple:5.3.2",
+     "status": "covered",
+     "ref": "C14 special-cases Sweepstakes and contests: official rules, Apple not a sponsor"
+    },
+    {
+     "source": "apple:5.5",
+     "status": "covered",
+     "ref": "C20 special-cases Regulated services: device management (5.5)"
+    },
+    {
+     "source": "apple:5.6.1",
+     "status": "covered",
+     "ref": "C03 checklist Apple Runtime conduct: only the system review prompt"
+    },
+    {
+     "source": "topic:developer.apple.com/help/app-review/before-submitting-for-review/complete-review",
+     "status": "covered",
+     "ref": "C03 checklist Reviewer access: business model, steps, external services, regional differences, expired-subscription account, attachments"
+    }
+   ]
+  }
+ },
+ "digest_accuracy": {
+  "date": "2026-11-19",
+  "sample": "80 random requirements checked independently against the page text: 73 correct, 7 imprecise, 0 wrong. A full pass for the two error types then fixed 30 more of 550 sentences."
  }
 }

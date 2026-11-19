@@ -42,8 +42,8 @@
   "url": "https://support.google.com/googleplay/android-developer/answer/11189134?hl=en",
   "sha256": "1c4f8a63b2271281fe31c6faf2e3306a0194d7d596ce4aa01fdb873a286f21fd",
   "requirements": [
-   "Apps must not contain code that downloads mobile unwanted software, whether because the code appears designed to spread it or because at least 5% of the apps it downloads (with a minimum of 500 observed downloads) are mobile unwanted software.",
-   "Browsers and file-sharing apps escape hostile downloader classification only if they never drive downloads without user interaction and every software download is initiated by a consenting user."
+   "Apps must not contain code that downloads mobile unwanted software, either because there is reason to believe it was built to spread such software and it has downloaded it or can download and install apps, or because at least 5% of the apps it downloads (with a minimum of 500 observed downloads) are mobile unwanted software.",
+   "Major browsers and file-sharing apps escape hostile downloader classification only if they never drive downloads without user interaction and every software download is initiated by a consenting user."
   ],
   "announced": []
  },
@@ -53,7 +53,7 @@
   "url": "https://support.google.com/googleplay/android-developer/answer/11190644?hl=en",
   "sha256": "eafc3cc17f2875773da59361a7ac27c606e2d06f9762a116e1908a48b2949264",
   "requirements": [
-   "All apps must support the latest Unicode Emoji version when running on Android 12 or later.",
+   "Apps must support the latest Unicode Emoji on Android 12 and later, and apps with custom emoji implementations, including third-party libraries, must add full support within 4 months of a new Unicode Emoji release.",
    "Apps with custom emoji implementations, including ones from third-party libraries, must fully support a new Unicode Emoji release on Android 12 or later within 4 months of its release."
   ],
   "announced": []
@@ -89,14 +89,14 @@
    "Apps without default SMS, Phone or Assistant handler capability must not list SMS or Call Log permissions in the manifest at all, including as placeholders.",
    "SMS and Call Log data may be used, shared or transferred only for approved core functionality prominently documented in the app description, never for advertising, marketing or improving other services, and must not be derived through other permissions, APIs or third-party sources; a Play Console declaration is required.",
    "Apps must not access location data once it is no longer needed for a current feature, and must never request location permissions solely for advertising or analytics.",
-   "Apps must request the minimum location scope (coarse over fine, foreground over background) that users would reasonably expect for the feature, and may use background location only for user-beneficial features tied to core functionality, with the background location declaration completed.",
+   "Apps should request the minimum location scope (coarse over fine, foreground over background) that users would reasonably expect for the feature, and may use background location only for user-beneficial features tied to core functionality, with the background location declaration completed.",
    "Apps with only foreground location access may use location from a foreground service only as a continuation of a user-initiated in-app action, ending immediately once that action's use case is complete.",
    "Apps designed for children must not request device location and must follow the Families policy.",
    "Apps targeting API 30+ may use QUERY_ALL_PACKAGES or equivalent broad-visibility methods only when the core user-facing function requires awareness of or interoperability with all installed apps, must use targeted package queries when those suffice, and must submit a Play Console declaration.",
    "Installed app inventory data must be used only for the app's core functionality and must never be sold or shared for analytics or ads monetization.",
    "The Accessibility API must not be used to change settings without permission, block disabling or uninstalling apps (except authorized parental control or enterprise management), work around platform security or privacy controls and notifications, or alter the UI deceptively.",
    "The Accessibility API must not be used for remote call audio recording or to power apps that autonomously initiate, plan and execute actions or decisions.",
-   "Apps using the Accessibility API must document that use in the Play listing, complete the Play Console declaration, and prefer more narrowly scoped APIs where they achieve the same result.",
+   "Apps using the Accessibility API must document that use in the Play listing, complete the Play Console declaration with a demo video, and must use more narrowly scoped APIs where they achieve the same result.",
    "Only apps whose core function directly supports people with disabilities may set isAccessibilityTool; other apps using the Accessibility API must not set it and must provide a prominent in-app disclosure and obtain affirmative consent.",
    "Apps may request REQUEST_INSTALL_PACKAGES only when their core function, prominently described in the listing and declared in Play Console, involves sending or receiving packages and user-initiated installation, such as browsing, attachment-capable messaging, file management, enterprise management, backup and restore, device migration or wearable and IoT companion apps.",
    "REQUEST_INSTALL_PACKAGES must not be used for self-updates, modifying the app, or installing APKs bundled in assets (except device management), and every installation must be initiated by the user; peer-to-peer sharing qualifies only if it is the app's primary purpose.",
@@ -105,13 +105,13 @@
    "Apps may request Health Connect permissions only for approved use cases (fitness and wellness, rewards, coaching, corporate wellness, medical care, health research, games) with features that benefit users' health, must request only the minimum data types needed, and must submit a Play Console declaration.",
    "Health Connect must not be used in safety-critical systems, by headless apps without a visible icon, to sync data between incompatible devices or platforms, or in apps or services that solely target children.",
    "Apps using Health Connect must protect the data against unauthorized access and comply with applicable laws such as HIPAA and GDPR, including any required agreements.",
-   "Health Connect data may be used only for user-visible features, transferred to third parties only with explicit consent or for security, legal or merger reasons, and must never be sold or used for advertising, data brokers, creditworthiness or lending, unapproved medical devices, or non-compliant PHI handling.",
+   "Health Connect data use should be limited to providing or improving user-visible features, transfer to third parties is allowed only with explicit consent or for security, legal or merger reasons, and the data must never be sold or used for advertising, data brokers, creditworthiness or lending, unapproved medical devices, or non-compliant PHI handling.",
    "Apps using Health Connect must publish a privacy policy that identifies the app, describes the data types accessed and all uses and sharing, explains how users manage and delete data and what happens on account deactivation or deletion, and describes secure handling.",
    "Apps may use VpnService only if VPN is their core function or a remote server is needed for core functions such as parental control, enterprise management, app usage tracking, device security, network tools, browsers or carrier services.",
    "Apps using VpnService must document it in the Play listing, encrypt traffic from device to tunnel endpoint, must not collect personal data without prominent disclosure and consent, and must not redirect or manipulate other apps' traffic for monetization.",
    "Apps may declare USE_EXACT_ALARM (API 33+) only if their core user-facing function is an alarm, timer or calendar with event notifications; other apps needing exact alarms should use the user-granted SCHEDULE_EXACT_ALARM.",
    "Apps targeting API 34+ receive USE_FULL_SCREEN_INTENT automatically only if their core function is alarms or receiving phone or video calls; other apps must ask the user for the permission with a clear explanation.",
-   "Full-screen intent notifications must be limited to high-priority alerts and must not disrupt the device or other apps or be used for disruptive ads or notifications.",
+   "Full-screen intent notifications must be limited to high-priority alerts, must not interfere with or disrupt the device or be used for disruptive ads or notifications, and should not interfere with other apps.",
    "Data from the Age Signals API may be used only to meet legal obligations such as providing age-appropriate experiences, never for advertising, marketing, personalization, analytics, profiling or transfer to third parties unless legally required."
   ],
   "announced": [
@@ -372,7 +372,7 @@
   "requirements": [
    "Apps that contain or feature user-generated content, including specialized browsers or clients for UGC platforms, must require users to accept the terms of use or user policy before they can create or upload UGC.",
    "UGC apps must define objectionable content and behavior consistently with Play policies and prohibit it in their terms of use or user policies.",
-   "UGC apps must carry out ongoing moderation appropriate to the type of content, including an in-app system to report objectionable content and users and action against offending content or users, and must address user complaints about objectionable content.",
+   "UGC apps must carry out ongoing moderation appropriate to the type of content, including an in-app system to report and block objectionable content and users and action against offending content or users, and must address user complaints about objectionable content.",
    "UGC apps limited to a verified or registered set of users (such as a school or company) must provide in-app reporting of content and users.",
    "UGC features enabling 1:1 interaction with specific users, such as direct messages, tagging or mentions, must provide in-app user blocking.",
    "Apps providing access to publicly accessible UGC, such as social networks and blogging apps, must provide in-app reporting of users and content and in-app user blocking.",
@@ -398,7 +398,7 @@
    "Gambling apps and daily fantasy sports apps must be free to download, must not be sold as paid apps, and must not use Google Play In-app Billing.",
    "Gambling apps and daily fantasy sports apps must be rated AO (Adults Only) or the IARC equivalent.",
    "Gambling apps and daily fantasy sports apps must clearly display responsible gambling information in the app and in the store listing.",
-   "Apps that are not approved gambling apps or approved pilots must not let users wager, stake or participate with real money or purchased in-app items for prizes of real-world monetary value, including games that award cash or physical prizes for money, apps that accept or manage wagers, deposits or winnings, and navigation or calls to action (such as BET, REGISTER or COMPETE buttons or WebViews) inviting real-money contests.",
+   "Apps that are not approved gambling apps or approved pilots must not let users wager, stake or participate with real money or purchased in-app items for prizes of real-world monetary value, other than programs permitted under the gamified loyalty rules, including games that award cash or physical prizes for money, apps that accept or manage wagers, deposits or winnings, and navigation or calls to action (such as BET, REGISTER or COMPETE buttons or WebViews) inviting real-money contests.",
    "Apps with gamified loyalty programs offering real-world prizes must make rewards clearly supplementary to a genuine, separate purchase of goods or services, with no part of the purchase acting as a participation fee or wager and no inflated price, and rewards must not be purchasable.",
    "In game apps, loyalty rewards tied to purchases must be earned and redeemed only at a fixed ratio documented conspicuously in the app and in public official rules, and must not be wagered, multiplied or awarded based on game performance or chance.",
    "Non-game apps with loyalty programs tied to purchases must publish official rules in the app, disclose the odds (for fixed-odds rewards) or the selection method (for other chance-based rewards), specify a fixed number of winners, entry deadline and award date for drawings or sweepstakes, and document any fixed accrual and redemption ratio conspicuously in the app and the rules.",
@@ -475,8 +475,8 @@
    "Health apps must provide a privacy policy link in the Play Console field and a link or text inside the app, hosted on an active, public, non-geofenced, non-PDF and non-editable URL.",
    "The health app's privacy policy, together with in-app disclosures, must comprehensively disclose access, collection, use and sharing of personal and sensitive data beyond what the Data safety section lists.",
    "Health apps must meet the prominent disclosure and consent requirements for any functionality or data covered by dangerous or runtime permissions.",
-   "Health apps must not request permissions that their core functionality does not need, and must remove unused permissions.",
-   "Apps that are not primarily health apps but access health data (such as insurers or games using activity data) must make the link between their core functionality and the health data clear to users, and their privacy policy must reflect that limited use.",
+   "Health apps should not request permissions that their core functionality does not need, and must remove unused permissions.",
+   "Apps that are not primarily health apps but access health data (such as insurers or games using activity data) should make the link between their core functionality and the health data clear to users, and their privacy policy must reflect that limited use.",
    "Apps must not offer health or medical functionality that is misleading or potentially harmful.",
    "Apps that need external hardware (such as a blood glucose monitor) for their medical function must disclose that requirement in the description and must not imply they work without it.",
    "Apps that use device sensors such as the camera for health functions must state in the description which devices are compatible, for example which models support sensor-only oximetry.",
@@ -484,7 +484,7 @@
    "Health and medical apps that are not regulated medical devices must state in the app description that the app is not a medical device and does not diagnose, treat, cure or prevent any medical condition, and must remind users to consult a healthcare professional for medical advice, diagnosis or treatment.",
    "Apps developed in affiliation with a government or recognized healthcare organization must submit proof of eligibility through the advance notice form.",
    "Contact tracing and health status apps must select Disease Prevention and Public Health in Play Console and submit the advance notice form.",
-   "Apps conducting health-related human subjects research must follow applicable rules, obtain informed consent from participants (or a parent or guardian for minors), and secure IRB or equivalent ethics approval unless exempt, providing proof on request.",
+   "Apps doing health-related human subjects research must follow all applicable rules and obtain informed consent from participants (or a parent or guardian for minors), and should also have IRB or equivalent ethics approval unless exempt, with proof provided on request.",
    "Data accessed through Health Connect permissions is personal and sensitive data subject to the User Data policy and the additional Health Connect requirements.",
    "Apps must not facilitate the sale or purchase of prescription drugs without a prescription.",
    "Apps must not promote or sell unapproved substances regardless of claimed legality, including listed prohibited pharmaceuticals and supplements, ephedra products, hCG for weight loss or with anabolic steroids, supplements with active pharmaceutical or dangerous ingredients, products subject to regulatory action or warnings, and products with names confusingly similar to unapproved or controlled substances.",
@@ -501,7 +501,7 @@
   "sha256": "26ca04f017ba870de02ffe808e471af98d6cacec398e91617a3c4439287469d2",
   "requirements": [
    "All content in the app and its store listing must be the developer's original work or used under a license or permission the developer can document.",
-   "Apps must not infringe copyright, and modifying copyrighted material does not cure the violation; for example album, game or book cover art, film or TV marketing images, comic or cartoon artwork, sports team logos, photos of public figures taken from their social media or professional shoots, fan art indistinguishable from the original, soundboards of copyrighted audio clips, and full reproductions or translations of books not in the public domain.",
+   "Apps must not infringe copyright, and modifying copyrighted material may still be a violation; for example album, game or book cover art, film or TV marketing images, comic or cartoon artwork, sports team logos, photos of public figures taken from their social media or professional shoots, fan art indistinguishable from the original, soundboards of copyrighted audio clips, and full reproductions or translations of books not in the public domain.",
    "Apps must not induce or encourage copyright infringement, such as streaming apps that let users save local copies of copyrighted content without authorization, and the description and screenshots must not promote unauthorized downloading or streaming.",
    "Apps and listings must not use another party's trademark (name, logo, brand) in a way likely to confuse users about the source of the product.",
    "Apps must not sell or promote for sale counterfeit goods bearing a trademark or logo identical or substantially indistinguishable from another brand's.",
@@ -563,7 +563,7 @@
    "Apps and ads must not modify device settings or features as a service to third parties or for advertising purposes.",
    "Apps must not mislead users into removing or disabling third-party apps or changing device settings, and must not encourage or incentivize such removal or changes unless it is part of a verifiable security service.",
    "Apps must not help users deceive others, including generating or facilitating ID cards, social security numbers, passports, diplomas, credit cards, bank accounts or driver's licenses.",
-   "Apps must perform as users would reasonably expect from their disclosures, title, description and images.",
+   "Apps should perform as users would reasonably expect from their disclosures, title, description and images.",
    "Apps may download additional resources (such as game assets) only when needed for use of the app, those resources must comply with all Play policies, and the app must prompt the user and disclose the download size before starting the download, including CDN downloads.",
    "Apps must not display unverified or real phone numbers, contacts, addresses or other personally identifiable information of non-consenting people or entities.",
    "Apps whose core functionality differs by geography, device parameters or other user-dependent data must prominently disclose those differences in the store listing.",
@@ -613,7 +613,7 @@
    "Apps must not install other apps without the user's prior consent, and must not link to or facilitate the distribution or installation of malicious software.",
    "Apps must not use the full-screen intent permission to force interaction with disruptive ads or notifications.",
    "Apps must not circumvent Android sandbox protections to infer user activity or identity from other apps.",
-   "Apps targeting Android 14+ must declare a valid foreground service type and its matching permission for each foreground service, and complete the Play Console declaration describing each use.",
+   "Apps targeting Android 14+ must declare a valid foreground service type and its matching permission for each foreground service, and complete the Play Console declaration describing each use, including its user impact and a demo video.",
    "Apps may declare a foreground service permission only when the use is a user-beneficial core feature, is user-initiated or perceptible, can be stopped by the user, cannot be deferred or interrupted by the system without harming the experience, and runs only as long as needed; systemExempted, shortService and dataSync used for Play Asset Delivery are exempt.",
    "Apps may use the user-initiated data transfer jobs API only for user-initiated network data transfers that run only as long as the transfer requires.",
    "Apps must respect other apps' FLAG_SECURE and must not facilitate or build workarounds to bypass it; accessibility tools are exempt only if they never transmit, save or cache protected content for access outside the device.",
@@ -634,7 +634,7 @@
    "Monitoring apps must declare the isMonitoringTool manifest flag, must not present themselves as spying or secret surveillance tools or hide tracking behavior, must show a persistent notification while running and a unique identifying icon, must disclose monitoring in the Play description, and must provide prominent disclosure and consent.",
    "Monitoring apps and their listings must not offer any way to unlock non-compliant functionality, such as links to non-compliant APKs hosted outside Google Play, and must comply with applicable laws.",
    "Apps must not, without the user's knowledge, take part in denial-of-service attacks or generate excessive traffic against other systems.",
-   "Apps must not act as hostile downloaders that are built to spread potentially harmful apps or where at least 5% of downloads (minimum 500 observed downloads) are harmful; browsers and file-sharing apps are exempt only if every download is user-initiated with consent.",
+   "Apps must not be hostile downloaders, meaning code believed to be built to spread PHAs that has downloaded them or can download and install apps, or code where at least 5% of at least 500 observed downloads are PHAs; major browsers and file-sharing apps are exempt only if they do not drive downloads without user interaction and every PHA download is started by a consenting user.",
    "Apps must not impersonate a trustworthy source to request credentials or billing information and send it to a third party, or intercept credentials in transit.",
    "Apps must not break the app sandbox or gain elevated privileges, including violating the Android permissions model, stealing credentials such as OAuth tokens from other apps, preventing their own uninstallation or stopping, or disabling SELinux.",
    "Apps must not lock users out of their device, encrypt their data, or abuse device admin features to block removal in order to demand payment or action.",
@@ -665,7 +665,7 @@
   "url": "https://support.google.com/googleplay/android-developer/answer/9893335?hl=en",
   "sha256": "7be6beacd170c9165c098751e092c385add3fd7acb54c0d8526d48886cc823c3",
   "requirements": [
-   "Before publishing, developers must declare the app's target audience in the Play Console Target audience and content section, selecting only age groups the app is actually designed for and appropriate for (for example only Ages 5 and under for apps for babies, toddlers and preschoolers, and mixed adult and child groups only if truly designed for all ages); child-oriented imagery and terminology can override the declared audience in Google's assessment.",
+   "Before publishing, developers must declare the app's target audience in the Play Console Target audience and content section and should select only age groups the app is designed for and appropriate for (for example only Ages 5 and under for apps for babies, toddlers and preschoolers, and mixed adult and child groups only if truly designed for all ages); child-oriented imagery and terminology may affect Google's assessment of the declared audience.",
    "Apps that include children in their target audience must answer Play Console questions accurately, including Target audience and content, Data safety and the IARC content rating questionnaire, and keep those answers updated as the app changes.",
    "Content in apps that include children in their target audience must be appropriate for children wherever children can access it, for example no adult-only content behind a child-friendly listing, no glamorized alcohol, tobacco or controlled substances, no real or simulated gambling, no inappropriate violence or gore, no dating or sexual or marital advice, and no links to sites with policy-violating content.",
    "Apps that include children in their target audience must not merely wrap a website in a WebView or primarily drive affiliate traffic to a website without the site owner's permission.",
@@ -677,7 +677,7 @@
    "Apps that include children in their target audience must use the Companion Device Manager when requesting Bluetooth, unless they only target OS versions that do not support it.",
    "Apps that solely target children must not contain APIs or SDKs not approved for child-directed services.",
    "Apps that target both children and older users may use APIs or SDKs not approved for child-directed services only behind a neutral age screen or in a way that collects no data from children, and must not require users to access content through such an API or SDK.",
-   "Apps that include children in their target audience and use augmented reality must show a safety warning as soon as the AR section launches, covering parental supervision and awareness of real-world physical hazards, and must not require devices advised against for children.",
+   "Apps that include children in their target audience and use augmented reality must show a safety warning as soon as the AR section launches, which should cover parental supervision and awareness of real-world physical hazards, and must not require devices advised against for children.",
    "Apps that include children in their target audience and let users share or exchange information must disclose those features accurately in the content rating questionnaire.",
    "Social apps and apps with social features that include children in their target audience must show an in-app reminder about online safety and real-world risks before children can exchange freeform media or information, and must require adult action (an adult verification mechanism that does not encourage age falsification) before children can exchange personal information.",
    "Apps with social features that include children in their target audience must give adults a way to manage those features for child users, such as enabling, disabling or limiting them.",
@@ -700,7 +700,7 @@
    "Developers must not inflate ratings, reviews or install counts by illegitimate means, including posing as users to submit repeated ratings or using automated services.",
    "Apps must not have incentivizing users to install other apps as their main functionality.",
    "Developers must not submit, or encourage users to submit, reviews containing inappropriate content such as affiliate offers, coupons, game codes, email addresses, or links to websites or other apps.",
-   "Developer replies to reviews should address the issues raised and must not ask the user for a higher rating."
+   "As a best practice, developer replies to reviews should stay focused on the issues the user raised and should not ask for a higher rating."
   ],
   "announced": []
  },
@@ -723,7 +723,7 @@
   "sha256": "9fc4bf4cb58d14f1987f36b64dc8307a81d2ab3974b385b2050c8192f96d6798",
   "requirements": [
    "The description, developer name, title, icon, screenshots and promotional images must not be misleading, improperly formatted, non-descriptive, irrelevant, excessive or inappropriate, and screenshots and videos should reflect the actual app experience.",
-   "The app must have a clear, well-written description that accurately describes its functionality, kept succinct without excessive length, detail, improper formatting or repetition.",
+   "The app must have a clear, well-written description that accurately describes its functionality; keeping it succinct is a best practice, though excessive length, detail, improper formatting or repetition can still violate the policy.",
    "The description must not contain unattributed or anonymous user testimonials.",
    "The description must not contain repetitive or unrelated keywords or references, word blocks, vertical or horizontal word lists, or data comparisons with other apps or brands.",
    "The title, icon and developer name must not contain emojis, emoticons (including kaomojis), repeated or irrelevant special characters, or ALL CAPS unless part of the brand name.",
@@ -775,7 +775,7 @@
    "Apps must not send SMS, email or other messages on the user's behalf (for example from a Share button) without letting the user confirm the content and recipients.",
    "Apps must not have as their primary purpose driving affiliate or referral traffic to a website to earn credit for sign-ups or purchases.",
    "Apps must not have as their primary purpose providing a webview of a website without permission from its owner or administrator.",
-   "Apps must offer unique content or services and must not merely copy content or the experience of other apps without adding original value.",
+   "Apps must not merely copy content or the experience of other apps without adding original value, and should provide value through unique content or services.",
    "Developers must not publish multiple apps with highly similar functionality, content and user experience; small apps of this kind should be combined into a single app."
   ],
   "announced": []
@@ -840,12 +840,12 @@
   "sha256": "c0ff288149d2f0252a1d23a233a94f2c6c5370be5f6a23ffb920394341d223f7",
   "requirements": [
    "Apps must not mislead users about subscriptions or use deceptive or manipulative purchase experiences, and must communicate clearly in in-app promotions, splash screens and plan selection screens, with all stated subscription benefits truthful and accurate.",
-   "Subscription offers must clearly and explicitly disclose the offer terms, the cost, the billing frequency, the automatic renewal terms (for example that a monthly plan renews and charges every month), whether a subscription is needed to use the app, and other material information, all visible without the user taking any extra action.",
+   "Subscription offers must clearly and explicitly disclose the offer terms, the cost, the billing frequency, the automatic renewal terms (for example that a monthly plan renews and charges every month), whether a subscription is needed to use the app, and other material information, and users should not have to take any extra action to review it.",
    "Subscription offers must prominently show the amount the user will actually be charged, not mainly a monthly breakdown of an annual or multi-month price, and must not show only an introductory price without the later recurring price.",
    "Subscription pricing and terms must be fully localized to the user's language and currency.",
    "Subscription offers must have a clearly visible dismiss option and, when content is available without subscribing, must clearly show that users can access it without a subscription or trial.",
    "Subscriptions must deliver sustained or recurring value for their whole life, with any bonuses complementary to that value, and products offering one-time benefits (such as lump-sum credits or single-use boosters) must be sold as in-app products rather than subscriptions.",
-   "Developers must not turn a purchased subscription into a one-time offering by cancelling, deprecating or sharply reducing its recurring value, and must not cancel a user's subscription without the user's request.",
+   "Developers must not disguise one-time benefits as subscriptions, including by cancelling, deprecating or minimizing a subscription's recurring value after purchase, or by selling an auto-renewing subscription for a one-time benefit and then cancelling it without the user's request.",
    "Subscription SKU names must accurately describe the product and must not use labels like Free Trial for subscriptions that carry an auto-recurring charge.",
    "Purchase flows must not lead users into accidentally subscribing, for example through repeated taps in the same button area across multiple screens or charges that are hard to read.",
    "Before enrolling a user in a free trial or introductory offer, apps must clearly state its duration, price and included content, when and how it converts to a paid subscription, the paid price, and how to cancel before conversion.",
@@ -955,7 +955,7 @@
   "url": "https://support.google.com/googleplay/android-developer/answer/9970222?hl=en",
   "sha256": "21cdd78ce1ce552fa9c7c83be2afd3e24d44adcab82890c2143ea567bcd91344",
   "requirements": [
-   "Apps must deliver every function they promise, be clear about their purpose and functionality, and tell users about all of their principal and significant functions.",
+   "Apps should deliver every function they promise, be clear about their purpose and functionality, and tell users about all of their principal and significant functions.",
    "Apps must not trick users into installing them or piggyback on the installation of other software, and must disclose any software bundled with them.",
    "Apps must clearly explain any system changes they make and let users review and approve all significant installation options and changes.",
    "Apps must not misrepresent the state of the device, for example by claiming it is in a critical security state or infected with viruses.",
@@ -978,11 +978,11 @@
    "Developers of anonymous chat apps must not target children under the Families policy requirements.",
    "Anonymous chat and random chat apps are subject to the Age-Restricted Content and Functionality policy.",
    "Anonymous chat and random chat apps are subject to the Child Safety Standards policy.",
-   "Every app must be registered to a verified developer under Android developer verification; developers must register any remaining apps from the Play Console Home page to avoid global removal from Google Play, and apps distributed in Brazil, Indonesia, Singapore and Thailand must be registered by a verified developer to install on certified Android devices."
+   "Under Android developer verification (effective September 30, 2026), apps from participating stores in Brazil, Indonesia, Singapore and Thailand must be registered by a verified developer to install on certified Android devices, and Play developers should check the Play Console Home page to register any remaining apps to avoid global removal from Google Play."
   ],
   "announced": [
    {
-    "text": "Geofencing is no longer an approved foreground service use case; apps must use the Geofence API instead.",
+    "text": "Geofencing is no longer an approved foreground service use case; developers can use the Geofence API instead.",
     "effective": "2027-01-27"
    },
    {
@@ -1027,14 +1027,14 @@
    "To charge for products, the developer must hold a valid Payments Profile approved by a Payment Processor and keep it in good standing (3.2).",
    "The developer is responsible for accurate tax inputs and tax categorization of products in Play Console, must supply requested tax documents such as IRS Form W-9 or W-8, and, unless resident in the United States or Singapore, must give Google 90 days' written notice before services in a product are performed there (3.5, 3.6).",
    "Products first offered free must stay free, and any extra charge must relate to an alternative or supplemental version of the product (3.7).",
-   "Users must be able to reinstall each product without any additional fee (3.9).",
+   "Users must be able to reinstall each product without any additional fee, except products removed for a Legal Takedown, which users can no longer reinstall (3.9).",
    "The developer must provide required product information, support users, and accurately disclose the permissions the product needs to function on devices (4.2).",
    "The developer must keep its developer credentials confidential and is responsible for all products built under them (4.3).",
    "Products must not have a purpose that facilitates distributing Android apps or games outside Google Play (4.5).",
    "The developer must use Google Play only for lawful purposes and comply with all applicable laws worldwide, including export control and sanctions regulations on destinations, users and end use (4.6, 11.3, 16.5).",
    "Each product's detail page must show valid, accurate developer contact information for customer support and legal purposes, and the developer must handle support, maintenance and complaints for its products (4.7).",
    "For paid products or in-app transactions, the developer must answer support inquiries within 3 business days and within 24 hours for issues Google flags as urgent (4.7).",
-   "Products that receive or access login credentials or personal information must tell users that this information is available to the product, provide a legally adequate privacy notice and protection, use the data only for the purposes the user permitted, and store personal or sensitive data securely and only as long as needed (4.8).",
+   "Products that receive or access login credentials or personal information must tell users that this information is available to the product, provide a legally adequate privacy notice and protection, use the data only for the purposes the user permitted, and store personal or sensitive data securely and only as long as needed, unless a separate user agreement covering data directly related to the product governs (4.8).",
    "Products given Google Account information may use it only to access the user's Google Account when and for the limited purposes the user permitted (4.8).",
    "Products must not interfere with, disrupt, damage or access without authorization any devices, servers, networks or services of third parties, including Google (4.9).",
    "Any end user license agreement included in a product is subordinate to the Distribution Agreement where they conflict (5.3).",
@@ -1055,12 +1055,12 @@
   "requirements": [
    "All developers must complete the Data deletion questions in the Play Console Data safety form, and apps within scope must state whether they offer account deletion and provide the deletion web link there.",
    "Apps that let users create an app account, either directly in the app or by sending them to an external account creation flow, must offer account deletion even if parts of the app work without an account; permanently private apps, enterprise device management apps and accounts created and operated purely offline are out of scope.",
-   "Apps in scope must provide an in-app path for users to delete their account and associated data, placed prominently (for example in account settings), which may be a link to the web deletion resource rather than a fully in-app flow.",
-   "Apps in scope must provide a web resource where users can request account and data deletion without reinstalling or returning to the app, using for example a deletion link, a support email or a request form.",
-   "The deletion web link must load without errors, feature the deletion pathway prominently, and reference the app or developer name exactly as shown on the store listing; if an existing privacy or retention page is reused, its deletion section must be highlighted, for example with an anchor link.",
+   "Apps in scope must provide an in-app path for users to delete their account and associated data, which should be prominent and intuitive (for example in account settings) and may be a link to the web deletion resource rather than a fully in-app flow.",
+   "Apps in scope must provide a web resource where users can request account and data deletion, for example through a deletion link, a support email or a request form, and it should not require users to return to or reinstall the app.",
+   "The deletion web link must load without errors, feature the deletion pathway prominently, and reference the app or developer name exactly as shown on the store listing; if an existing privacy or retention page is reused, its deletion section should be highlighted and reasonably prominent, for example with an anchor link.",
    "Any steps required before deletion, such as cancelling a subscription, must be clearly explained, with a support flow users can start.",
-   "When an account is deleted at the user's request, all associated user data must be deleted, including all data declared as collected in the Data safety section, and service providers that process the data should be asked to delete it too.",
-   "Apps must tell users what to expect from a deletion request and complete it within a reasonably short time.",
+   "When an account is deleted at the user's request, the associated user data, including all data declared as collected in the Data safety section, must be deleted except data retained for legitimate reasons such as security, fraud prevention or regulatory compliance, and service providers that process the data should be asked to delete it too.",
+   "Apps that offer account creation should tell users what to expect from a deletion request and fulfil it within a reasonably quick period, while checking any local legal deletion or retention rules.",
    "Apps that retain some data for security, fraud prevention or regulatory compliance, or that face longer regulated retention periods, must clearly disclose those retention practices, for example in the privacy policy.",
    "Non-mobile surfaces such as Android TV or Wear OS may omit the in-app deletion option but must still offer a discoverable web deletion resource entered in the Play Console URL field."
   ],
@@ -1075,11 +1075,11 @@
    "Apps targeting Android 14+ must declare a foreground service type in the manifest for every foreground service they use, together with the matching FOREGROUND_SERVICE_* permission (for example FOREGROUND_SERVICE_CAMERA for the camera type).",
    "Apps targeting Android 14+ must also meet any runtime prerequisites of the chosen foreground service type, such as holding a coarse or fine location grant before starting a location foreground service.",
    "Foreground service use must satisfy the foreground service criteria of the Device and Network Abuse policy, including being perceptible to the user through a user-initiated action or a clear, accurate ongoing notification.",
-   "Apps targeting Android 14+ must complete the foreground service declaration on the Play Console App content page for each type used, describing the feature, the user impact if the system defers or interrupts the task, and the chosen use case.",
-   "Each foreground service type declaration must link to a video showing the in-app steps a user takes to trigger the feature, and the video must show a user-initiated action rather than automatic background work, in-app setup rather than system settings for connected devices, and user-started playback rather than automatic soundtracks for media playback.",
-   "Foreground service types must match the actual use case (for example dataSync only for user-initiated backup, transfer, import or export and local processing, mediaPlayback only for user-started playback), and TYPE_SPECIAL_USE may be declared only when no defined type fits and all other foreground service criteria are met.",
+   "Apps targeting Android 14+ must declare each foreground service type on the Play Console App content page with a description of the feature, the user impact if the system defers or interrupts the task, a link to a video showing how the user triggers it, and the chosen use case.",
+   "Each foreground service type declaration must link to a video that should show the in-app steps a user takes to trigger the feature, and the video must show a user-initiated action rather than automatic background work, in-app setup rather than system settings for connected devices, and user-started playback rather than automatic soundtracks for media playback.",
+   "Foreground service types must best match the actual use (the help page gives a non-exhaustive mapping, for example user-initiated work for dataSync and user-started playback for mediaPlayback, and unlisted use cases can be entered manually), and TYPE_SPECIAL_USE may be declared only when no defined type fits and the other foreground service criteria are met.",
    "Apps that use USE_FULL_SCREEN_INTENT must complete the Play Console full-screen intent declaration stating whether their core functionality qualifies for automatic granting.",
-   "For apps targeting Android 14+, only apps whose core function is alarms or receiving phone or video calls get USE_FULL_SCREEN_INTENT by default; all other apps must prompt users to grant it and must degrade gracefully if it is denied."
+   "For apps targeting Android 14+, USE_FULL_SCREEN_INTENT is enabled by default only for apps whose core function is alarms or receiving phone or video calls and whose Play Console declaration was approved; apps without a completed or approved declaration must prompt users to grant it on new installs and degrade gracefully if it is denied."
   ],
   "announced": []
  },
