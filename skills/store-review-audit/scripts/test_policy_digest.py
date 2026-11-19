@@ -16,8 +16,10 @@ class DigestTests(unittest.TestCase):
         stale = [d["id"] for d in self.digest if self.catalog.get(d["id"], {}).get("sha256") != d["sha256"]]
         self.assertEqual(stale, [], "rewrite these digest entries after the policy change")
 
-    def test_every_google_page_has_a_digest_entry(self):
-        google = {k for k, v in self.catalog.items() if v["platform"] == "google"}
+    def test_every_google_policy_page_has_a_digest_entry(self):
+        # Policy pages carry the rules and are the ones support.google.com rate-limits;
+        # help pages (forms, assets) are fetched live and stay UNKNOWN when unreachable.
+        google = {k for k in self.catalog if k.startswith("google:policy:")}
         self.assertEqual(sorted(google - {d["id"] for d in self.digest}), [])
 
     def test_entries_point_at_the_catalogue_url(self):

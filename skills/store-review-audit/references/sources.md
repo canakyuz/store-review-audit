@@ -10,6 +10,8 @@ Established 2026-11-17. Re-open applicable pages every audit. Follow redirects; 
 | Review preparation/common problems | https://developer.apple.com/distribute/app-review/ |
 | Reviewer access and supporting documents | https://developer.apple.com/help/app-review/before-submitting-for-review/complete-review |
 | Agreements and licenses | https://developer.apple.com/support/terms/ |
+| Apple Developer Program License Agreement | https://developer.apple.com/support/terms/apple-developer-program-license-agreement/ |
+| Screenshot specifications | https://developer.apple.com/help/app-store-connect/reference/app-information/screenshot-specifications |
 | Upcoming requirements | https://developer.apple.com/news/upcoming-requirements/ |
 | Subscriptions | https://developer.apple.com/app-store/subscriptions/ |
 | Standard EULA | https://www.apple.com/legal/internet-services/itunes/dev/stdeula/ |
@@ -47,6 +49,9 @@ Follow App Store Connect Help for asset specifications, export compliance, agree
 | Content ratings | https://support.google.com/googleplay/android-developer/answer/9898843 |
 | Families | https://support.google.com/googleplay/android-developer/answer/9893335 |
 | Target API level | https://support.google.com/googleplay/android-developer/answer/11917020 |
+| Target API requirements and deadlines | https://developer.android.com/google/play/requirements/target-sdk |
+| Data safety form | https://support.google.com/googleplay/android-developer/answer/10787469 |
+| Store listing graphics | https://support.google.com/googleplay/android-developer/answer/9866151 |
 | Health | https://support.google.com/googleplay/android-developer/answer/9878878 |
 | Personal-account testing | https://support.google.com/googleplay/android-developer/answer/14151465 |
 | Device verification | https://support.google.com/googleplay/android-developer/answer/14316361 |
