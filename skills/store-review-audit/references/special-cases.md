@@ -59,4 +59,4 @@ If the app seats bots or house players against users, especially where purchasab
 
 ## Rejection response
 
-A notice may not list every issue: recheck the whole app before resubmitting. Split metadata, binary, account and policy issues. Give the smallest truthful fix, whether a new build appears necessary, and verify resubmission options. Draft a factual reply with build, each issue, completed changes, navigation and evidence. Use future tense for incomplete work. One fixed link does not resolve every issue. Do not send under audit-only authorization.
+A notice may not list every issue: recheck the whole app before resubmitting. Split metadata, binary, account and policy issues. Give the smallest truthful fix, whether a new build appears necessary, and verify resubmission options. Draft a factual reply with build, each issue, completed changes, navigation and evidence. Use future tense for incomplete work. One fixed link does not resolve every issue. Do not send under audit-only authorization. Official reply, appeal and expedite channels are in [rejection-playbook.md](rejection-playbook.md).
