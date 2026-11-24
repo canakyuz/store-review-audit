@@ -1,0 +1,17 @@
+name: Store review scan
+description: Scan an iOS, Android, Expo, React Native or Flutter project for store-review signals and fail on a HIGH finding.
+branding:
+  icon: check-circle
+  color: blue
+inputs:
+  path:
+    description: Folder that holds the app, relative to the workspace.
+    default: "."
+runs:
+  using: composite
+  steps:
+    - shell: bash
+      env:
+        SCAN_PATH: ${{ inputs.path }}
+      # exit 1 on a HIGH finding, 2 when the folder holds no mobile project; both fail the step
+      run: python3 "$GITHUB_ACTION_PATH/skills/store-review-audit/scripts/scan_project.py" "$SCAN_PATH"
