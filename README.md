@@ -2,9 +2,38 @@
 
 **Evidence-based release reviews for the Apple App Store and Google Play.**
 
-An agent skill and a small Python validator that make release audits explicit: which build was checked, which policy applies, what evidence supports each result, and what remains unresolved.
+A project scanner, an agent skill and a ledger validator that make release audits explicit: which build was checked, which policy applies, what evidence supports each result, and what remains unresolved.
 
-**27 control definitions · Python standard library · MIT licensed**
+**One-command project scan · 27 control definitions · Python standard library · MIT licensed**
+
+## Scan a project in one command
+
+Needs git and Python 3.10 or newer. Nothing is installed, nothing in your app is changed and nothing is sent anywhere.
+
+```sh
+git clone https://github.com/canakyuz/store-review-audit
+python3 store-review-audit/skills/store-review-audit/scripts/scan_project.py /path/to/your/app
+```
+
+It reads an iOS, Android, Expo, React Native or Flutter project and prints each finding with the file and line, the reason, the fix and the official policy it comes from:
+
+```text
+HIGH  A03 apple  Google Sign-In without Sign in with Apple
+      at   app.json:20
+      why  A third-party or social login for the primary account needs an equivalent privacy-focused login option. ...
+      fix  Add Sign in with Apple or another service that meets 4.8, or record which exception applies.
+      ref  apple:4.8 https://developer.apple.com/app-store/review/guidelines/#4.8
+```
+
+| Line starts with | Meaning |
+| --- | --- |
+| `HIGH` | The files contain something a store rule restricts. Fix it or record the exception that applies. Exit code 1. |
+| `CHECK` | Something expected was not found, or the outcome depends on what a scan cannot see, such as a console declaration. |
+| `Declare` | SDKs found in the project and the data each commonly sends, for App Privacy and Data safety. |
+
+What it checks: social login without Sign in with Apple, accounts without a deletion path, ad SDKs without a tracking prompt, a privacy manifest that lists no data, placeholder purpose strings, Always location, restricted Android permissions (SMS, call log, background location, all files access and others), purchases without restore, subscription screens without a price or terms link, chance mechanics with stakes, and store listing text in a fastlane `metadata/` folder (ranking claims in titles, mentions of the other platform).
+
+What it cannot see: console declarations, legal pages, runtime behaviour, the built binary and account state. A scan with no findings is not a pass and exits 0; a folder with no mobile project exits 2 and checks nothing. On the benchmark app below it finds 9 of the 15 seeded problems and none of the 14 traps; the other 6 live in the console exports and legal pages, which is what the agent audit is for. Add `--json` for machine-readable output.
 
 ## Why this exists
 
@@ -12,16 +41,17 @@ A release can have working code and still have missing subscription terms, inacc
 
 This project gives an agent a repeatable investigation workflow and checks the resulting evidence ledger. Missing evidence stays unknown. Failed checks stay blocked. One store's evidence cannot silently stand in for the other.
 
-## Two parts, two responsibilities
+## Three parts, three responsibilities
 
 | Component | Responsibility |
 | --- | --- |
+| [Project scanner](skills/store-review-audit/scripts/scan_project.py) | Read project files and report leads with file, line, fix and policy reference. No network, no agent. |
 | [Agent skill](skills/store-review-audit/SKILL.md) | Inspect the app, build, console and documents; consult current official policies; assess applicability and write findings. |
 | [Python validator](skills/store-review-audit/scripts/validate_audit.py) | Check report structure, required controls, evidence types, app/platform/build identifiers, locale coverage and unresolved rejection records. |
 
 The validator does **not** run an app, fetch policies, authenticate screenshots or prove legal compliance. It can reject an incomplete report; it cannot guarantee store acceptance. A fabricated but structurally valid evidence record can still pass its mechanical checks, so agent/human verification remains essential.
 
-## Quick start
+## Start an audit ledger
 
 Requires Python 3.10 or newer. No pip dependencies, API keys or credentials are required for the local tools.
 
@@ -134,7 +164,7 @@ For policy updates, follow [CONTRIBUTING.md](CONTRIBUTING.md): verify an officia
 
 ## Benchmark
 
-`bench/coin-quiz` is a fictional Expo app with 15 seeded store problems and 14 traps. Run an audit of it with the skill, then score the two ledgers:
+`bench/coin-quiz` is a fictional Expo app with 15 seeded store problems and 14 traps. The scanner's result on it is fixed by the test suite (9 seeded problems found from files alone, no trap flagged). Run an audit of it with the skill, then score the two ledgers:
 
 ```sh
 python3 bench/score.py apple.json google.json
