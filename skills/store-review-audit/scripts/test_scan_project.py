@@ -101,7 +101,7 @@ class CheckTests(unittest.TestCase):
         code = ("import auth from '@react-native-firebase/auth';\nimport Purchases from 'react-native-purchases';\n"
                 "import 'react-native-google-mobile-ads';\nPurchases.purchasePackage(offerings.current.monthly);\n")
         report = scan_files({**EXPO, "src/a.ts": code})
-        self.assertEqual(controls(report, severity="CHECK"), {"C10", "C11", "C12", "C13"})
+        self.assertEqual(controls(report, severity="CHECK"), {"C05", "C10", "C11", "C12", "C13"})
         self.assertEqual(controls(report, severity="HIGH"), set())
 
     def test_search_terms_is_not_a_terms_link(self):
@@ -172,7 +172,9 @@ class CheckTests(unittest.TestCase):
         report = scan_files({"app/src/main/AndroidManifest.xml": manifest,
                              "app/build.gradle": "implementation 'com.google.android.gms:play-services-ads:23.0.0'\n"})
         self.assertEqual(report["platforms"], ["google"])
-        self.assertEqual({f["platform"] for f in report["findings"]}, {"google"})
+        self.assertNotIn("apple", {f["platform"] for f in report["findings"]})
+        self.assertFalse([f for f in report["findings"] if any(ref.startswith("apple:") for ref in f["refs"])
+                          and f["platform"] != "all"])
 
     def test_comment_marker_inside_a_string_keeps_the_code_after_it(self):
         code = ("import auth from '@react-native-firebase/auth';\npick({ type: 'image/*' });\n"
@@ -203,6 +205,149 @@ class CheckTests(unittest.TestCase):
         report = scan_files({**EXPO, "node_modules/x/index.js": "import 'react-native-google-mobile-ads';\n"})
         self.assertEqual(report["findings"], [])
         self.assertEqual(report["sdks"], [])
+
+
+class FeatureCheckTests(unittest.TestCase):
+    """Leads for conditional controls: each fires on the feature's own SDK or declaration, never on a word."""
+
+    def titles(self, files, control):
+        return [(f["severity"], f["platform"], f["title"]) for f in scan_files({**EXPO, **files})["findings"]
+                if f["control"] == control]
+
+    def test_chat_sdk_needs_report_and_block(self):
+        chat = "import { StreamChat } from 'stream-chat';\n"
+        self.assertEqual(self.titles({"src/chat.ts": chat}, "C16"),
+                         [("CHECK", "all", "Stream Chat without a report or block action in source")])
+        self.assertEqual(self.titles({"src/chat.ts": chat + "function reportMessage() {}\n"}, "C16"),
+                         [("CHECK", "all", "Stream Chat without a block action in source")])
+        self.assertEqual(self.titles({"src/chat.ts": chat + "reportMessage(); blockUser(id);\n"}, "C16"), [])
+
+    def test_report_and_block_words_alone_are_not_a_chat_feature(self):
+        self.assertEqual(self.titles({"src/a.ts": "const report = buildReport(); const blockSize = 4;\n"}, "C16"), [])
+
+    def test_ai_provider_is_one_lead(self):
+        code = "import OpenAI from 'openai';\nfetch('https://api.openai.com/v1/responses');\n"
+        found = self.titles({"src/ai.ts": code}, "C17")
+        self.assertEqual(found, [("CHECK", "all", "OpenAI API: data sharing consent and output reporting")])
+
+    def test_a_word_that_contains_a_provider_name_is_not_an_ai_sdk(self):
+        self.assertEqual(self.titles({"src/a.ts": "const isOpenAIModalVisible = false; // openai\n"}, "C17"), [])
+
+    def test_health_access_is_reported_per_platform(self):
+        plist = '{"expo": {"ios": {"infoPlist": {"NSHealthShareUsageDescription": "Reads steps to chart your week."}}}}'
+        found = self.titles({"app.json": plist, "src/ads.ts": "import 'react-native-google-mobile-ads';\n"}, "C18")
+        self.assertEqual(found, [("CHECK", "apple", "HealthKit access in an app with AdMob")])
+        manifest = '<manifest><uses-permission android:name="android.permission.health.READ_STEPS" /></manifest>'
+        self.assertEqual(self.titles({"android/app/src/main/AndroidManifest.xml": manifest}, "C18"),
+                         [("CHECK", "google", "Health Connect access")])
+        self.assertEqual(self.titles({"src/a.ts": "const health = checkServerHealth();\n"}, "C18"), [])
+
+    def test_other_payment_sdk_is_a_lead_not_a_violation(self):
+        found = self.titles({"src/pay.ts": "import { useStripe } from '@stripe/stripe-react-native';\n"}, "C11")
+        self.assertEqual(found, [("CHECK", "all", "Stripe: payment outside the store billing system")])
+        self.assertEqual(self.titles({"src/a.ts": "const stripe = 'zebra stripe pattern';\n"}, "C11"), [])
+
+    def test_background_modes_named_by_the_guideline(self):
+        def modes(*names):
+            return {"app.json": json.dumps({"expo": {"ios": {"infoPlist": {"UIBackgroundModes": list(names)}}}})}
+        self.assertEqual(self.titles(modes("audio", "fetch", "location"), "C19"),
+                         [("CHECK", "apple", "Background modes declared: audio, location")])
+        self.assertEqual(self.titles(modes("fetch", "remote-notification"), "C19"), [])
+        plist = ('<?xml version="1.0"?><plist version="1.0"><dict><key>UIBackgroundModes</key>'
+                 "<array><string>audio</string><string>voip</string></array></dict></plist>")
+        both = {**modes("audio"), "ios/App/Info.plist": plist}
+        self.assertEqual(self.titles(both, "C19"), [("CHECK", "apple", "Background modes declared: audio, voip")])
+
+    def test_privacy_link_is_expected_when_an_sdk_sends_data(self):
+        ads = "import 'react-native-google-mobile-ads';\n"
+        self.assertEqual(self.titles({"src/a.ts": ads}, "C05"), [("CHECK", "all", "No privacy policy link in source")])
+        self.assertEqual(self.titles({"src/a.ts": ads + "open('https://example.com/privacy');\n"}, "C05"), [])
+        self.assertEqual(self.titles({"src/a.ts": "export const a = 1;\n"}, "C05"), [])
+
+    def test_placeholder_text_in_shipped_files_only(self):
+        lorem = "const body = 'Lorem ipsum dolor sit amet';\n"
+        self.assertEqual(self.titles({"src/Home.tsx": lorem}, "C03"), [("CHECK", "apple", "Placeholder text (lorem ipsum)")])
+        self.assertEqual(self.titles({"src/__tests__/Home.test.tsx": lorem, "src/Card.stories.tsx": lorem}, "C03"), [])
+        listing = {"fastlane/metadata/en-US/description.txt": "Lorem ipsum dolor sit amet.\n"}
+        self.assertEqual(self.titles(listing, "C04"), [("HIGH", "apple", "Placeholder text (lorem ipsum)")])
+        play = {"fastlane/metadata/android/en-US/full_description.txt": "Lorem ipsum dolor sit amet.\n"}
+        self.assertEqual(self.titles(play, "C04"), [])
+
+    def test_foreground_service_exact_alarm_and_vpn_permissions(self):
+        manifest = ('<manifest>\n<uses-permission android:name="android.permission.FOREGROUND_SERVICE_LOCATION" />\n'
+                    '<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />\n'
+                    '<uses-permission android:name="android.permission.USE_EXACT_ALARM" />\n'
+                    '<service android:permission="android.permission.BIND_VPN_SERVICE" />\n</manifest>')
+        report = scan_files({**EXPO, "android/app/src/main/AndroidManifest.xml": manifest})
+        found = {f["title"]: f["refs"] for f in report["findings"] if f["control"] == "C19"}
+        self.assertEqual(sorted(found), ["Restricted permission BIND_VPN_SERVICE",
+                                         "Restricted permission FOREGROUND_SERVICE_LOCATION",
+                                         "Restricted permission USE_EXACT_ALARM"])
+        self.assertEqual(len(found["Restricted permission FOREGROUND_SERVICE_LOCATION"]), 2)
+
+    def test_play_title_emoji_and_capitals_and_apple_prerelease_name(self):
+        report = scan_files({**EXPO, "fastlane/metadata/android/en-US/title.txt": "COIN QUIZ \U0001F3B2\n",
+                             "fastlane/metadata/android/tr-TR/title.txt": "NASA Quiz\n",
+                             "fastlane/metadata/en-US/name.txt": "Coin Quiz Beta\n",
+                             "fastlane/metadata/en-US/description.txt": "Test your knowledge.\n"})
+        self.assertEqual([(f["severity"], f["title"]) for f in report["findings"]], [
+            ("HIGH", "title contains an emoji (en-US)"),
+            ("CHECK", "title is all capitals (en-US)"),
+            ("CHECK", 'name contains "Beta" (en-US)')])
+
+
+class ReviewRegressionTests(unittest.TestCase):
+    """Inputs a review showed to crash, misfire or hide a finding."""
+
+    def controls_for(self, files):
+        return controls(scan_files({**EXPO, **files}))
+
+    def test_malformed_background_modes_do_not_crash(self):
+        for value in ([{"a": 1}], [["audio"]], "audio", None):
+            app = json.dumps({"expo": {"ios": {"infoPlist": {"UIBackgroundModes": value}}}})
+            self.assertNotIn("C19", self.controls_for({"app.json": app}))
+
+    def test_health_connect_package_is_not_healthkit(self):
+        pkg = '{"dependencies": {"expo": "56.0.0", "react-native-health-connect": "3.0.0"}}'
+        report = scan_files({"package.json": pkg})
+        self.assertEqual([(f["platform"], f["title"]) for f in report["findings"] if f["control"] == "C18"],
+                         [("google", "Health Connect access")])
+        kit = '{"dependencies": {"expo": "56.0.0", "@kingstinct/react-native-healthkit": "9.0.0"}}'
+        self.assertIn("C18", controls(scan_files({"package.json": kit}), "apple"))
+
+    def test_placeholder_in_source_does_not_hide_the_listing_one(self):
+        report = scan_files({**EXPO, "app/Home.tsx": "const t = 'lorem ipsum';\n",
+                             "fastlane/metadata/en-US/description.txt": "Lorem ipsum.\n"})
+        self.assertEqual(sorted((f["severity"], f["control"]) for f in report["findings"]),
+                         [("CHECK", "C03"), ("HIGH", "C04")])
+
+    def test_words_that_contain_an_sdk_name_are_not_the_sdk(self):
+        code = ("go('/livestream-chat');\nconst a = 'Braintree Road, Essex';\n"
+                "open('https://example.com/blog/openai/');\nfetch('https://api.groq.com/openai/v1');\n")
+        self.assertEqual(self.controls_for({"src/a.ts": code}), set())
+
+    def test_play_title_symbols_and_acronyms(self):
+        def title(text):
+            report = scan_files({**EXPO, "fastlane/metadata/android/en-US/title.txt": text + "\n"})
+            return [f["title"] for f in report["findings"]]
+        self.assertEqual(title("Coin Quiz \u2B50"), ["title contains an emoji (en-US)"])
+        self.assertEqual(title("Timer \u231B"), ["title contains an emoji (en-US)"])
+        self.assertEqual(title("QR NFC"), [])
+        self.assertEqual(title("Coin Quiz"), [])
+
+    def test_handler_names_count_as_report_and_block(self):
+        chat = "import { StreamChat } from 'stream-chat';\nconst onReportPress = () => {};\nfunction handleBlock() {}\n"
+        self.assertNotIn("C16", self.controls_for({"src/chat.ts": chat}))
+
+    def test_labels_in_translation_files_count(self):
+        ads = {"src/a.ts": "import 'react-native-google-mobile-ads';\n"}
+        self.assertIn("C05", self.controls_for(ads))
+        self.assertNotIn("C05", self.controls_for({**ads, "src/locales/en.json": '{"settings": {"privacy": "Privacy policy"}}'}))
+        self.assertNotIn("C05", self.controls_for({**ads, "src/a.ts": ads["src/a.ts"] + "open('https://x.example/gizlilik-politikasi');\n"}))
+
+    def test_bare_foreground_service_prefix_is_not_a_type(self):
+        manifest = '<manifest><uses-permission android:name="android.permission.FOREGROUND_SERVICE_" /></manifest>'
+        self.assertNotIn("C19", self.controls_for({"android/app/src/main/AndroidManifest.xml": manifest}))
 
 
 class CommandTests(unittest.TestCase):

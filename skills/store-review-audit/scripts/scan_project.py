@@ -30,6 +30,7 @@ SOURCE_SUFFIXES = (".ts", ".tsx", ".js", ".jsx", ".mjs", ".swift", ".kt", ".java
 MAX_BYTES = 512 * 1024  # generated bundles are larger than this and hand-written files are not
 # strings are matched first, so "image/*" or a URL inside one never starts a comment
 COMMENT = re.compile(r"(\"(?:\\.|[^\"\\\n])*\"|'(?:\\.|[^'\\\n])*')|/\*.*?\*/|(?<!:)//[^\n]*", re.S)
+TRANSLATIONS = re.compile(r"(?i)(^|/)(locales?|i18n|translations?|lang|languages)/.*\.json$")
 LISTING = re.compile(r"(?:^|/)metadata/(?:(android)/)?([^/]+)/"
                      r"(name|subtitle|keywords|promotional_text|description|title|short_description|full_description)\.txt$")
 NOT_VISIBLE = ("console declarations (App Privacy, Data safety, age rating, EULA)", "the store listing in the console",
@@ -38,6 +39,9 @@ NOTE = ("Findings are leads to confirm, and no finding is not a pass: every audi
         "until it has evidence.")
 
 AD_DATA = "advertising ID, device identifiers, ad interactions"
+AI_DATA = "prompts and any personal data they contain"
+HEALTH_DATA = "health and fitness data"
+PAYMENT_DATA = "payment info, purchase history"
 # name, roles, pattern, data the SDK commonly sends (None: nothing to declare for the SDK itself)
 SDKS = [
     ("AdMob", "ads", r"react-native-google-mobile-ads|expo-ads-admob|Google-Mobile-Ads-SDK|GoogleMobileAds|play-services-ads|google_mobile_ads", AD_DATA + ", approximate location"),
@@ -61,6 +65,23 @@ SDKS = [
     ("OneSignal", "", r"(?i)onesignal", "device identifiers, push token"),
     ("Amplitude", "analytics", r"@amplitude/|amplitude-react-native|Amplitude-iOS|AmplitudeSwift|amplitude_flutter|com\.amplitude", "app interactions, user ID"),
     ("Mixpanel", "analytics", r"(?i)mixpanel", "app interactions, user ID"),
+    ("Stream Chat", "chat", r"(?<![\w-])stream-chat|\bStreamChat|stream_chat_flutter|io\.getstream", "messages, user ID"),
+    ("Sendbird", "chat", r"(?i)sendbird", "messages, user ID"),
+    ("CometChat", "chat", r"(?i)cometchat", "messages, user ID"),
+    ("Gifted Chat", "chat", r"react-native-gifted-chat", None),
+    ("OpenAI API", "ai", r"[\"']openai[\"']|api\.openai\.com|dart_openai|com\.openai", AI_DATA),
+    ("Anthropic API", "ai", r"@anthropic-ai/|api\.anthropic\.com|com\.anthropic", AI_DATA),
+    ("Google Gemini API", "ai", r"@google/generative-ai|@google/genai|google_generative_ai|generativelanguage\.googleapis"
+     r"|firebase/ai|firebase/vertexai|FirebaseAI|FirebaseVertexAI|firebase-vertexai|firebase_vertexai", AI_DATA),
+    ("HealthKit", "healthkit", r"react-native-health(?![\w-])|react-native-healthkit|HKHealthStore|com\.apple\.developer\.healthkit"
+     r"|NSHealth(Share|Update)UsageDescription", HEALTH_DATA),
+    ("Health Connect", "health_connect", r"react-native-health-connect|androidx\.health\.connect|android\.permission\.health\.",
+     HEALTH_DATA),
+    ("Stripe", "other_payment", r"@stripe/stripe-react-native|StripePaymentSheet|pod 'Stripe|com\.stripe:|flutter_stripe",
+     PAYMENT_DATA),
+    ("PayPal", "other_payment", r"react-native-paypal|PayPalCheckout|com\.paypal\.(checkout|android)|flutter_paypal", PAYMENT_DATA),
+    ("Braintree", "other_payment", r"braintree-web|react-native-braintree|BraintreeDropIn|com\.braintreepayments|flutter_braintree"
+     r"|pod 'Braintree", PAYMENT_DATA),
 ]
 
 SMS_CALL = ("HIGH", "SMS and Call Log permissions are limited to default handlers or an approved exception and need the "
@@ -87,7 +108,18 @@ ANDROID_PERMISSIONS = {
                                    "Complete the accessibility declaration, or remove the service."),
     "READ_MEDIA_IMAGES": MEDIA,
     "READ_MEDIA_VIDEO": MEDIA,
+    "USE_EXACT_ALARM": ("CHECK", "USE_EXACT_ALARM is limited to apps whose core function needs precise timing, such "
+                        "as alarm, timer and calendar apps.", "Remove it or use SCHEDULE_EXACT_ALARM if the use is not core; "
+                        "otherwise complete the Play Console declaration."),
+    "BIND_VPN_SERVICE": ("CHECK", "VpnService is limited to apps with VPN as core functionality and listed exceptions, "
+                         "and its use must be documented in the store listing.",
+                         "Document the VPN use in the listing, or remove the service."),
+    # one entry for every FOREGROUND_SERVICE_<TYPE> permission
+    "FOREGROUND_SERVICE_*": ("CHECK", "Apps that target Android 14 or newer declare each foreground service type on "
+                            "the Play Console App content page.",
+                            "Complete the foreground service declaration for each type, or remove unused types."),
 }
+FOREGROUND_SERVICE_REF = "topic:support.google.com/googleplay/android-developer/answer/13392821"
 
 SIGN_IN = re.compile(r"\b(signIn|signUp|signInWith\w+|createUserWith\w+|logIn|login)\s*\(")
 DELETION = re.compile(r"(?i)(delete|remove|erase)[\s_-]?(my[\s_-]?|your[\s_-]?)?(account|profile)"
@@ -111,6 +143,15 @@ PLACEHOLDER = re.compile(r"(?i)^(|todo|tbd|test|lorem.*|placeholder|description|
 RANK_CLAIM = re.compile(r"(?i)#\s?1\b|\bno\.?\s?1\b|\b(free|sale|discount)\b")
 SOFT_CLAIM = re.compile(r"(?i)\b(best|top)\b")  # also ordinary words: "Best Friends Quiz"
 OTHER_PLATFORM = re.compile(r"(?i)\bandroid\b|google play")
+REPORT = re.compile(r"(?i)\b(report|flag)[\s_-]?(this[\s_-]?)?(user|content|message|post|comment|abuse|response|answer)"
+                    r"|\b(on|handle)(Report|Flag)\w*|reportReason")
+BLOCK = re.compile(r"(?i)\b(un)?block[\s_-]?(this[\s_-]?)?(user|member|contact|sender)|\b(on|handle)Block\w*|blocked[\s_-]?users")
+PRIVACY = re.compile(r"(?i)privacy|gizlilik|datenschutz|privacidad|confidentialit|privacidade")
+LOREM = re.compile(r"(?i)lorem ipsum")
+NOT_SHIPPED = re.compile(r"(?i)(^|/)(__tests__|__mocks__|tests?|e2e|stories|storybook|fixtures?)/|\.(test|spec|stories)\.")
+PRERELEASE = re.compile(r"(?i)\b(beta|demo|trial)\b")
+EMOJI = re.compile("[\U0001F000-\U0001FAFF\u2300-\u23FF\u2600-\u27BF\u2B00-\u2BFF\uFE0F\u20E3]")
+RESTRICTED_MODES = {"location", "audio", "voip"}  # the modes 2.5.4 names; fetch and remote-notification are routine
 
 
 @dataclass
@@ -173,7 +214,8 @@ def classify(name: str, rel: str):
         return "listing"
     if name in CONFIG_NAMES or name.endswith(CONFIG_SUFFIXES) or name.startswith("app.config."):
         return "config"
-    return "source" if name.endswith(SOURCE_SUFFIXES) else None
+    # translation files hold the labels (Delete account, Privacy policy) the absence checks look for
+    return "source" if name.endswith(SOURCE_SUFFIXES) or TRANSLATIONS.search(rel) else None
 
 
 def load(root: Path) -> list:
@@ -251,8 +293,8 @@ def check_privacy_manifest(p):
                    "topic:developer.apple.com/app-store/app-privacy-details"])
 
 
-def purpose_strings(p):
-    """(key, value, location) for every iOS purpose string in Info.plist files and app.json."""
+def info_plists(p):
+    """(file, dict) for every Info.plist and every app.json infoPlist block that parses."""
     for f in p.files:
         try:
             if f.rel.endswith("Info.plist"):
@@ -263,9 +305,33 @@ def purpose_strings(p):
                 continue
         except Exception:
             continue
-        for key, value in plist.items() if isinstance(plist, dict) else ():
+        if isinstance(plist, dict):
+            yield f, plist
+
+
+def purpose_strings(p):
+    """(key, value, location) for every iOS purpose string."""
+    for f, plist in info_plists(p):
+        for key, value in plist.items():
             if key.endswith("UsageDescription") and isinstance(value, str):
                 yield key, value.strip(), where(f, max(f.text.find(key), 0))
+
+
+def check_background_modes(p):
+    if "apple" not in p.platforms:
+        return
+    found, at = set(), None  # app.json and the Info.plist generated from it declare the same modes: one finding
+    for f, plist in info_plists(p):
+        modes = plist.get("UIBackgroundModes")
+        here = RESTRICTED_MODES & {m for m in modes if isinstance(m, str)} if isinstance(modes, list) else set()
+        if here:
+            found |= here
+            at = at or where(f, max(f.text.find("UIBackgroundModes"), 0))
+    if found:
+        yield Finding("C19", "apple", "CHECK", "Background modes declared: " + ", ".join(sorted(found)), at,
+                      "Background services may only be used for their intended purposes.",
+                      "Remove each mode no shipped feature uses.",
+                      ["apple:2.5.4"])
 
 
 def check_purpose_strings(p):
@@ -302,22 +368,23 @@ def requested_permissions(f: File):
 
 
 def android_permissions(p):
-    """(permission, location) once per restricted permission."""
+    """(permission, rule key, location) once per restricted permission."""
     seen = set()
     for f in p.files:
         for name, pos in requested_permissions(f):
-            if name in ANDROID_PERMISSIONS and name not in seen:
+            rule = "FOREGROUND_SERVICE_*" if re.match(r"FOREGROUND_SERVICE_\w", name) else name
+            if rule in ANDROID_PERMISSIONS and name not in seen:
                 seen.add(name)
-                yield name, where(f, pos)
+                yield name, rule, where(f, pos)
 
 
 def check_android_permissions(p):
     if "google" not in p.platforms:
         return
-    for name, at in android_permissions(p):
-        severity, why, fix = ANDROID_PERMISSIONS[name]
-        yield Finding("C19", "google", severity, f"Restricted permission {name}", at, why, fix,
-                      ["google:policy:12579724"])
+    for name, rule, at in android_permissions(p):
+        severity, why, fix = ANDROID_PERMISSIONS[rule]
+        refs = ["google:policy:12579724"] + ([FOREGROUND_SERVICE_REF] if rule == "FOREGROUND_SERVICE_*" else [])
+        yield Finding("C19", "google", severity, f"Restricted permission {name}", at, why, fix, refs)
 
 
 def check_purchases(p):
@@ -365,6 +432,82 @@ def check_chance(p):
             return
 
 
+def check_ugc(p):
+    chat = p.roles.get("chat")
+    missing = [name for name, rx in (("report", REPORT), ("block", BLOCK)) if not p.find(rx, "source")]
+    if chat and missing:
+        yield Finding("C16", "all", "CHECK", f"{chat[0][0]} without a {' or '.join(missing)} action in source", chat[0][1],
+                      "Apple: filtering of objectionable material, a report mechanism, blocking of abusive users "
+                      "and published contact information. Google: terms of use accepted before posting, and in-app "
+                      "reporting and blocking of content and users.",
+                      "Add report and block actions to messages and profiles, and a moderation path behind them.",
+                      ["apple:1.2", "google:policy:9876937"])
+
+
+def check_ai(p):
+    for name, at in p.roles.get("ai", [])[:1]:
+        why = ("Personal data sent to a third-party AI needs clear disclosure and explicit permission first (Apple). "
+               "Apps that generate content with AI need in-app reporting or flagging of offensive output (Google).")
+        if not p.find(REPORT, "source"):
+            why += " No report or flag action was found in source."
+        yield Finding("C17", "all", "CHECK", f"{name}: data sharing consent and output reporting", at, why,
+                      "Ask before the first request that carries personal data, name the provider, and add a report "
+                      "action on generated content.", ["apple:5.1.2", "google:policy:13985936"])
+
+
+def check_health(p):
+    ads = ", ".join(name for name, _ in p.roles.get("ads", []))
+    for name, at in p.roles.get("healthkit", [])[:1]:
+        yield Finding("C18", "apple", "CHECK", "HealthKit access" + (f" in an app with {ads}" if ads else ""), at,
+                      "Health and fitness data may not be used or disclosed to third parties for advertising, "
+                      "marketing or use-based data mining, other than to improve health management or for health "
+                      "research, and then only with permission.",
+                      "Confirm no health data reaches an ad or analytics SDK, and state the use in the privacy policy.",
+                      ["apple:5.1.3"])
+    for name, at in p.roles.get("health_connect", [])[:1]:
+        yield Finding("C18", "google", "CHECK", "Health Connect access", at,
+                      "Apps with health features or health data access complete the Health apps declaration in Play "
+                      "Console, and Health Connect data is personal and sensitive user data.",
+                      "Complete the Health apps declaration and cover health data in the privacy policy.",
+                      ["google:policy:9878878"])
+
+
+def check_other_payment(p):
+    for name, at in p.roles.get("other_payment", [])[:1]:
+        yield Finding("C11", "all", "CHECK", f"{name}: payment outside the store billing system", at,
+                      "Digital content and features unlocked in the app go through in-app purchase or Play billing. "
+                      "Other payment methods are for physical goods, services used outside the app and the listed "
+                      "exceptions, which differ by storefront and program.",
+                      "Confirm everything sold through this SDK is a physical good, an outside service or a listed "
+                      "exception, and record which.", ["apple:3.1.1", "apple:3.1.3", "google:policy:9858738"])
+
+
+def check_privacy_link(p):
+    declared = next(((name, at) for name, (at, data) in p.sdks.items() if data), None)
+    if declared and not p.find(PRIVACY, "source"):
+        yield Finding("C05", "all", "CHECK", "No privacy policy link in source", declared[1],
+                      f"The app includes {declared[0]}, which sends data, and no source file mentions a privacy "
+                      "policy. Both stores ask for the policy in the console and inside the app.",
+                      "Link the privacy policy from settings or sign-up.", ["apple:5.1.1", "google:policy:9888076"])
+
+
+def check_placeholder(p):
+    if "apple" not in p.platforms:
+        return
+    seen = set()  # one finding for app source and one for the listing
+    for f in p.files:
+        m = LOREM.search(f.text) if f.kind in ("source", "listing") and not NOT_SHIPPED.search(f.rel) else None
+        # 2.1 is Apple's rule, so a Play listing file is left alone
+        if not m or f.kind in seen or (f.kind == "listing" and LISTING.search(f.rel).group(1)):
+            continue
+        seen.add(f.kind)
+        listing = f.kind == "listing"
+        yield Finding("C04" if listing else "C03", "apple", "HIGH" if listing else "CHECK",
+                      "Placeholder text (lorem ipsum)", where(f, m.start()),
+                      "Submissions should be final: placeholder text and temporary content are removed before review.",
+                      "Replace the placeholder with final text.", ["apple:2.1"])
+
+
 def check_listing(p):
     for f in p.files:
         m = LISTING.search(f.rel) if f.kind == "listing" else None
@@ -382,6 +525,23 @@ def check_listing(p):
             yield Finding("C04", "apple", "CHECK", f'{name} contains "{claim.group().strip()}" ({locale})',
                           where(f, claim.start()), "App names and subtitles should not include prices or terms that "
                           "are not the name of the app.", "Remove the claim from the name.", ["apple:2.3.7"])
+        if is_title and store == "google":
+            emoji = EMOJI.search(f.text)
+            if emoji:
+                yield Finding("C04", "google", "HIGH", f"{name} contains an emoji ({locale})", where(f, emoji.start()),
+                              "Play titles must not use emojis, emoticons or repeated special characters.",
+                              "Remove the emoji from the title.", ["google:policy:9898842"])
+            words = re.findall(r"[^\W\d_]{2,}", f.text)
+            if len(words) > 1 and all(w.isupper() for w in words) and any(len(w) > 3 for w in words):  # QR NFC is acronyms
+                yield Finding("C04", "google", "CHECK", f"{name} is all capitals ({locale})", f"{f.rel}:1",
+                              "Play asks to avoid all capitals unless they are part of the brand name.",
+                              "Use normal capitalisation unless the capitals are the brand name.", ["google:policy:9898842"])
+        pre = PRERELEASE.search(f.text) if is_title and store == "apple" else None
+        if pre:
+            yield Finding("C04", "apple", "CHECK", f'{name} contains "{pre.group()}" ({locale})', where(f, pre.start()),
+                          "Demos, betas and trial versions do not belong on the App Store.",
+                          "Remove the word unless it is part of the product's name, and ship the final version.",
+                          ["apple:2.2"])
         other = OTHER_PLATFORM.search(f.text) if store == "apple" else None
         if other:
             yield Finding("C04", "apple", "CHECK", f'{name} mentions "{other.group()}" ({locale})', where(f, other.start()),
@@ -390,8 +550,9 @@ def check_listing(p):
                           ["apple:2.3.10"])
 
 
-CHECKS = (check_login, check_deletion, check_tracking, check_privacy_manifest, check_purpose_strings,
-          check_android_permissions, check_purchases, check_chance, check_listing)
+CHECKS = (check_login, check_deletion, check_tracking, check_privacy_manifest, check_privacy_link, check_purpose_strings,
+          check_background_modes, check_android_permissions, check_purchases, check_other_payment, check_chance,
+          check_ugc, check_ai, check_health, check_placeholder, check_listing)
 
 
 def scan(root: Path):
