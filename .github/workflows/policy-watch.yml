@@ -89,3 +89,52 @@ jobs:
           else
             gh issue create --title "$title" --body-file body.md
           fi
+      - name: Verify the deadline sources
+        if: ${{ !inputs.rewrite }}
+        id: deadlines
+        run: |
+          set +e
+          python3 skills/store-review-audit/scripts/check_deadlines.py --verify > deadlines.txt
+          # 0: every quote still on its source, 1: a quote is gone, 2: a source could not be fetched
+          code=$?
+          echo "code=$code" >> "$GITHUB_OUTPUT"
+          cat deadlines.txt
+          if [ "$code" -eq 2 ]; then exit 1; fi
+          exit 0
+      - name: Record the deadline verification date
+        if: steps.deadlines.outputs.code == '0'
+        run: |
+          python3 - <<'PY'
+          import json, datetime, pathlib
+          p = pathlib.Path("skills/store-review-audit/references/deadlines.json")
+          data = json.loads(p.read_text())
+          data["verified"] = datetime.date.today().isoformat()
+          p.write_text(json.dumps(data, indent=1, ensure_ascii=True) + "\n")
+          PY
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -am "chore: deadline sources verified $(date -u +%F), no changes" || exit 0
+          # the catalogue step above may have pushed a commit in this run
+          git pull --rebase
+          git push
+      - name: Open or update the deadline issue
+        if: steps.deadlines.outputs.code == '1'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          title="Deadline sources changed"
+          {
+            echo "The weekly watch no longer finds these deadline quotes on their official source."
+            echo
+            echo '```'
+            grep '^changed' deadlines.txt
+            echo '```'
+            echo
+            echo "Open each source, then correct or remove the entry in skills/store-review-audit/references/deadlines.json and set its verified_on date."
+          } > body.md
+          existing=$(gh issue list --state open --search "in:title \"$title\"" --json number --jq '.[0].number')
+          if [ -n "$existing" ]; then
+            gh issue comment "$existing" --body-file body.md
+          else
+            gh issue create --title "$title" --body-file body.md
+          fi
