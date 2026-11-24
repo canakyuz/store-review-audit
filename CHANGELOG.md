@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.0 (2026-11-24)
+
+- Scanner leads for more controls: chat SDKs without report or block (C16), AI provider SDKs (C17), HealthKit and Health Connect access (C18), payment SDKs outside the store billing system (C11), background modes (C19), foreground service types, exact alarm and VPN permissions (C19), no privacy policy link in the app (C05), placeholder text (C03, C04), emoji or all capitals in a Play title and beta, demo or trial in an App Store name (C04). Translation files are read, so a label that lives in `locales/en.json` counts.
+- `scripts/diagnose_rejection.py <file>` lists the Apple guideline clauses and Google Play policies a rejection or policy notice names, with official links and, for Google, the digest requirements. `references/rejection-playbook.md` covers when to fix, reply or appeal and the official channels.
+- `scripts/check_deadlines.py` lists 35 dated store and legal deadlines from `references/deadlines.json`, each with an official source and a quote from it; `--verify` checks every quote against the live page, and the weekly policy watch runs it.
+- `action.yml`: `uses: canakyuz/store-review-audit@v0.6.0` runs the scanner in GitHub Actions and fails on a HIGH finding.
+
 ## 0.5.0 (2026-11-24)
 
 - `scripts/scan_project.py <folder>` scans an iOS, Android, Expo, React Native or Flutter project without an agent or network access and prints findings with file and line, reason, fix and policy catalogue reference. HIGH (the files contain something a rule restricts) exits 1, CHECK (something was not found or cannot be seen) exits 0, no mobile project exits 2; `--json` prints the report for agents.

@@ -2,9 +2,9 @@
 
 **Evidence-based release reviews for the Apple App Store and Google Play.**
 
-A project scanner, an agent skill and a ledger validator that make release audits explicit: which build was checked, which policy applies, what evidence supports each result, and what remains unresolved.
+A project scanner, a rejection notice reader, a deadline list, an agent skill and a ledger validator that make release audits explicit: which build was checked, which policy applies, what evidence supports each result, and what remains unresolved.
 
-**One-command project scan · 27 control definitions · Python standard library · MIT licensed**
+**One-command project scan · rejection notice reader · sourced deadlines · 27 control definitions · Python standard library · MIT licensed**
 
 ## Scan a project in one command
 
@@ -31,9 +31,55 @@ HIGH  A03 apple  Google Sign-In without Sign in with Apple
 | `CHECK` | Something expected was not found, or the outcome depends on what a scan cannot see, such as a console declaration. |
 | `Declare` | SDKs found in the project and the data each commonly sends, for App Privacy and Data safety. |
 
-What it checks: social login without Sign in with Apple, accounts without a deletion path, ad SDKs without a tracking prompt, a privacy manifest that lists no data, placeholder purpose strings, Always location, restricted Android permissions (SMS, call log, background location, all files access and others), purchases without restore, subscription screens without a price or terms link, chance mechanics with stakes, and store listing text in a fastlane `metadata/` folder (ranking claims in titles, mentions of the other platform).
+What it checks:
+
+| Area | Leads |
+| --- | --- |
+| Accounts and login | Social login without Sign in with Apple, accounts without a deletion path |
+| Privacy | Ad SDK without a tracking prompt, privacy manifest that lists no data, no privacy policy link in the app |
+| Permissions | Placeholder purpose strings, Always location, background modes (audio, location, VoIP), restricted Android permissions: SMS, call log, background location, all files access, package visibility, foreground service types, exact alarm, VPN, accessibility, full-screen intent |
+| Payments | Purchases without restore, subscription screens without a price or terms link, payment SDKs outside the store billing system |
+| Content | Chance mechanics with stakes, chat SDKs without report or block, AI provider SDKs (consent and output reporting), HealthKit and Health Connect access |
+| Completeness and listing | Placeholder text, and store listing text in a fastlane `metadata/` folder: ranking claims, emoji or all capitals in a Play title, beta or demo in an App Store name, mentions of the other platform |
 
 What it cannot see: console declarations, legal pages, runtime behaviour, the built binary and account state. A scan with no findings is not a pass and exits 0; a folder with no mobile project exits 2 and checks nothing. On the benchmark app below it finds 9 of the 15 seeded problems and none of the 14 traps; the other 6 live in the console exports and legal pages, which is what the agent audit is for. Add `--json` for machine-readable output.
+
+## Stop a release on a HIGH finding
+
+The scanner exits 1 on a HIGH finding, so it can sit in front of a submit command:
+
+```sh
+python3 store-review-audit/skills/store-review-audit/scripts/scan_project.py . && eas submit
+```
+
+In GitHub Actions:
+
+```yaml
+- uses: actions/checkout@v7
+- uses: canakyuz/store-review-audit@v0.6.0
+  with:
+    path: .
+```
+
+The step fails on a HIGH finding and when the folder holds no mobile project. CHECK findings are printed and do not fail it.
+
+## Read a rejection notice
+
+Save the App Review or Play policy message to a file and run:
+
+```sh
+python3 store-review-audit/skills/store-review-audit/scripts/diagnose_rejection.py notice.txt
+```
+
+It lists each Apple guideline clause and Google Play policy the notice names, with the official link, the line that cites it and, for Google policies, the page's requirements in short form. It does not judge whether the notice is right. [rejection-playbook.md](skills/store-review-audit/references/rejection-playbook.md) covers when to fix, reply or appeal and the official channel for each, every statement tied to the page it comes from.
+
+## Check upcoming deadlines
+
+```sh
+python3 store-review-audit/skills/store-review-audit/scripts/check_deadlines.py --within 120
+```
+
+Lists dated store and legal deadlines (SDK and target API requirements, age rating declarations, permission policy changes, app store age laws) with who is affected, what to do and the official source. Add `--platform apple` or `--platform google` to filter. The list has 35 entries; each carries a quote from its source, and an entry ships only if that quote was found on the live page. `--verify` repeats that check, and the weekly policy watch runs it and opens an issue when a quote is gone. The list is not complete and dates move: open the source before relying on one.
 
 ## Why this exists
 
@@ -41,11 +87,13 @@ A release can have working code and still have missing subscription terms, inacc
 
 This project gives an agent a repeatable investigation workflow and checks the resulting evidence ledger. Missing evidence stays unknown. Failed checks stay blocked. One store's evidence cannot silently stand in for the other.
 
-## Three parts, three responsibilities
+## Parts and responsibilities
 
 | Component | Responsibility |
 | --- | --- |
 | [Project scanner](skills/store-review-audit/scripts/scan_project.py) | Read project files and report leads with file, line, fix and policy reference. No network, no agent. |
+| [Rejection notice reader](skills/store-review-audit/scripts/diagnose_rejection.py) | Name the rules a notice cites and link their official text. No network, no agent. |
+| [Deadline list](skills/store-review-audit/scripts/check_deadlines.py) | List dated store and legal deadlines with source and quote; verify the quotes against the live pages. |
 | [Agent skill](skills/store-review-audit/SKILL.md) | Inspect the app, build, console and documents; consult current official policies; assess applicability and write findings. |
 | [Python validator](skills/store-review-audit/scripts/validate_audit.py) | Check report structure, required controls, evidence types, app/platform/build identifiers, locale coverage and unresolved rejection records. |
 

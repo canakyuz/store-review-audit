@@ -1,5 +1,14 @@
 # Validation
 
+## 0.6.0 (2026-11-24)
+
+- 142 automated tests pass locally on Python 3.12 and 3.14 (46 new). GitHub Actions has not run for this version yet.
+- Scanner on the benchmark fixture is unchanged by the new checks: 9 of 15 seeded problems, 0 of 14 traps, 2 HIGH and 7 CHECK. The fixture has no chat, AI, health or outside-payment feature, so it shows the new checks stay quiet there, not that they find what they should; that is covered only by unit tests.
+- Scanner on five private Expo projects (95 to 1,622 files): 0.2 to 2.4 s each, no HIGH finding, 3 to 6 CHECK each. One known weak lead: an SDK name that appears as a word in an app's own text (a revenue dashboard that mentions RevenueCat) is read as that SDK.
+- Two independent reviews of the change. The policy review compared every new finding text and every playbook sentence with the live official text and found eight that said more than the page or cited the wrong store; all were reworded, and the placeholder lead is now Apple-only because only Apple's rule names it. The code review reproduced fourteen defects, all fixed with regression tests where they concern behaviour: a crash on a malformed `UIBackgroundModes`, the Health Connect package read as HealthKit, a source placeholder hiding the listing one, emoji outside the first range, SDK names matched inside ordinary strings, guideline citations read from plain numbers ("guidelines 3 times"), multi-clause citations missed, a crash on non-UTF-8 input, an empty quote passing verification, and a workflow step that pulled before committing.
+- Deadlines: a research pass returned 48 entries, each read on its official page. The repository's own `--verify` then fetched every source and found the stored quote on 35; the other 13 (12 quote not found in the fetched text, 1 source unreachable) were dropped, not repaired. The 35 are not a complete list.
+- Not done: the agent benchmark was not rerun, the rejection reader was tested on synthetic notices and the one benchmark notice only, and the GitHub Action has not run on GitHub.
+
 ## 0.5.0 (2026-11-24)
 
 - 96 automated tests pass locally on Python 3.12 and 3.14 (31 new for the scanner). GitHub Actions has not run for this version yet.
