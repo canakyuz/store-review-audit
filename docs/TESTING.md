@@ -1,5 +1,12 @@
 # Validation
 
+## 0.5.0 (2026-11-24)
+
+- 96 automated tests pass locally on Python 3.12 and 3.14 (31 new for the scanner). GitHub Actions has not run for this version yet.
+- Scanner on the benchmark fixture, fixed by the tests: 9 of 15 seeded problems flagged from files alone (Apple 5 of 7, Google 4 of 8), 0 of 14 traps flagged, 2 HIGH and 7 CHECK findings, 10 files in under 0.01 s. The 6 it does not flag (EULA link, the privacy policy on each store, Play listing title, Data safety sharing, deletion URL) exist only in the console exports and legal pages.
+- Scanner on four private Expo projects (95 to 1,622 files): 0.1 to 1.9 s each. The first run produced false positives, each now covered by a regression test: an event `subscribe` call read as a billing subscription, a confetti `spin` value read as a chance mechanic, a RevenueCat `logIn` call raised as a HIGH account finding, a missing restore raised as HIGH for a consumables-only game, and hidden tool folders scanned as app source. A review then found five more, also covered: a comment marker inside a string hiding the code after it, a crash on a dangling link, a crash on a malformed `infoPlist`, removed or blocked Android permissions reported as requested, and a period word such as `monthly` in unrelated code read as a subscription. The same review found policy sentences that said more than the rule; they were reworded, and every finding that rests on something not being found is now CHECK, never HIGH.
+- Known limits: findings come from text patterns, so a feature under an unusual name is missed and absence of a finding proves nothing; the agent benchmark was not rerun for this version.
+
 ## 0.4.0 (2026-11-19)
 
 - 65 automated tests pass locally and on GitHub Actions.

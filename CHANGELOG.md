@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.0 (2026-11-24)
+
+- `scripts/scan_project.py <folder>` scans an iOS, Android, Expo, React Native or Flutter project without an agent or network access and prints findings with file and line, reason, fix and policy catalogue reference. HIGH (the files contain something a rule restricts) exits 1, CHECK (something was not found or cannot be seen) exits 0, no mobile project exits 2; `--json` prints the report for agents.
+- Checks: social login without Sign in with Apple, accounts without a deletion path, ad SDK without a tracking prompt, privacy manifest without collected data, placeholder purpose strings, Always location, restricted Android permissions, purchases without restore, subscription screens without a price or terms link, chance mechanics with stakes, and fastlane store listing text (ranking claims in titles, other-platform mentions).
+- The report lists detected SDKs with the data each commonly sends, as a starting inventory for App Privacy and Data safety.
+- The skill runs the scanner first when it has a project folder and treats findings as leads.
+
 ## 0.4.0 (2026-11-19)
 
 - The catalogue also watches the Apple Developer Program License Agreement, App Store Connect screenshot specifications, Google's target SDK requirements, the Data safety form and Play store listing graphics (214 items).
